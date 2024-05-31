@@ -26,15 +26,15 @@ import org.sonar.api.web.page.PageDefinition;
 import static org.sonar.api.web.page.Page.Scope.COMPONENT;
 
 /**
- * Define Greensight additional page
+ * Define EcoCode Dashboard additional page
  */
 public class EcocodeDashboardPageDefinition implements PageDefinition {
 
   @Override
   public void define(Context context) {
     context
-      .addPage(Page.builder("greensight/view")
-        .setName("Greensight")
+      .addPage(Page.builder("ecocode-sonarqube-dashboard/view")
+        .setName("EcoCode Dashboard")
         .setScope(COMPONENT)
         .build());
   }

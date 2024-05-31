@@ -36,7 +36,7 @@
             <version>${sonar.apiVersion}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.sonarsource.java</groupId>
             <artifactId>sonar-java-plugin</artifactId>
             <version>${sonarjava.version}</version>
@@ -48,7 +48,7 @@
             <type>sonar-plugin</type>
             <version>${sonarphp.version}</version>
             <scope>provided</scope>
-        </dependency>
+        </dependency>-->
         <!-- Needed by sonar php plugin, shouldn't be needed, need digging -->
         <!-- Notice there is no <scope>provided</scope>, this because otherwise scans fail
          on Sonarqube -->
@@ -59,12 +59,12 @@
         </dependency>
 
         <!-- There is no <scope>provided</scope> because scan fail otherwise with class not found exception -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.sonarsource.python</groupId>
             <artifactId>sonar-python-plugin</artifactId>
             <type>sonar-plugin</type>
             <version>${sonarpython.version}</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -77,7 +77,6 @@
             <version>0.10.2</version>
         </dependency>
 
-
         <!-- Tests deps (there is no php testkit because such package doesn't exist for some reason ) -->
         <dependency>
             <groupId>org.sonarsource.java</groupId>
@@ -85,12 +84,12 @@
             <version>${sonarjava.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>org.sonarsource.python</groupId>
             <artifactId>python-checks-testkit</artifactId>
             <version>${sonarpython.version}</version>
             <scope>test</scope>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
@@ -100,6 +99,11 @@
     </dependencies>
 
     <build>
+        <!--<resources>
+            <resource>
+                <directory>../dist</directory>
+            </resource>
+        </resources>-->
         <plugins>
             <plugin>
                 <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
@@ -108,11 +112,11 @@
                 <extensions>true</extensions>
                 <configuration>
                     <pluginKey>ecocode</pluginKey>
-                    <pluginClass>io.ecocode.plugin.GreensightPlugin</pluginClass>
+                    <pluginClass>io.ecocode.plugin.EcocodeDashboardPlugin</pluginClass>
                     <sonarQubeMinVersion>${sonar.apiVersion}</sonarQubeMinVersion>
-                    <requirePlugins>java:${sonarjava.version}</requirePlugins>
+                    <!-- <requirePlugins>java:${sonarjava.version}</requirePlugins>
                     <requirePlugins>php:${sonarphp.version}</requirePlugins>
-                    <requirePlugins>python:${sonarpython.version}</requirePlugins>
+                    <requirePlugins>python:${sonarpython.version}</requirePlugins> -->
                 </configuration>
             </plugin>
             <plugin>
@@ -184,7 +188,51 @@
                     </execution>
                 </executions>
             </plugin>
+            <!-- maven-resources-plugin to copy the website -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>../dist/assets</directory>
+                                    <targetPath>${project.build.outputDirectory}/static</targetPath>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
+            <!-- maven-jar-plugin to include the website in the jar -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>.</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                    <includes>
+                        <include>**/*</include>
+                    </includes>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
