@@ -22,7 +22,7 @@ fi
 
 # INSTALL PNPM
 nvm use
-corepack enable pnpm
+corepack use pnpm@10
 
 # INSTALL NODE DEPENDENCIES
 pnpm install

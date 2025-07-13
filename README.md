@@ -1,13 +1,13 @@
 # Creedengo-Dashboard
 
 [![Build and Tests](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/build.yml/badge.svg)](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/build.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_ecoCode-dashboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_ecoCode-dashboard)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_ecoCode-dashboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_ecoCode-dashboard)
 
 This project is meant to provide Sustainable Code Dashboards to
 
 - show potential impact on sustainability of unffollowed recommendations
-- help decisions regarding code enhancement priorisation 
+- help decisions regarding code enhancement priorisation
 - and even potentially prevent new issues to be pushed to production
 
 ## Open Architecture
@@ -35,6 +35,7 @@ Still, the code is structured to remain product agnostic
 The Dashboard are constructed from widgets (web components) exposed to storybooks.
 
 It allows:
+
 - to individually develop, enhance and test those widgets (accessibility, behaviors, visual regression)
 - to ultimately help having stable end-to-end tests with gherkin step-definitions provided by these components themselves
 - to be able to provide on-demand dashboards or dedicated widgets in any end application contexts (ex: independant Confluence macros)
