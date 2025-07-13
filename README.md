@@ -66,7 +66,7 @@ pnpm test:unit
 
 ```sh
 # Install browsers for the first run
-npx playwright install
+pnpm exec playwright install
 
 # Install Playwright dependencies to run browsers
 sudo apt-get install libgbm1 # for chrome
