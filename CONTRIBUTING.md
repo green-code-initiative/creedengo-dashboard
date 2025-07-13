@@ -8,7 +8,11 @@ Please read common [CONTRIBUTING.md](https://github.com/green-code-initiative/cr
 
 Read the [INSTALL.md](./INSTALL.md) documentation to setup your development environment
 
-> `pnpm` is prefered for a faster and more secure installation with less network and disk space usage.
+> To install or update pnpm, use
+>
+> `corepack use pnpm@latest`
+
+## Project Setup
 
 ### Frontend development
 
