@@ -1,11 +1,13 @@
 {
   "recommendations": [
-    "Vue.volar",
-    "ms-playwright.playwright",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
-    "joshbolduc.story-explorer",
     "henrynguyen5-vsc.vsc-nvm",
-    "unifiedjs.vscode-mdx"
+    "joshbolduc.story-explorer",
+    "ms-playwright.playwright",
+		"ms-vscode.extension-test-runner",
+    "sonarsource.sonarlint-vscode",
+    "unifiedjs.vscode-mdx",
+    "Vue.volar"
   ]
 }

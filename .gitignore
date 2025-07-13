@@ -32,3 +32,9 @@ node_modules/
 !.editorconfig
 !.vscode/extensions.json
 !.vscode/settings.json
+# VSCode extensions
+!.vscode/launch.json
+!.vscode-test.js
+!.vscodeignore
+.vscode-test/
+*.vsix
