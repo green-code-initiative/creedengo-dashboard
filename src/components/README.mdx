@@ -1,32 +1,22 @@
+import { Meta, Markdown } from '@storybook/addon-docs/blocks';
+import Dashboards from './dashboards/README.md?raw';
+import DesignSystem from './design-system/README.md?raw';
+import Widgets from './Widgets/README.md?raw';
 
-# Creedengo Design System and Widgets
+<Meta title="Introduction" />
 
-This documentation provides an overview of the design system and widgets used in the Creedengo project.
+# Creedengo components
 
-## Design System
+Creedengo components are a collection of reusable components designed 
+to build applications that integrate with Creedengo's code quality analysis features. 
 
-The design system follows an Atomic Design structure. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) is a methodology for creating design systems that emphasizes the use of small, reusable components to build larger, more complex interfaces.
+They are structured into two main categories:
 
-![Atomic Design](https://atomicdesign.bradfrost.com/images/content/instagram-atomic.png)
+- The Dashboard Components
+- The Widget Components
+- The Design System Components
 
-It provides pure visual components that can be used to build more complex components and widgets.
+<Markdown>{Dashboards}</Markdown>
+<Markdown>{Widgets}</Markdown>
+<Markdown>{DesignSystem}</Markdown>
 
-## Widgets
-
-Widgets are standalone components binding visual components to feature services. 
-They can use configurations and some parameters to target code analyse results.
-
-
-![](../../documentation/dashboard-widgets.png)
-
-They are meant to be used to create dashboards usable throught
-
-- standalone built web or mobile applications (using Apache Cordova) 
-- or integrated as 
-  - a [Sonarqube plugin](https://docs.sonarsource.com/sonarqube-server/2025.1/extension-guide/developing-a-plugin/plugin-basics/),
-    - This project started as a migration of the Capgemini Greensight project to Ecocode (previous Creedengo name), and Creedengo is actually mostly provided as a collection of Sonarqube plugins, so this target is the most advanced one
-  - IDE plugins like VSCode, Visual Studio, WebStorm, Android Studio, X-Code, Eclipse, IntelliJ IDEA,
-    - Should help the developer to have more visual and textual information about the code quality issues in the code they are currently working on
-  - linter html reporter plugins (as ones for ktlint, eslint, ...)
-  - Confluence,
-  - or for any other product.

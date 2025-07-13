@@ -15,7 +15,7 @@
 <script setup>
 import { onMounted, reactive } from 'vue';
 
-import AbcdeScore from '@/components/Mollecules/AbcdeScore/AbcdeScore.vue'
+import AbcdeScore from '@/components/design-system/Molecules/AbcdeScore/AbcdeScore.vue'
 
 import { calculateProjectScore } from './score.service';
 
