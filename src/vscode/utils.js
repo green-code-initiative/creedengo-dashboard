@@ -40,12 +40,10 @@ export async function getSonarConfiguration() {
     return configuration;
 }
 
-export function getNonce() {
-  let text = "";
-  const possible =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  for (let i = 0; i < 32; i++) {
-    text += possible.charAt(Math.floor(Math.random() * possible.length));
-  }
-  return text;
+export function getNonce(length = 32) {
+  const typedArray = crypto.getRandomValues(new Uint8Array(length));
+  return Array.prototype.map.call(
+    typedArray,
+    value => value.toString(16).padStart(2, "0")
+  ).join('');
 }
