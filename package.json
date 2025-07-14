@@ -47,49 +47,49 @@
       ]
     },
     "configuration": {
-        "title": "Creedengo Dashboard Configuration",
-        "properties": {
-          "creedengo.sonarUrl": {
-            "type": "string",
-            "default": "http://localhost:3000/api",
-            "description": "The Sonar Server URL."
-          },
-          "creedengo.sonarToken": {
-            "type": "string",
-            "default": "",
-            "description": "The Sonar Authentication Token."
-          },
-          "creedengo.sonarOrganisationKey": {
-            "type": "string",
-            "default": "",
-            "description": "The Sonar Organisation Key. Leave empty to use the one from sonar-project.properties."
-          },
-          "creedengo.sonarProjectKey": {
-            "type": "string",
-            "default": "",
-            "description": "The Sonar Project Key. Leave empty to use the one from sonar-project.properties."
-          },
-          "creedengo.enableNotifications": {
-            "type": "boolean",
-            "default": true,
-            "description": "Enable or disable notifications from Creedengo."
-          }
+      "title": "Creedengo Dashboard Configuration",
+      "properties": {
+        "creedengo.sonarUrl": {
+          "type": "string",
+          "default": "https://sonarcloud.io/",
+          "description": "The Sonarqube Server URL. Default to Sonarcloud."
+        },
+        "creedengo.sonarToken": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Authentication Token."
+        },
+        "creedengo.sonarOrganisationKey": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Organisation Key. Leave empty to use the one from sonar-project.properties."
+        },
+        "creedengo.sonarProjectKey": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Project Key. Leave empty to use the one from sonar-project.properties."
+        },
+        "creedengo.enableNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable notifications from Creedengo."
         }
-      },
-		"commands": [
-			{
-				"command": "Creedengo.updateScore",
-				"category": "Creedengo Score",
-				"title": "Update Score",
+      }
+    },
+    "commands": [
+      {
+        "command": "Creedengo.updateScore",
+        "category": "Creedengo Score",
+        "title": "Update Score",
         "icon": "$(sync~spin)"
-			},
-			{
-				"command": "Creedengo.clearScore",
-				"category": "Creedengo Score",
-				"title": "Clear Score",
+      },
+      {
+        "command": "Creedengo.clearScore",
+        "category": "Creedengo Score",
+        "title": "Clear Score",
         "icon": "$(trash)"
-			}
-		]
+      }
+    ]
   },
   "scripts": {
     "lint": "turbo lint",

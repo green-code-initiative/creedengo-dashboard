@@ -1,6 +1,9 @@
 import { window, Uri } from 'vscode';
 
 import { getSonarConfiguration, getNonce } from './utils.js';
+import { setConnectionConfiguration } from './sonar-request.js'
+import { getProjectBranches } from './sonar.project-branches.list.api.js'
+import { calculateProjectScore } from './score.service.js';
 
 // @see https://github.com/microsoft/vscode-extension-samples/blob/main/webview-view-sample/src/extension.ts
 
@@ -8,6 +11,7 @@ export class CreedengoScoreViewProvider {
     #view;
     #extensionUri;
     #show;
+    #currentBranch;
     #postMessage;
 
     constructor(extensionUri) {
@@ -30,13 +34,22 @@ export class CreedengoScoreViewProvider {
             html: this.#getHtmlForWebview(webview)
         });
 
-        this.#showConfiguration();
+        this.#updateBranches();
 
 		webview.onDidReceiveMessage(data => {
             console.log('message from webview', data);
 			switch (data.type) {
+                case 'updateBranches': {
+                    this.updateScore();
+                    break;
+                }
                 case 'updateScore': {
-                    //this.updateScore();
+                    this.updateScore();
+                    break;
+                }
+                case 'selectBranch': {
+                    this.#currentBranch = data.message;
+                    this.updateScore();
                     break;
                 }
                 case 'error': {
@@ -51,9 +64,18 @@ export class CreedengoScoreViewProvider {
         if (!this.#view) {
             return;
         }
-        const score = await window.showQuickPick(['A', 'B', 'C', 'D', 'E'], {
-            placeHolder: 'Select a score',
-        });
+
+        let score;
+
+        try {
+            const configuration = await getSonarConfiguration();
+            score = await calculateProjectScore(
+                configuration, this.#currentBranch
+            );
+        } catch(error) {
+            window.showErrorMessage(error.message)
+        }
+
         this.#show(true); 
 		this.#postMessage({ type: 'updateScore', value: score });
 	}
@@ -66,20 +88,32 @@ export class CreedengoScoreViewProvider {
 		this.#postMessage({ type: 'clearScore', value: '' });
 	}
 
-    async #showConfiguration() {
-        const value = await getSonarConfiguration();
-        console.log('Creedengo configuration:', value);
-        this.#postMessage({ type: 'updateConfiguration', value });
+    async #updateBranches() {
+        let branches;
+        const { server, token, projectKey } = await getSonarConfiguration();
+        try {
+            setConnectionConfiguration({ server, token });
+            branches = await getProjectBranches(projectKey);
+        } catch(error) {
+            window.showErrorMessage('get branches for ' + projectKey + ' ' + error.message)
+        }
+        console.log('Sonar Branches:', branches);
+        this.#postMessage({ type: 'updateBranches', value: branches });
+    }
+
+    #getWebviewUri(fileName) {
+		// Get the local path to the file,
+        // then convert it to a uri we can use in the webview.
+        return this.#view.asWebviewUri(
+            Uri.joinPath(this.#extensionUri, 'media', fileName)
+        );
     }
 
     #getHtmlForWebview(webview) {
-		// Get the local path to main script run in the webview, then convert it to a uri we can use in the webview.
-		const scriptUri = webview.asWebviewUri(Uri.joinPath(this.#extensionUri, 'media', 'score.script.js'));
-
-		// Do the same for the stylesheet.
-		const styleResetUri = webview.asWebviewUri(Uri.joinPath(this.#extensionUri, 'media', 'reset.css'));
-		const styleVSCodeUri = webview.asWebviewUri(Uri.joinPath(this.#extensionUri, 'media', 'vscode.css'));
-		const styleMainUri = webview.asWebviewUri(Uri.joinPath(this.#extensionUri, 'media', 'main.css'));
+		const scriptUri = this.#getWebviewUri('score.script.js');
+		const styleResetUri = this.#getWebviewUri('reset.css');
+		const styleVSCodeUri = this.#getWebviewUri('vscode.css');
+		const styleMainUri = this.#getWebviewUri('main.css');
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
@@ -97,29 +131,14 @@ export class CreedengoScoreViewProvider {
 			</head>
 			<body>
                 <h1>Creedengo Score</h1>
+
+                <form name="branch-selection">
+                <select name="branch"></select>
+                </form>
                 <div class="score">Score: Not Loaded</div>
 
 				<button class="refresh-score-button">Refresh Score</button>
 				<button class="clear-score-button">Clear Score</button>
-
-                <form name="config"><ul>
-                    <li>
-                        <label for="server">Sonar Server URL:</label>
-                        <input type="text" id="server" value="" placeholder="Enter the Sonar Server URL here">
-                    </li>
-                    <li>
-                        <label for="token">Sonar Token:</label>
-                        <input type="text" id="token" value="" placeholder="Enter the Sonar Authentication Token here">
-                    </li>
-                    <li>
-                        <label for="organisation">Sonar Organisation Key:</label>
-                        <input type="text" id="organization" value="" placeholder="Enter the Sonar Project Organisation here">
-                    </li>
-                    <li>
-                        <label for="project">Sonar Project Key:</label>
-                        <input type="text" id="projectKey" value="" placeholder="Enter the Sonar Project Key here">
-                    </li>
-                </ul>
 
                 <div>
                     <textarea class="error-messages"></textarea>
