@@ -11,11 +11,12 @@
     const refreshButton = document.querySelector('.refresh-score-button');
     const clearButton = document.querySelector('.clear-score-button');
     const scoreOutput = document.querySelector('.score');
-    const configFields = document.forms['config'].elements;
+    const branchFields = document.forms['branch-selection'].elements;
+    const branchesSelect = branchFields['branch'];
 
     try {
-        const oldState = vscode.getState() || { score: '' };
-        let { score } = oldState;
+        const oldState = vscode.getState() || { score: '', branch: '' };
+        let { score, branch } = oldState;
 
         refreshButton.addEventListener('click', () => {
             vscode.postMessage({ type: 'refreshScore' });
@@ -31,8 +32,8 @@
                 case 'updateScore':
                     updateScore(data.value);
                     break;
-                case 'updateConfiguration':
-                    updateConfiguration(data.value);
+                case 'updateBranches':
+                    updateBranches(data.value);
                     break;
                 case 'clearScore':
                     updateScore('');
@@ -48,21 +49,38 @@
         function updateScore(newScore) {
             score = newScore;
             scoreOutput.textContent = `Score: ${score || 'Cleared'}`;
-            vscode.setState({ score });
+            vscode.setState({ score, branch });
         }
 
         /**
-         * @param {Object} configuration
-         * @param {string} configuration.server
-         * @param {string} configuration.token
-         * @param {string} configuration.organization
-         * @param {string} configuration.projectKey
+         * @param {any[]} branches
          */
-        function updateConfiguration(configuration) {
-            configFields['server'].value = configuration.server;
-            configFields['token'].value = configuration.token;
-            configFields['organization'].value = configuration.organization;
-            configFields['projectKey'].value = configuration.projectKey;
+        function updateBranches(branches) {
+            const previousSelected = branchesSelect?.selectedOptions[0]?.value;
+            const { options } = branchesSelect;
+            const { length } = options;
+            for (let i = 0; i < length; i += 1) {
+                options.remove(0);
+            }
+            /**
+             * @type HTMLOptionElement
+             */
+            let newSelected;
+            branches.forEach(branchData => {
+                const { name, isMain } = branchData;
+                const option = new Option(name, name);
+                Object.assign(option.dataset, branch);
+                options.add(option);
+                if ((isMain && !newSelected) || (name === previousSelected)) {
+                    newSelected = option;
+                }
+            });
+            if (newSelected) {
+                newSelected.selected = true;
+            }
+            branch = newSelected.dataset.name;
+            vscode.setState({ score, branch });
+            vscode.postMessage({ type: 'selectBranch', message: branch });
         }
         
     } catch({ message }) {
@@ -76,7 +94,7 @@
         errorCount += 1;
         const errorMessages = document.querySelector('.error-messages');
         errorMessages.textContent += `${errorCount}: ${message}\n`;
-        //errorMessages.scrollTop = errorMessages.scrollHeight;
+        errorMessages.scrollTop = errorMessages.scrollHeight;
         vscode.postMessage({ type: 'error', message });
     }
 }());
