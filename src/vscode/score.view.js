@@ -110,10 +110,13 @@ export class CreedengoScoreViewProvider {
     }
 
     #getHtmlForWebview(webview) {
-		const scriptUri = this.#getWebviewUri('score.script.js');
-		const styleResetUri = this.#getWebviewUri('reset.css');
-		const styleVSCodeUri = this.#getWebviewUri('vscode.css');
-		const styleMainUri = this.#getWebviewUri('main.css');
+        const baseUrl = this.#view.asWebviewUri(
+            Uri.joinPath(this.#extensionUri, 'media')
+        ).toString();
+		const scriptFile = 'score.script.js';
+		const resetStylesheetFile = 'reset.css';
+		const vscodeStylesheetFile = 'vscode.css';
+		const mainStylesheetFile = 'main.css';
 
 		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
@@ -122,29 +125,33 @@ export class CreedengoScoreViewProvider {
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
-				<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
+                <base href="${baseUrl}/">
+				<meta http-equiv="Content-Security-Policy" content="default-src 'none';img-src ${webview.cspSource} style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link href="${styleResetUri}" rel="stylesheet">
-				<link href="${styleVSCodeUri}" rel="stylesheet">
-				<link href="${styleMainUri}" rel="stylesheet">
+				<link href="${resetStylesheetFile}" rel="stylesheet">
+				<link href="${vscodeStylesheetFile}" rel="stylesheet">
+				<link href="${mainStylesheetFile}" rel="stylesheet">
 				<title>Creendengo Score</title>
 			</head>
 			<body>
-                <h1>Creedengo Score</h1>
-
-                <form name="branch-selection">
-                <select name="branch"></select>
-                </form>
-                <div class="score">Score: Not Loaded</div>
-
-				<button class="refresh-score-button">Refresh Score</button>
-				<button class="clear-score-button">Clear Score</button>
-
-                <div>
-                    <textarea class="error-messages"></textarea>
-                </div>
-
-				<script nonce="${nonce}" src="${scriptUri}"></script>
+                <header>
+                  <form name="branch-selection">
+                    <select name="branch"></select>
+                  </form>
+                </header>
+                <main>
+                  <score class="score">Score: Not Loaded</strong>
+                </main>
+                <footer>
+                  <div>
+                    Provided by 
+                    <img src="favicon.png" width="16" height="16" align="middle">
+                    <a href="https://github.com/green-code-initiative">Creedengo</a>
+                  </div>
+                  <hr>
+                  <textarea class="error-messages"></textarea>
+                </footer>
+				<script nonce="${nonce}" src="${scriptFile}"></script>
 			</body>
 			</html>`;
     }

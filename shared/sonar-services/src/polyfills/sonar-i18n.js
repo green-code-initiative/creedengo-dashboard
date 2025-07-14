@@ -9,7 +9,6 @@
 const IS_DEV = globalThis?.process.env.NODE_ENV === 'development'
 
 const DEFAULT_MESSAGES = {
-   
   'default_error_message': 'The request cannot be processed. Try again later.'
 }
 
