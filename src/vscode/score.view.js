@@ -101,36 +101,20 @@ export class CreedengoScoreViewProvider {
         this.#postMessage({ type: 'updateBranches', value: branches });
     }
 
-    #getWebviewUri(fileName) {
-		// Get the local path to the file,
-        // then convert it to a uri we can use in the webview.
-        return this.#view.asWebviewUri(
-            Uri.joinPath(this.#extensionUri, 'media', fileName)
-        );
-    }
-
     #getHtmlForWebview(webview) {
-        const baseUrl = this.#view.asWebviewUri(
+        const baseUrl = `${this.#view.asWebviewUri(
             Uri.joinPath(this.#extensionUri, 'media')
-        ).toString();
+        )}/`;
 		const scriptFile = 'score.script.js';
-		const resetStylesheetFile = 'reset.css';
-		const vscodeStylesheetFile = 'vscode.css';
-		const mainStylesheetFile = 'main.css';
-
-		// Use a nonce to only allow a specific script to be run.
 		const nonce = getNonce();
 
 		return `<!DOCTYPE html>
 			<html lang="en">
 			<head>
 				<meta charset="UTF-8">
-                <base href="${baseUrl}/">
+                <base href="${baseUrl}">
 				<meta http-equiv="Content-Security-Policy" content="default-src 'none';img-src ${webview.cspSource} style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<link href="${resetStylesheetFile}" rel="stylesheet">
-				<link href="${vscodeStylesheetFile}" rel="stylesheet">
-				<link href="${mainStylesheetFile}" rel="stylesheet">
 				<title>Creendengo Score</title>
 			</head>
 			<body>
