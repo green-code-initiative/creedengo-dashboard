@@ -8,8 +8,6 @@
     const vscode = acquireVsCodeApi();
     let errorCount = 0;
 
-    const refreshButton = document.querySelector('.refresh-score-button');
-    const clearButton = document.querySelector('.clear-score-button');
     const scoreOutput = document.querySelector('.score');
     const branchFields = document.forms['branch-selection'].elements;
     const branchesSelect = branchFields['branch'];
@@ -17,14 +15,6 @@
     try {
         const oldState = vscode.getState() || { score: '', branch: '' };
         let { score, branch } = oldState;
-
-        refreshButton.addEventListener('click', () => {
-            vscode.postMessage({ type: 'refreshScore' });
-        });
-
-        clearButton.addEventListener('click', () => {
-            updateScore('');
-        });
 
         // Handle messages sent from the extension to the webview
         window.addEventListener('message', ({ data }) => {
