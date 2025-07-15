@@ -18,7 +18,7 @@
     "coverage": "vitest run --coverage",
     "serve:sonar": "node src/api/sonar/mock/server.js",
     "sonar": "pnpm coverage && pnpm exec sonar-scanner -Dsonar.login=$SONAR -Dsonar.host.url=http://localhost:9000",
-    "lint": "eslint src --fix", 
+    "lint": "eslint src --fix",
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -26,7 +26,7 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "vue": "^3.5.17",
-    "vue3-toastify": "^0.2.1"
+    "vue3-toastify": "^0.2.8"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",
@@ -34,7 +34,7 @@
     "@commitlint/config-conventional": "^19.2.2",
     "@creedengo/eslint-plugin": "^2.1.0",
     "@eslint/compat": "^1.1.1",
-    "@eslint/js": "^9.8.0",
+    "@eslint/js": "^9.30.1",
     "@playwright/test": "^1.53.1",
     "@storybook/addon-a11y": "9.0.15",
     "@storybook/addon-coverage": "^1.0.4",
@@ -61,7 +61,6 @@
     "prettier": "3.5.3",
     "sonarqube-scanner": "^4.3.0",
     "storybook": "9.0.15",
-    "transform": "link:@storybook/test-runner/playwright/transform",
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.7",
     "vitest": "^3.2.4"
