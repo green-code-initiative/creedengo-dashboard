@@ -14,7 +14,6 @@ Please read common [CONTRIBUTING.md](https://github.com/green-code-initiative/cr
 
 ## Project Setup
 
-
 ### Frontend development
 
 ```sh
@@ -23,31 +22,38 @@ pnpm install
 
 Prefer `pnpm` for a faster and more secure installation with less network and disk space usage.
 
-### Compile and Hot-Reload Design System for Development
+> **WARNING**
+>
+> At this step the Vue application is moved in a `apps` pnpm workspace without other tools,
+> so for the next commands, start by moving to the `apps/vue-app` folder:
+>
+> `cd apps/vue-app`
+
+#### Compile and Hot-Reload Design System for Development
 
 ```sh
 pnpm storybook
 ```
 
-### Compile and Hot-Reload the application for Development
+#### Compile and Hot-Reload the application for Development
 
 ```sh
 pnpm dev
 ```
 
-### Compile and Minify for Production
+#### Compile and Minify for Production
 
 ```sh
 pnpm build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+#### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
 pnpm test:unit
 ```
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+#### Run End-to-End Tests with [Playwright](https://playwright.dev)
 
 ```sh
 # Install browsers for the first run
@@ -70,13 +76,13 @@ pnpm test:e2e -- tests/example.spec.ts
 pnpm test:e2e -- --debug
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+#### Lint with [ESLint](https://eslint.org/)
 
 ```sh
 pnpm lint
 ```
 
-## Customize configuration
+#### Customize Build Configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 

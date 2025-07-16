@@ -9,7 +9,7 @@
 const IS_DEV = process.env.NODE_ENV === 'development'
 
 const DEFAULT_MESSAGES = {
-  // eslint-disable-next-line camelcase
+   
   default_error_message: 'The request cannot be processed. Try again later.'
 }
 
@@ -39,7 +39,7 @@ function translate(...keys) {
   const l10nMessages = getMessages()
 
   if (IS_DEV && !l10nMessages[messageKey]) {
-    // eslint-disable-next-line no-console
+     
     console.error(`No message for: ${messageKey}`)
   }
 
@@ -63,7 +63,7 @@ export function translateWithParameters(messageKey, ...parameters) {
   }
 
   if (IS_DEV) {
-    // eslint-disable-next-line no-console
+     
     console.error(`No message for: ${messageKey}`)
   }
   //return JSON.stringify(messages)
