@@ -1,0 +1,44 @@
+{
+  "name": "sonar-custom-plugin-example",
+  "license": "LGPL-3.0",
+  "version": "0.0.1",
+  "devDependencies": {
+  },
+  "scripts": {
+    "build": "node scripts/build.js",
+    "start": "node scripts/start.js",
+    "test": "node scripts/test.js"
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "jest": {
+    "coverageDirectory": "<rootDir>/target/coverage",
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/tests"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.(hbs|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/conf/jest/FileStub.js",
+      "^.+\\.css$": "<rootDir>/conf/jest/CSSStub.js"
+    },
+    "setupFiles": [
+      "<rootDir>/conf/jest/SetupTestEnvironment.js"
+    ],
+    "snapshotSerializers": [    ],
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/scripts",
+      "<rootDir>/conf"
+    ]
+  },
+  "dependencies": {
+  },
+  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
+}
