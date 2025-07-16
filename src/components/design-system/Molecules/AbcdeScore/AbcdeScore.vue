@@ -13,7 +13,7 @@ defineProps({
 <template>
   <ul class="rate-list">
     <li :class="['rate', value.toLowerCase()]">
-      <strong>{{ value }}</strong>
+      <strong class="rate-note">{{ value }}</strong>
     </li>
     <li>A</li>
     <li>B</li>
@@ -27,18 +27,20 @@ defineProps({
 .rate-list {
   vertical-align: middle;
   position: relative;
+  margin: 1em 0;
 }
 .rate-list li {
-  display: inline-block;
-  font-size: 14px;
+  box-sizing: content-box;
+  display: inline-flex;
+  font-size: 16px;
   width: 24px;
-  height: 24px;
+  height: 20px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.600);
   font-weight: bold;
   padding: 9px;
-  vertical-align: middle;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   background: rgba(39, 39, 39, 0.267);
 }
 
@@ -66,16 +68,19 @@ defineProps({
   left: var(--left);
   border-radius: 50px;
   padding: 7px !important;
-  /* padding-bottom: 10px !important; */
   font-size: 28px !important;
   background: var(--bg-color) !important;
   color: white !important;
-  width: 35px !important;
-  height: 35px !important;
+  width: 36px !important;
+  height: 36px !important;
   border: 4px solid white;
   display: flex !important;
   justify-content: center;
   align-items: center;
+}
+
+.rate-note {
+  font-weight: bold;
 }
 
 .rate.a {
@@ -96,7 +101,7 @@ defineProps({
 .rate.d {
   --bg-color: #ff8e12;
   --top: -10px;
-  --left: 160px;
+  --left: 158px;
 }
 .rate.e {
   --bg-color: #e30021;

@@ -23,6 +23,10 @@ header {
   line-height: 1.5;
 }
 
+p {
+  margin: 1em 0;
+}
+
 @media (min-width: 1024px) {
   header {
     display: flex;
