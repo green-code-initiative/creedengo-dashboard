@@ -6,6 +6,7 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**"]
     },
+    "test": {},
     "lint": {},
     "coverage": {},
     "storybook": {},

@@ -8,7 +8,6 @@ import { toast } from 'vue3-toastify'
 
 import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast'
 
-//vi.unmock('./sonar-i18n')
 vi.mock('vue3-toastify', async () => ({ toast: { error: vi.fn(), success: vi.fn() } }))
 
 beforeAll(()=> {
