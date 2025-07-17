@@ -13,12 +13,12 @@
  **/
 
 // TODO: identify the correct way to retrieve the Sonar authentication token
-const SONAR_TOKEN = import.meta.env.VITE_SONAR_TOKEN
+//const SONAR_TOKEN = import.meta.env.VITE_SONAR_TOKEN
 
 import { memoize, omitBy, isNil } from 'lodash-es';
 
-import { t } from './sonar-i18n'
-import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast'
+import { t } from './sonar-i18n.js'
+import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast.js'
 
 // Adapted from https://nodejs.org/api/http.html#http_http_HTTP_STATUS
 const HttpStatus = {
@@ -54,6 +54,14 @@ const SonarRequest = {
   HttpStatus
 }
 
+let SONAR_SERVER = '';
+let SONAR_TOKEN = '';
+
+export function setConnectionConfiguration({ server, token }) {
+  SONAR_SERVER = server;
+  SONAR_TOKEN = token;
+}
+
 export default SonarRequest
 
 /**
@@ -83,7 +91,7 @@ const parseCookies = memoize((documentCookie) => {
  * @returns string | undefined
  */
 function getCookie(name) {
-  return parseCookies(document.cookie)[name]
+  return parseCookies(globalThis?.document?.cookie || '')[name];
 }
 
 /**
@@ -251,7 +259,8 @@ class Request {
    */
   submit() {
     const { url, options } = this.getSubmitData({ ...getCSRFToken() })
-    return window.fetch(`${getBaseUrl()}${url}`, options)
+    const fullUrl = `${getBaseUrl()}${url}`;
+    return globalThis.fetch(fullUrl, options)
   }
 }
 
@@ -266,13 +275,15 @@ function request(url) {
 }
 
 function getBaseUrl() {
-  return window.baseUrl || ''
+  return globalThis.baseUrl || SONAR_SERVER
 }
 
 function handleRequiredAuthentication() {
-  const returnTo = window.location.pathname + window.location.search + window.location.hash
-  const searchParams = new URLSearchParams({ return_to: returnTo })
-  window.location.replace(`${getBaseUrl()}/sessions/new?${searchParams.toString()}`)
+  if (globalThis.location) {
+    const returnTo = location.pathname + location.search + location.hash
+    const searchParams = new URLSearchParams({ return_to: returnTo })
+    location.replace(`${getBaseUrl()}/sessions/new?${searchParams.toString()}`)
+  }
 }
 
 /**

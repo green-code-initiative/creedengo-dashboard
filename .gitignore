@@ -41,3 +41,10 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# VSCode extensions
+!.vscode/launch.json
+!.vscode-test.js
+!.vscodeignore
+.vscode-test/
+*.vsix

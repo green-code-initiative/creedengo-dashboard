@@ -10,10 +10,11 @@ Please read common [CONTRIBUTING.md](https://github.com/green-code-initiative/cr
 - [nvm](https://github.com/nvm-sh/nvm) and the vsc-nvm VSCode extension to ensure using the right node.js version
 - [pnpm](https://pnpm.io/) as an alternative to npm which is more energy efficient by reducing consumed space and CPU
 
-> To update pnpm, use `pnpm add -g pnpm`
+> To install or update pnpm, use
+>
+> `corepack use pnpm@latest`
 
 ## Project Setup
-
 
 ### Frontend development
 

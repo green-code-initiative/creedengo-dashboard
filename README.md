@@ -7,7 +7,7 @@
 This project is meant to provide Sustainable Code Dashboards to
 
 - show potential impact on sustainability of unffollowed recommendations
-- help decisions regarding code enhancement priorisation 
+- help decisions regarding code enhancement priorisation
 - and even potentially prevent new issues to be pushed to production
 
 ## Open Architecture
@@ -35,6 +35,7 @@ Still, the code is structured to remain product agnostic
 The Dashboard are constructed from widgets (web components) exposed to storybooks.
 
 It allows:
+
 - to individually develop, enhance and test those widgets (accessibility, behaviors, visual regression)
 - to ultimately help having stable end-to-end tests with gherkin step-definitions provided by these components themselves
 - to be able to provide on-demand dashboards or dedicated widgets in any end application contexts (ex: independant Confluence macros)
@@ -65,7 +66,7 @@ pnpm test:unit
 
 ```sh
 # Install browsers for the first run
-npx playwright install
+pnpm exec playwright install
 
 # Install Playwright dependencies to run browsers
 sudo apt-get install libgbm1 # for chrome
