@@ -45,6 +45,17 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Lint
+        run: turbo lint
+
+      - name: Test with coverage
+        run: turbo coverage
+
+      - name: Build
+        run: turbo build
+        env:
+          NODE_ENV: development
+          
       - name: Get Installed Playwright version
         id: playwright-version
         run: echo "::set-output name=version::$(echo "$(pnpm why @playwright/test)" | grep playwright | cut -d " " -f 2)"
@@ -62,19 +73,8 @@ jobs:
         if: steps.playwright-cache.outputs.cache-hit != 'true'
         run: pnpm exec playwright install --with-deps --only-shell
 
-      - name: Build
-        run: pnpm build
-        env:
-          NODE_ENV: development
-
-      - name: Lint
-        run: turbo lint
-
       - name: E2E Tests
         run: turbo test:e2e
-
-      - name: Test with coverage
-        run: turbo coverage
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarqube-scan-action@v5.2.0
