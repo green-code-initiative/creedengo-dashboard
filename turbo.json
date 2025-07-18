@@ -1,5 +1,6 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": ["CI", "NODE_ENV"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
@@ -9,10 +10,19 @@
     "test": {},
     "lint": {},
     "coverage": {},
+    "test:e2e": {
+      "passThroughEnv": ["PLAYWRIGHT_*"],
+      "dependsOn": ["^build"]
+    },
+    "sonar": {},
     "storybook": {},
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "coupling-graph": {
+      "cache": false,
+      "dependsOn": ["^build"]
     }
   }
 }

@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.sonarsource.plugins.example</groupId>
-  <artifactId>sonar-example-plugin</artifactId>
-  <packaging>sonar-plugin</packaging>
-  <version>10.0.0</version>
+    <groupId>org.green-code-initiative</groupId>
+    <artifactId>creedengo-javascript-plugin</artifactId>
+    <version>0.0.1</version>
 
-  <name>Example Plugin for SonarQube Server 10.x</name>
-  <description>Example of Plugin for SonarQube Server: Foo Language, FooLint, Custom Metrics and MeasureComputers</description>
+    <packaging>sonar-plugin</packaging>
+
+    <name>Creedengo JavaScript plugin</name>
+
+    <description>Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects</description>
+
+    <url>https://github.com/green-code-initiative/creedengo-javascript</url>
+    <organization>
+        <name>green-code-initiative</name>
+        <url>https://github.com/green-code-initiative</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:https://github.com/green-code-initiative/creedengo-dashboard</connection>
+        <developerConnection>scm:git:https://github.com/green-code-initiative/creedengo-dashboard</developerConnection>
+        <url>https://github.com/green-code-initiative/creedengo-dashboard</url>
+        <tag>HEAD</tag>
+    </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,7 +80,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.13.0</version>
+        <version>3.14.0</version>
         <configuration>
           <release>11</release>
         </configuration>
@@ -73,24 +88,23 @@
       <plugin>
         <groupId>com.github.eirslett</groupId>
         <artifactId>frontend-maven-plugin</artifactId>
-        <version>1.12.1</version>
+        <version>1.15.1</version>
         <executions>
           <execution>
             <phase>generate-resources</phase>
-            <id>install node and yarn</id>
+            <id>install node and pnpm</id>
             <goals>
-              <goal>install-node-and-yarn</goal>
+              <goal>install-node-and-pnpm</goal>
             </goals>
             <configuration>
-              <nodeVersion>v20.18.0</nodeVersion>
-              <!-- yarn 1.x is needed as a bootstrap, then it will use the version in the .yarnrc.yml -->
-              <yarnVersion>v1.22.5</yarnVersion>
+              <nodeVersion>v22.18.0</nodeVersion>
+              <pnpmVersion>v10.13.1</pnpmVersion>
             </configuration>
           </execution>
           <execution>
-            <id>yarn install</id>
+            <id>pnpm install</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>pnpm</goal>
             </goals>
             <configuration>
               <arguments>install</arguments>
@@ -98,12 +112,12 @@
           </execution>
           <execution>
             <phase>generate-resources</phase>
-            <id>yarn run script</id>
+            <id>pnpm build</id>
             <goals>
-              <goal>yarn</goal>
+              <goal>pnpm</goal>
             </goals>
             <configuration>
-              <arguments>run build</arguments>
+              <arguments>build</arguments>
             </configuration>
           </execution>
         </executions>
