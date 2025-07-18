@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.green-code-initiative</groupId>
+    <artifactId>creedengo-javascript-plugin</artifactId>
+    <version>0.0.1</version>
+
+    <packaging>sonar-plugin</packaging>
+
+    <name>Creedengo JavaScript plugin</name>
+
+    <description>Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects</description>
+
+    <url>https://github.com/green-code-initiative/creedengo-javascript</url>
+    <organization>
+        <name>green-code-initiative</name>
+        <url>https://github.com/green-code-initiative</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:https://github.com/green-code-initiative/creedengo-dashboard</connection>
+        <developerConnection>scm:git:https://github.com/green-code-initiative/creedengo-dashboard</developerConnection>
+        <url>https://github.com/green-code-initiative/creedengo-dashboard</url>
+        <tag>HEAD</tag>
+    </scm>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.apiVersion>10.11.0.2468</sonar.apiVersion>
+    <sonar.testingHarnessVersion>10.7.0.96327</sonar.testingHarnessVersion>
+    <jdk.min.version>17</jdk.min.version>
+    <sonar.sources>src/main/java,src/main/js</sonar.sources>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.sonarsource.api.plugin</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <version>${sonar.apiVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <!-- packaged with the plugin -->
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.17.0</version>
+    </dependency>
+
+
+    <!-- unit tests -->
+    <dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-testing-harness</artifactId>
+      <version>${sonar.testingHarnessVersion}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+        <artifactId>sonar-packaging-maven-plugin</artifactId>
+        <version>1.23.0.740</version>
+        <extensions>true</extensions>
+        <configuration>
+          <pluginKey>example</pluginKey>
+          <pluginClass>org.sonarsource.plugins.example.ExamplePlugin</pluginClass>
+          <!-- Optional, only if you are sure to support older versions of the plugin API than the one you are compiling against -->
+          <pluginApiMinVersion>9.9</pluginApiMinVersion>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.0</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.15.1</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <id>install node and pnpm</id>
+            <goals>
+              <goal>install-node-and-pnpm</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>v22.18.0</nodeVersion>
+              <pnpmVersion>v10.13.1</pnpmVersion>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pnpm install</id>
+            <goals>
+              <goal>pnpm</goal>
+            </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <phase>generate-resources</phase>
+            <id>pnpm build</id>
+            <goals>
+              <goal>pnpm</goal>
+            </goals>
+            <configuration>
+              <arguments>build</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

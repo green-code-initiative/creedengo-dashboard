@@ -4,50 +4,45 @@
 
 Please read common [CONTRIBUTING.md](https://github.com/green-code-initiative/creedengo-common/blob/main/doc/CONTRIBUTING.md) in `creedengo-common` repository.
 
-## Recommended IDE Setup
+## Creedengo Dashboard Project Setup
 
-- [VSCode](https://code.visualstudio.com/) + The [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) Vue.js official extension (disable Vetur).
-- [nvm](https://github.com/nvm-sh/nvm) and the vsc-nvm VSCode extension to ensure using the right node.js version
-- [pnpm](https://pnpm.io/) as an alternative to npm which is more energy efficient by reducing consumed space and CPU
+Read the [INSTALL.md](./INSTALL.md) documentation to setup your development environment
 
-> To update pnpm, use `pnpm add -g pnpm`
-
-## Project Setup
-
+> `pnpm` is prefered for a faster and more secure installation with less network and disk space usage.
 
 ### Frontend development
+
+#### Update the dependencies after a `git checkout` or `git pull`
 
 ```sh
 pnpm install
 ```
 
-Prefer `pnpm` for a faster and more secure installation with less network and disk space usage.
-
-### Compile and Hot-Reload Design System for Development
+#### Compile and Hot-Reload Design System for Development
 
 ```sh
-pnpm storybook
+turbo storybook
 ```
 
-### Compile and Hot-Reload the application for Development
+#### Compile and Hot-Reload the application for Development
 
 ```sh
-pnpm dev
+turbo dev
 ```
 
-### Compile and Minify for Production
+#### Compile and Minify for Production
 
 ```sh
-pnpm build
+turbo build
 ```
 
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+#### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-pnpm test:unit
+turbo test
 ```
 
-### Run End-to-End Tests with [Playwright](https://playwright.dev)
+#### Run End-to-End Tests with [Playwright](https://playwright.dev)
 
 ```sh
 # Install browsers for the first run
@@ -58,25 +53,25 @@ sudo apt-get install libgbm1 # for chrome
 sudo apt-get install libgtk-3-0 # for firefox
 
 # When testing on CI, must build the project first
-pnpm build
+turbo build
 
 # Runs the end-to-end tests
-pnpm test:e2e
+turbo e2e
 # Runs the tests only on Chromium
-pnpm test:e2e -- --project=chromium
+turbo e2e -- --project=chromium
 # Runs the tests of a specific file
-pnpm test:e2e -- tests/example.spec.ts
+turbo e2e -- tests/example.spec.ts
 # Runs the tests in debug mode
-pnpm test:e2e -- --debug
+turbo e2e -- --debug
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+#### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-pnpm lint
+turbo lint
 ```
 
-## Customize configuration
+#### Customize Build Configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
 
@@ -98,6 +93,8 @@ In short:
   - add a footer line  like `BREAKING CHANGE: doesn't support sonar bellow version 9 anymore`  (this correlates with `MAJOR` in Semantic Versioning).
 
 ### Sonar plugin
+
+NOT YET INTEGRATED
 
 #### Java 8
 

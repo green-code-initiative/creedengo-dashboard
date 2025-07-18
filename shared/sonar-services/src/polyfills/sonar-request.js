@@ -15,7 +15,7 @@
 // TODO: identify the correct way to retrieve the Sonar authentication token
 const SONAR_TOKEN = import.meta.env.VITE_SONAR_TOKEN
 
-import { memoize, omitBy, isNil } from 'lodash'
+import { memoize, omitBy, isNil } from 'lodash-es'
 
 import { t } from './sonar-i18n'
 import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast'
