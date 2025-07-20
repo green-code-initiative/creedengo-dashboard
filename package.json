@@ -1,11 +1,92 @@
 {
   "name": "creedengo-dashboard",
+  "displayName": "Creedengo",
+  "description": "Sustainability Ecoscore based on code analyses",
   "version": "0.0.1",
+  "license": "GPL-2.0-or-later",
+  "author": "Green Code Initiative",
+  "homepage": "https://github.com/green-code-initiative/creedengo-dashboard#readme",
+  "bugs": "https://github.com/green-code-initiative/creedengo-dashboard/issues",
+  "repository": "https://github.com/green-code-initiative/creedengo-dashboard",
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=18",
-    "pnpm": ">=9"
+    "vscode": "^1.102.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10",
+      "onFail": "error"
+    }
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./src/vscode/extension.js",
+  "extensionDependencies": [
+    "sonarsource.sonarlint-vscode"
+  ],
+  "contributes": {
+    "views": {
+      "SonarLint": [
+        {
+          "id": "Creedengo.Score",
+          "name": "Sustainability Score",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Creedengo Dashboard Configuration",
+      "properties": {
+        "creedengo.sonarUrl": {
+          "type": "string",
+          "default": "https://sonarcloud.io/",
+          "description": "The Sonarqube Server URL. Default to Sonarcloud."
+        },
+        "creedengo.sonarToken": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Authentication Token."
+        },
+        "creedengo.sonarOrganisationKey": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Organisation Key. Leave empty to use the one from sonar-project.properties."
+        },
+        "creedengo.sonarProjectKey": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Project Key. Leave empty to use the one from sonar-project.properties."
+        },
+        "creedengo.enableNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable notifications from Creedengo."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "Creedengo.updateScore",
+        "category": "Creedengo Score",
+        "title": "Update Score",
+        "icon": "$(sync~spin)"
+      },
+      {
+        "command": "Creedengo.clearScore",
+        "category": "Creedengo Score",
+        "title": "Clear Score",
+        "icon": "$(trash)"
+      }
+    ]
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
@@ -14,6 +95,7 @@
     "preview": "vite preview",
     "test:unit": "vitest",
     "test:e2e": "playwright test",
+    "test:vscode": "vscode-test",
     "test": "pnpm run test:unit && pnpm run test:e2e",
     "coverage": "vitest run --coverage",
     "serve:sonar": "node src/api/sonar/mock/server.js",
@@ -24,7 +106,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "vue": "^3.5.17",
     "vue3-toastify": "^0.2.8"
   },
@@ -45,6 +127,8 @@
     "@storybook/vue3-vite": "9.0.15",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitest/coverage-v8": "^3.2.4",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
     "@vue/test-utils": "^2.4.6",
     "axe-playwright": "^2.0.1",
     "eslint": "^9.30.1",
@@ -70,5 +154,5 @@
       "public"
     ]
   },
-  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
+  "packageManager": "pnpm@10.13.1+sha512.37ebf1a5c7a30d5fabe0c5df44ee8da4c965ca0c5af3dbab28c3a1681b70a256218d05c81c9c0dcf767ef6b8551eb5b960042b9ed4300c59242336377e01cfad"
 }
