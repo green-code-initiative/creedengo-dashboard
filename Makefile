@@ -2,9 +2,12 @@ install:
 	./scripts/install.sh
 
 test:
-	pnpm lint
-	pnpm coverage
-	pnpm test:e2e
+	turbo lint
+	turbo coverage
+	turbo e2e
 
 build:
-	pnpm build
+	turbo build
+
+dev:
+	turbo dev

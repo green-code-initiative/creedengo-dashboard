@@ -1,0 +1,12 @@
+{
+  "name": "@creedengo/playwright-config",
+  "description": "Configuration to share playwright among e2e projects",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "playwright.config.js",
+  "peerDependencies": {
+    "@playwright/test": "^1.54.1"
+  },
+  "packageManager": "pnpm@10.13.1"
+}

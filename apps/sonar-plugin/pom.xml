@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.green-code-initiative</groupId>
+    <artifactId>creedengo-dashboard-plugin</artifactId>
+    <version>0.0.1</version>
+
+    <packaging>sonar-plugin</packaging>
+
+    <name>Creedengo Dashboard plugin</name>
+
+    <description>Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects</description>
+
+    <url>https://github.com/green-code-initiative/creedengo-dashboard</url>
+    <organization>
+        <name>green-code-initiative</name>
+        <url>https://github.com/green-code-initiative</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:https://github.com/green-code-initiative/creedengo-dashboard</connection>
+        <developerConnection>scm:git:https://github.com/green-code-initiative/creedengo-dashboard</developerConnection>
+        <url>https://github.com/green-code-initiative/creedengo-dashboard</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/green-code-initiative/creedengo-dashboard/issues</url>
+    </issueManagement>
+
+    <licenses>
+        <license>
+            <name>GPL v3</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.en.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+  <properties>
+    <java.version>11</java.version>
+    <jdk.min.version>17</jdk.min.version>
+    
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+    <encoding>UTF-8</encoding>
+
+    <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+
+    <version.sonarqube>9.14.0.375</version.sonarqube>
+    <version.sonar-packaging>1.23.0.740</version.sonar-packaging>
+    <version.sonar-analyzer-commons>2.14.0.3087</version.sonar-analyzer-commons>
+    <version.sonar-testingHarnessVersion>10.7.0.96327</version.sonar-testingHarnessVersion>
+    <version.buildnumber>3.1.0</version.buildnumber>
+    <version.maven-exec>3.1.0</version.maven-exec>
+    <version.maven-shade>3.4.1</version.maven-shade>
+    <version.license-maven-plugin>4.1</version.license-maven-plugin>
+
+    <sonar.sources>src/main/java,src/main/js</sonar.sources>
+
+    <version.junit>5.10.3</version.junit>
+    <version.mockito>5.12.0</version.mockito>
+    <version.assertj>3.26.3</version.assertj>
+    <version.jacoco>0.8.11</version.jacoco>
+  </properties>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.sonarsource.api.plugin</groupId>
+      <artifactId>sonar-plugin-api</artifactId>
+      <version>${version.sonarqube}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <!-- packaged with the plugin -->
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.17.0</version>
+    </dependency>
+
+    <!-- unit tests -->
+    <dependency>
+      <groupId>org.sonarsource.sonarqube</groupId>
+      <artifactId>sonar-testing-harness</artifactId>
+      <version>${version.sonar-testingHarnessVersion}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${version.junit}</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-junit-jupiter</artifactId>
+        <version>${version.mockito}</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>${version.assertj}</version>
+        <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+
+    <resources>
+        <resource>
+            <directory>dist/assets</directory>
+        </resource>
+    </resources>
+
+    <plugins>
+
+      <plugin>
+          <groupId>org.sonarsource.sonar-packaging-maven-plugin</groupId>
+          <artifactId>sonar-packaging-maven-plugin</artifactId>
+          <version>${version.sonar-packaging}</version>
+          <extensions>true</extensions>
+          <configuration>
+              <pluginKey>creedengodashboard</pluginKey>
+              <pluginName>${project.name}</pluginName>
+              <pluginClass>org.greencodeinitiative.creedengo.dashboard.DashboardPlugin</pluginClass>
+              <sonarLintSupported>false</sonarLintSupported>
+              <pluginApiMinVersion>${version.sonarqube}</pluginApiMinVersion>
+              <skipDependenciesPackaging>true</skipDependenciesPackaging>
+              <jreMinVersion>${java.version}</jreMinVersion>
+              <requiredForLanguages>js,ts,web,yaml</requiredForLanguages>
+              <archive>
+                  <manifestEntries>
+                      <Implementation-Build>${buildNumber}</Implementation-Build>
+                  </manifestEntries>
+              </archive>
+          </configuration>
+      </plugin>
+
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>${version.maven-shade}</version>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>shade</goal>
+                  </goals>
+                  <configuration>
+                      <shadedArtifactAttached>false</shadedArtifactAttached>
+                      <minimizeJar>true</minimizeJar>
+                      <createDependencyReducedPom>false</createDependencyReducedPom>
+                      <filters>
+                          <filter>
+                              <artifact>com.*:*</artifact>
+                              <excludes>
+                                  <exclude>META-INF/**</exclude>
+                              </excludes>
+                          </filter>
+                          <filter>
+                              <artifact>org.sonarsource.*:*</artifact>
+                              <excludes>
+                                  <exclude>META-INF/**</exclude>
+                                  <exclude>javax/annotation/**</exclude>
+                              </excludes>
+                          </filter>
+                      </filters>
+                  </configuration>
+              </execution>
+          </executions>
+      </plugin>
+      
+      <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>buildnumber-maven-plugin</artifactId>
+          <version>${version.buildnumber}</version>
+          <executions>
+              <execution>
+                  <phase>validate</phase>
+                  <goals>
+                      <goal>create</goal>
+                  </goals>
+              </execution>
+          </executions>
+          <configuration>
+              <doCheck>false</doCheck>
+              <doUpdate>false</doUpdate>
+              <getRevisionOnlyOnce>true</getRevisionOnlyOnce>
+              <revisionOnScmFailure>0</revisionOnScmFailure>
+          </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.15.1</version>
+        <executions>
+          <execution>
+            <phase>generate-resources</phase>
+            <id>install node and pnpm</id>
+            <goals>
+              <goal>install-node-and-pnpm</goal>
+            </goals>
+            <configuration>
+              <nodeVersion>v22.17.0</nodeVersion>
+              <pnpmVersion>v10.13.1</pnpmVersion>
+            </configuration>
+          </execution>
+          <execution>
+            <id>pnpm install</id>
+            <goals>
+              <goal>pnpm</goal>
+            </goals>
+            <configuration>
+              <arguments>install</arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <phase>generate-resources</phase>
+            <id>pnpm build</id>
+            <goals>
+              <goal>pnpm</goal>
+            </goals>
+            <configuration>
+              <arguments>build:web</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+          <groupId>org.jacoco</groupId>
+          <artifactId>jacoco-maven-plugin</artifactId>
+          <version>${version.jacoco}</version>
+          <configuration>
+              <output>file</output>
+              <append>false</append>
+          </configuration>
+          <executions>
+              <execution>
+                  <id>prepare-agent</id>
+                  <goals>
+                      <goal>prepare-agent</goal>
+                  </goals>
+              </execution>
+              <execution>
+                  <id>report</id>
+                  <phase>test</phase>
+                  <goals>
+                      <goal>report</goal>
+                  </goals>
+              </execution>
+          </executions>
+      </plugin>
+
+      <plugin>
+          <groupId>com.mycila</groupId>
+          <artifactId>license-maven-plugin</artifactId>
+          <version>${version.license-maven-plugin}</version>
+          <configuration>
+              <properties>
+                  <owner>Green Code Initiative</owner>
+                  <email>https://green-code-initiative.org</email>
+              </properties>
+              <licenseSets>
+                  <licenseSet>
+                      <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
+                      <includes>
+                          <include>**/*.java</include>
+                      </includes>
+                  </licenseSet>
+              </licenseSets>
+          </configuration>
+          <executions>
+              <execution>
+                  <goals>
+                      <goal>check</goal>
+                  </goals>
+                  <phase>validate</phase>
+              </execution>
+          </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.14.0</version>
+        <configuration>
+          <release>11</release>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

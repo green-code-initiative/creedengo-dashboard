@@ -1,0 +1,29 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": ["CI", "NODE_ENV"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**"]
+    },
+    "test": {},
+    "lint": {},
+    "coverage": {},
+    "test:e2e": {
+      "passThroughEnv": ["PLAYWRIGHT_*"],
+      "dependsOn": ["^build"]
+    },
+    "verify": {},
+    "sonar": {},
+    "storybook": {},
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "coupling-graph": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "name": "@creedengo/sonar-services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test:unit": "vitest",
+    "test": "pnpm run test:unit",
+    "coverage": "vitest run --coverage",
+    "lint": "eslint src --fix",
+    "format": "prettier --write src/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash-es": "4.17.21",
+    "vue3-toastify": "^0.2.8"
+  },
+  "devDependencies": {
+    "@creedengo/eslint-config": "workspace:*",
+    "@creedengo/vitest-config": "workspace:*"
+  },
+  "peerDependencies": {
+    "@vitest/coverage-v8": "^3.2.4",
+    "eslint": "^9.31.0",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
+  },
+  "packageManager": "pnpm@10.13.1"
+}
