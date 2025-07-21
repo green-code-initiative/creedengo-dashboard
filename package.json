@@ -10,7 +10,8 @@
     "test:unit": "turbo test:unit",
     "coverage": "turbo coverage",
     "build": "turbo build",
-    "test:e2e": "turbo test:e2e"
+    "test:e2e": "turbo test:e2e",
+    "verify": "turbo verify"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.1",

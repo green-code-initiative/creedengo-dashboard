@@ -2,11 +2,16 @@
   "name": "@creedengo/sonar-plugin",
   "license": "GPL-3.0",
   "version": "0.0.1",
-  "devDependencies": {
-  },
+  "type": "module",
   "scripts": {
+    "build:web": "vite build",
+    "verify": "mvn -e -B verify -Dlicense.skip=true "
   },
   "dependencies": {
+    "@creedengo/vue-dashboard": "workspace:*"
+  },
+  "devDependencies": {
+    "vite": "^7.0.5"
   },
   "packageManager": "pnpm@10.13.1"
 }

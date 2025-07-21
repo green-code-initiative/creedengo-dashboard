@@ -8,7 +8,14 @@ import VueDevTools from 'vite-plugin-vue-devtools'
 export default defineConfig({
   plugins: [vue(), VueDevTools()],
   build: {
-    target: 'esnext'
+    target: 'esnext',
+    rollupOptions: {
+      external: [],
+      output: {
+        entryFileNames: `view.js`,
+        assetFileNames: `view.css`
+      }
+    }
   },
   resolve: {
     alias: {

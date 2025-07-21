@@ -7,6 +7,10 @@
     "node": ">=22",
     "pnpm": ">=9"
   },
+  "exports": {
+    "./script": "./dist/view.js",
+    "./stylesheet": "./dist/view.css" 
+  },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "dev": "vite",

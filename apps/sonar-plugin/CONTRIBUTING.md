@@ -1,27 +1,16 @@
-SonarQube Server Custom Plugin Example [![Build Status](https://travis-ci.org/SonarSource/sonar-custom-plugin-example.svg?branch=7.x)](https://travis-ci.org/SonarSource/sonar-custom-plugin-example)
-==========
+# CONTRIBUTING
 
-An example SonarQube plugin compatible with SonarQube Server 10.x.
-
-Sonar's [Clean Code solutions](https://www.sonarsource.com/solutions/clean-code/?utm_medium=referral&utm_source=github&utm_campaign=clean-code&utm_content=sonar-custom-plugin-example) help developers deliver high-quality, efficient code standards that benefit the entire team or organization.
-
-Back-end
---------
-
-Todo...
-
-### Building
+## Building
 
 To build the plugin JAR file, call:
 
-```
+```sh
 mvn clean package
 ```
 
 The JAR will be deployed to `target/sonar-example-plugin-VERSION.jar`. Copy this to your SonarQube Server's `extensions/plugins/` directory, and restart the server.
 
-Front-end
----------
+## Front-end
 
 This plugin registers 4 extension pages in the SonarQube Server web app. These pages demonstrate how to extend SonarQube Server's UI with new pages and interfaces.
 

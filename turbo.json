@@ -14,6 +14,7 @@
       "passThroughEnv": ["PLAYWRIGHT_*"],
       "dependsOn": ["^build"]
     },
+    "verify": {},
     "sonar": {},
     "storybook": {},
     "dev": {
