@@ -1,42 +1,10 @@
 {
-  "name": "sonar-custom-plugin-example",
-  "license": "LGPL-3.0",
+  "name": "@creedengo/sonar-plugin",
+  "license": "GPL-3.0",
   "version": "0.0.1",
   "devDependencies": {
   },
   "scripts": {
-    "build": "node scripts/build.js",
-    "start": "node scripts/start.js",
-    "test": "node scripts/test.js"
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
-  },
-  "jest": {
-    "coverageDirectory": "<rootDir>/target/coverage",
-    "coveragePathIgnorePatterns": [
-      "<rootDir>/node_modules",
-      "<rootDir>/tests"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.(hbs|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/conf/jest/FileStub.js",
-      "^.+\\.css$": "<rootDir>/conf/jest/CSSStub.js"
-    },
-    "setupFiles": [
-      "<rootDir>/conf/jest/SetupTestEnvironment.js"
-    ],
-    "snapshotSerializers": [    ],
-    "testPathIgnorePatterns": [
-      "<rootDir>/node_modules",
-      "<rootDir>/scripts",
-      "<rootDir>/conf"
-    ]
   },
   "dependencies": {
   },

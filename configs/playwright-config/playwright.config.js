@@ -18,7 +18,7 @@ export default ({ basePath = '', port }) => {
     forbidOnly: !!process.env.CI, // Fail on CI if you left test.only in the code.
     workers: process.env.CI ? 1 : undefined, // Opt out of parallel tests on CI.
     // Reporters to use. See https://playwright.dev/docs/test-reporters
-    reporter: [["list"], ["html", { open: "never", outputFolder: "e2e-report" }]],
+    reporter: [["list"], ["html", { open: "never", outputFolder: "playwright-report" }]],
     use: {
       baseURL,
       // screenshot: "on",
