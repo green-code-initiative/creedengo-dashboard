@@ -6,7 +6,7 @@
  * @see https://github.com/intlify/vue-i18n/tree/master/packages/petite-vue-i18n
  */
 
-const IS_DEV = process.env.NODE_ENV === 'development'
+const IS_DEV = globalThis?.process.env.NODE_ENV === 'development'
 
 const DEFAULT_MESSAGES = {
    

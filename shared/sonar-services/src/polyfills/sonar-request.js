@@ -13,12 +13,18 @@
  **/
 
 // TODO: identify the correct way to retrieve the Sonar authentication token
-const SONAR_TOKEN = import.meta.env.VITE_SONAR_TOKEN
+let SONAR_TOKEN = import.meta?.env?.VITE_SONAR_TOKEN;
+let SONAR_BASE_URL = '';
 
 import { memoize, omitBy, isNil } from 'lodash-es'
 
 import { t } from './sonar-i18n'
 import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast'
+
+export function initSettings({ token, server }) {
+  SONAR_TOKEN = token;
+  SONAR_BASE_URL = server;
+}
 
 // Adapted from https://nodejs.org/api/http.html#http_http_HTTP_STATUS
 const HttpStatus = {
@@ -79,11 +85,12 @@ const parseCookies = memoize((documentCookie) => {
 })
 
 /**
+ * @warning Current implementation is browser dependent
  * @param {string} name
  * @returns string | undefined
  */
 function getCookie(name) {
-  return parseCookies(document.cookie)[name]
+  return globalThis.document && parseCookies(globalThis.document.cookie)[name]
 }
 
 /**
@@ -251,7 +258,7 @@ class Request {
    */
   submit() {
     const { url, options } = this.getSubmitData({ ...getCSRFToken() })
-    return window.fetch(`${getBaseUrl()}${url}`, options)
+    return globalThis.fetch(`${getBaseUrl()}${url}`, options)
   }
 }
 
@@ -265,14 +272,21 @@ function request(url) {
   return new Request(url)
 }
 
+/**
+ * @returns 
+ */
 function getBaseUrl() {
-  return window.baseUrl || ''
+  return SONAR_BASE_URL || globalThis.baseUrl || ''
 }
 
+/**
+ * @warning this function handles authentication through a web page redirection
+ */
 function handleRequiredAuthentication() {
-  const returnTo = window.location.pathname + window.location.search + window.location.hash
-  const searchParams = new URLSearchParams({ return_to: returnTo })
-  window.location.replace(`${getBaseUrl()}/sessions/new?${searchParams.toString()}`)
+  const { location, URLSearchParams } = globalThis;
+  const { pathname, search, hash } = location;
+  const searchParams = new URLSearchParams({ return_to: `${pathname}${search}${hash}` })
+  location.replace(`${getBaseUrl()}/sessions/new?${searchParams.toString()}`)
 }
 
 /**

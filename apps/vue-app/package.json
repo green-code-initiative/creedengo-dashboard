@@ -31,10 +31,8 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
-    "@creedengo/eslint-plugin": "^2.1.0",
+    "@creedengo/eslint-config": "workspace: *",
     "@creedengo/playwright-config": "workspace:*",
-    "@eslint/compat": "^1.1.1",
-    "@eslint/js": "^9.30.1",
     "@storybook/addon-a11y": "^9.0.17",
     "@storybook/addon-coverage": "^1.0.4",
     "@storybook/addon-docs": "^9.0.17",
@@ -45,12 +43,9 @@
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitest/coverage-v8": "^3.2.4",
     "@vue/test-utils": "^2.4.6",
-    "eslint": "^9.30.1",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-markdown": "^5.1.0",
+    "eslint-plugin-playwright": "^2.2.0",
     "eslint-plugin-storybook": "^9.0.15",
     "eslint-plugin-vue": "^9.27.0",
-    "globals": "^15.9.0",
     "jest": "^30.0.3",
     "jsdom": "^24.1.0",
     "msw": "^2.10.2",
@@ -61,6 +56,9 @@
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.7",
     "vitest": "^3.2.4"
+  },
+  "peerDependencies": {
+    "eslint": "^9.30.1"
   },
   "msw": {
     "workerDirectory": [
