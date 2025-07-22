@@ -6,13 +6,14 @@ export default {
   component: ImpactTag,
   tags: ['autodocs'],
   argTypes: {
-    impact: { control: { type: 'select' }, options: ['Optimized', 'Info', 'Low', 'Medium', 'High', 'Blocker'] }
+    impact: { control: { type: 'select' }, options: ['Optimized', 'Info', 'Low', 'Medium', 'High', 'Blocker'] },
+    customLabel: { control: { type: 'text' }, required: false, default: 'impact' }
   }
 }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const OptimizedImpact = {
-  args: { impact: 'Optimized' }
+  args: { impact: 'Optimized', customLabel: 'CPU rules' }
 }
 
 export const InfoImpact = {
