@@ -7,8 +7,6 @@ import { initGitIgnore, legacyToFlat } from './utils.js'
 
 legacyToFlat(creedengo, '2.1.0', '@creedengo/eslint-plugin', '@creedengo')
 
-import { vitest } from 'globals';
-
 export * as globals from 'globals'
 
 /**
@@ -29,10 +27,6 @@ export function defineConfig({ importMeta, globals = {}, extraJsFiles = [], extr
       files: ['**/*.js', extraJsFiles],
       languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals }
   }
-  const testConfig = {
-      files: ['**/*.spec.js'],
-      languageOptions: { ecmaVersion: 'latest', sourceType: 'module', globals: vitest }
-  }
   const commonPluginConfigs = [
     prettier,
     js.configs.recommended,
@@ -40,6 +34,6 @@ export function defineConfig({ importMeta, globals = {}, extraJsFiles = [], extr
     creedengo.configs['flat/recommended'],
   ]
   return [
-    ...ignoreConfig, baseJsConfig, testConfig, ...commonPluginConfigs, ...extraConfig
+    ...ignoreConfig, baseJsConfig, ...commonPluginConfigs, ...extraConfig
   ];
 }
