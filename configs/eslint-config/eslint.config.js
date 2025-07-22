@@ -33,5 +33,7 @@ export function defineConfig({ importMeta, globals = {}, extraJsFiles = [], extr
     ...markdown.configs.recommended,
     creedengo.configs['flat/recommended'],
   ]
-  return [...ignoreConfig, baseJsConfig, ...commonPluginConfigs, ...extraConfig];
+  return [
+    ...ignoreConfig, baseJsConfig, ...commonPluginConfigs, ...extraConfig
+  ];
 }

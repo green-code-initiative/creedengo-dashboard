@@ -28,7 +28,7 @@ Still, the code is structured to remain product agnostic
   - Other Static code  analyses solutions (Github, Codacy, Qodana, ...)
   - Linter reports (ESLint, csslint, klint, speccy/spectral, PHPStan, pylint, sqlfluff, ...)
 
-![multi lint issue sourced Web Application integrable into many solutions](documentation/open-architecture.png)
+![multi lint issue sourced Web Application integrable into many solutions](./apps/vue-app/documentation/open-architecture.png)
 
 ## Open and testable Widget Catalog
 
@@ -39,7 +39,7 @@ It allows:
 - to ultimately help having stable end-to-end tests with gherkin step-definitions provided by these components themselves
 - to be able to provide on-demand dashboards or dedicated widgets in any end application contexts (ex: independant Confluence macros)
 
-![built as a collection of wigdets usable for many dashboard](./documentation/dashboard-widgets.png)
+![built as a collection of wigdets usable for many dashboard](./apps/vue-app/documentation/dashboard-widgets.png)
 
 ## Project Build and Start
 
