@@ -7,7 +7,6 @@ import vue from '@vitejs/plugin-vue'
 
 const rootFolder = fileURLToPath(new URL('./src', import.meta.url))
 
-console.log('atoms folder', resolve(rootFolder, 'atoms'))
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), tsconfigPaths()],

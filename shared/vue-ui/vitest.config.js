@@ -4,6 +4,6 @@ import viteConfig from './vite.config'
 
 export default defineVitestConfig({
   importMeta: import.meta,
-  extraExclude: ['**/*.stories.js', 'e2e/**'],
+  extraExclude: ['.storybook', '**/*.stories.js', 'e2e/**'],
   viteConfig,
 });
