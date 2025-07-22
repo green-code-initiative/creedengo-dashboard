@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Creedengo",
+    "version": "1.0",
+    "permissions": ["storage"],
+    "description": "Environment dashboard",
+    "action": {
+      "default_popup": "src/index.html",
+      "default_icon": "src/images/icon.png"
+    },
+    "options_page": "src/options.html",
+    "background": {
+        "scripts": ["compat/browser-polyfill.js", "src/background.js"]
+    },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "creedengo-dashboard@greencodeinitiative.org",
+        "strict_min_version": "126.0"
+      }
+    }
+}

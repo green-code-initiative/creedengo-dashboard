@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>My Test Extension Options</title>
+    <link href="./styles/bootstrap.min.css" rel="stylesheet">
+    <link href="./components/json-viewer/json-viewer.css" rel="stylesheet">
+    <script type="module" src="./scripts/bootstrap.bundle.min.js"></script>
+    <script type="module" src="./scripts/options.js"></script>
+  </head>
+  <body>
+    <h1>Creedengo Configuration</h1>
+    <hr/>
+    <h2>Configuration Input</h2>
+    <form name="configurationForm">
+      <div class="mb-3">
+        <label for="project" class="form-label">Project Key<sup>*</sup></label>
+        <input class="form-control" name="project" id="project" />
+      </div>
+      <div class="mb-3">
+        <label for="server" class="form-label">Server URL<sup>*</sup></label>
+        <input class="form-control" name="server" id="server" value="https://sonarcloud.io" />
+      </div>
+      <div class="mb-3">
+        <label for="token" class="form-label">Authentication Token<sup>*</sup></label>
+        <input class="form-control" name="token" id="token" />
+      </div>
+        <p>
+          <strong>
+            Be sure to have installed Creedengo Sonar plugins related to your programming languages.
+          </strong>
+        </p>
+        <p>
+          If no Server URL is provided, Sonarcloud will be used. But it does not support plugins yet.
+        </p>
+        <p>
+          Without Creedengo plugins, only issues provided by sonar with the `sustainability` tag will
+          be supported. You'll probably get a "better" score, but it will be much less relevent, and
+          your final carbon footprint will be harder to reduce without the Creedengo provided rules.
+        </p>
+      <div class="col-12">
+        <button name="submitButton" class="btn btn-primary" type="submit">Submit Configuration</button>
+      </div>
+    </form>
+  </body>
+</html>
