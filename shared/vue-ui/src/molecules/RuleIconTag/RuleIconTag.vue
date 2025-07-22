@@ -1,9 +1,9 @@
 <script>
-import IconCPU from '../../Atoms/Icons/IconCpu.vue'
-import IconDisk from '../../Atoms/Icons/IconDisk.vue'
-import IconMaintenance from '../../Atoms/Icons/IconMaintenance.vue'
-import IconNetwork from '../../Atoms/Icons/IconNetwork.vue'
-import IconRam from '../../Atoms/Icons/IconRam.vue'
+import IconCPU from '../../atoms/Icons/IconCpu.vue'
+import IconDisk from '../../atoms/Icons/IconDisk.vue'
+import IconMaintenance from '../../atoms/Icons/IconMaintenance.vue'
+import IconNetwork from '../../atoms/Icons/IconNetwork.vue'
+import IconRam from '../../atoms/Icons/IconRam.vue'
 
 export const icons = {
   cpu: IconCPU,

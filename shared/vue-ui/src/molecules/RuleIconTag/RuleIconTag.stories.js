@@ -1,6 +1,4 @@
-import RuleIconTag from './RuleIconTag.vue'
-
-const { icons } = RuleIconTag
+import RuleIconTag, { icons } from './RuleIconTag.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
