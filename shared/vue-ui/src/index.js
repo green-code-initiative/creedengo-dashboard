@@ -7,6 +7,6 @@ const { IconCpu, IconDisk, IconMaintenance, IconNetwork, IconRam } = icons;
 
 // Atoms
 export { IconBug, IconCpu, IconDisk, IconMaintenance, IconNetwork, IconRam }
-export { ImpactTag, IconBug }
+export { ImpactTag }
 // Molecules
 export { AbcdeScore, RuleIconTag }

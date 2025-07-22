@@ -26,8 +26,6 @@ export function defineVitestConfig({
     ...extraExclude
   ]
   const coverage = { reporter, exclude } 
-
-  console.log ('root path', root)
   
   return mergeConfig(
     viteConfig,
