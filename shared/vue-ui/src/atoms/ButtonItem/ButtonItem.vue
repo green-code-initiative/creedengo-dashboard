@@ -4,7 +4,7 @@ defineEmits(['click'])
 defineProps({
   type: {
     type: String,
-    dafault: 'standard',
+    default: 'standard',
     validator(value) {
       return ['standard', 'primary'].includes(value)
     }
@@ -13,7 +13,10 @@ defineProps({
 </script>
 
 <template>
-  <button @click="onClick" :class="`${type === 'primary' ? 'btn-app-blue' : 'btn-app'}`">
+  <button 
+    :class="`${type === 'primary' ? 'btn-app-blue' : 'btn-app'}`"
+    @click="onClick"
+  >
     <slot />
   </button>
 </template>
