@@ -6,14 +6,15 @@ defineProps({
     validator(value) {
       return ['Optimized', 'Info', 'Low', 'Medium', 'High', 'Blocker'].includes(value)
     }
-  }
+  },
+  customLabel: { type: String, required: false, default: 'impact' }
 })
 </script>
 
 <template>
   <div class="tag">
     <div :class="['impact', impact.toLowerCase()]" />
-    <p>{{ impact }} impact</p>
+    <p><strong>{{ impact }}</strong> {{ customLabel }}</p>
   </div>
 </template>
 
