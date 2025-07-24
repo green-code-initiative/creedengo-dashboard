@@ -16,19 +16,23 @@ Its additional informations explain how Design Systems benefits to the Environme
 
 ## ♿ Accessibility
 
-The Design System expects to follow Accessibility Guidelines the best possible way to comply to W3C ATAG and to help the final Dashboards to comply to 
+The Design System expects to follow Accessibility Guidelines the best possible way to comply to [W3C **ATAG** (Authoring Tool Accessibility Guidelines)](https://www.w3.org/WAI/standards-guidelines/atag/) and to help the final Dashboards to comply to 
 
 - [W3C **WCAG** (Web Content Accessibility Guidelines)](https://www.w3.org/WAI/standards-guidelines/wcag/)
 - [W3C WAI-**ARIA** (Accessible Rich Internet Applications)](https://www.w3.org/WAI/standards-guidelines/aria/)
-- and the french [**RGAA** (Référentiel général d'amélioration de l'accessibilité)](https://accessibilite.numerique.gouv.fr)
+- and their local variants such as
+  - [France] [**RGAA** (Référentiel général d'amélioration de l'accessibilité)](https://accessibilite.numerique.gouv.fr)
+  - [United States] the [**Section 508**](https://www.section508.gov/) (1998) of the [Rehabilitation Act](https://www.access-board.gov/about/law/ra.html) 
 
-Accessibility is taken into consideration during the conception and also benefits from automatic tests provided by Storybook (see [Technologies](#technologies))
+Accessibility is taken into consideration during the conception and also benefits from automatic tests provided by Storybook (see [Technologies](#-technologies))
+
+> Note: beware Accessibility of digital services needs manual tests for full compliance validation. Any help is most wanted to participate to this effort (see [CONTRIBUTING](./CONTRIBUTING.md)). 
 
 ## 🚀 Performances
 
 By the reuse of "standardized" components, Design Systems prevent from code duplications and participate to the reduction of Web pages weight.
 
-Also, the Creedengo Design system uses different best practices pushing performances forward, like the Atomic Design principles ([see Atomic Design](#atomic-design)), CSS spliting, Vectorial images, [native semantic HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements) elements priorization.
+Also, the Creedengo Design system uses different best practices pushing performances forward, like the Atomic Design principles ([see Atomic Design](#-atomic-design)), CSS spliting, Vectorial images, [native semantic HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements) elements priorization.
 
 ## 🎨 Adaptability
 
@@ -43,6 +47,12 @@ The components of this Design System are meant to be usable in many contexts inc
 
 Some of these context (like Confluence or VSCode) expect the support of their themes ecosystems, which means that Creedengo components need to provide a correct rendering with most of this themes. It then works with a light base stylesheet and very limited embeded styles within the components.
 
+> See
+> - [Microsoft VSCode Native Themes](https://code.visualstudio.com/docs/configure/themes),
+> - [Microsoft VSCode Community Themes](https://marketplace.visualstudio.com/search?term=theme&target=VSCode&category=All%20categories&sortBy=Relevance),
+> - [Atlassian Confluence Native Themes](https://confluence.atlassian.com/doc/set-and-use-your-preferred-theme-1425051235.html)
+> - [Atlassian Community Themes](https://marketplace.atlassian.com/search?query=Theme&product=confluence&categories=Content%20and%20communication&useCases=Themes%20%26%20Styles)
+
 ## ⚛ Atomic Design
 
 The Creedengo design system follows an Atomic Design structure. [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) is a methodology for creating design systems that emphasizes the use of small, reusable components to build larger, more complex interfaces.
@@ -51,9 +61,25 @@ The Creedengo design system follows an Atomic Design structure. [Atomic Design](
 
 ## ∞ DesignOps
 
-Following the [Atomic Design principles](#-atomic-design), and using [Storybook](#tests-and-documentation) and [Figma](#design--specifications), designers and developers can mutually shared feedbacks and enhancements.
+Inspired by DevOps, in 2016, AirBnB found out it could reuse and apply its concepts with Benefits for the Design iterations ([see here](https://medium.com/airbnb-design/airbnb-designops-2734cf4801b3)).
 
-The selected test tools allow us to prevent the Design System from regressions.
+Note that DesignOps is often refered as a way to improve interactions in big projects with many people, but using this approach and related tools also helps a lot for smaller projects like Creedengo Dashboard which can't benefit from 100% available designers, devolopers, and testers with meetings on fixed working hours.
+
+While often promoting team organization enhancements, the most important properties we're looking for in DesignOps are:
+
+- Increased productivity
+- Increased quality
+- Ensured consistency
+- Enhanced Innovation
+
+Following the [Atomic Design principles](#-atomic-design), and using [Storybook](#tests-and-documentation) and [Figma](#design--specifications):
+
+- Designers and developers can mutually share feedbacks and enhancements.
+- Designers and developers work can be protected by automated non-regression tests
+- Publishing the Design System documentation can allow our core team and end-users to see the ui advancements of expecting new features and share feedbacks even before a beta version of new dashboard versions are available.
+- Contributors with little time or more humble experience can easilly push a new component, or a component eveolution, and almost immediately see its impact
+
+> More about [DesignOps](https://www.capicua.com/blog/designops)
 
 ## 💻 Technologies
 
@@ -66,6 +92,8 @@ The Designer contributors provided the initial specification through **[Figma](h
 It allows communication between the designer and the developers and, while it was not initially integrated, allows to build composable UI with Design tokens and components.
 
 > The initial Figma specification will be rewriten to follow the [Atomic Design structure](#-atomic-design). We should benefit of toolings allowing us to reimport it from [our storybook implementation](#tests-and-documentation). 
+
+> Please note our Design System is still in very early stage. Do not hesitate to contact us if you have Design experience we could benefit from (see [CONTRIBUTING](./CONTRIBUTING.md)).
 
 ### Development
 
@@ -101,3 +129,6 @@ It was then also maintained because it internally uses:
 > Note: As the Design System components have no interaction with any service, end-to-end integration tests are the responsability of the Web application using it.
 
 Storybook also allow us to build a static website documenting the Creedengo Design System implementation to anyone.
+
+<img width="2030" height="1348" alt="image" src="https://github.com/user-attachments/assets/d2206937-0863-46f2-ae95-1efe88ec27cb" />
+
