@@ -130,5 +130,6 @@ It was then also maintained because it internally uses:
 
 Storybook also allow us to build a static website documenting the Creedengo Design System implementation to anyone.
 
-<img width="2030" height="1348" alt="image" src="https://github.com/user-attachments/assets/d2206937-0863-46f2-ae95-1efe88ec27cb" />
+<img width="2656" height="1832" alt="image" src="https://github.com/user-attachments/assets/bdb39e77-ae62-44b0-9dbc-77f34dfd4585" />
+
 
