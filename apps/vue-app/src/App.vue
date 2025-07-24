@@ -1,5 +1,24 @@
 <script setup>
-import ScoreWidget from './components/Widgets/Score/ScoreWidget.vue';
+import { ref, computed } from 'vue'
+import SettingsPage from './components/pages/SettingsPage.vue';
+import DashboardPage from './components/pages/DashboardPage.vue';
+import NotFoundPage from './components/pages/NotFoundPage.vue';
+
+const routes = {
+  '/': DashboardPage,
+  '/settings': SettingsPage
+}
+
+const currentPath = ref(window.location.hash)
+
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.hash
+})
+
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || '/'] || NotFoundPage
+})
+
 
 const props = defineProps({
   project: {
@@ -14,15 +33,15 @@ const props = defineProps({
 </script>
 
 <template>
-  <header>
-    <h1>Creedengo Dashboard</h1>
-  </header>
-  <main>
-    <ScoreWidget
-      :project="props.project"
-      :branch="props.branch"
-    />
-  </main>
+  <component
+    :is="currentView"
+    :project="props.project"
+    :branch="props.branch"
+  />
+  <aside>
+    <a href="#/">Dashboard</a> |
+    <a href="#/settings">Settings</a>
+  </aside>
 </template>
 
 <style scoped>

@@ -2,8 +2,6 @@ import BulletCriticity from './BulletCriticity.vue'
 
 const projectLink = 'project/issues?branch=$main&id=my-project&resolved=false&tags='
 
-
-
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: 'Design System/Molecules/BulletCriticity',
