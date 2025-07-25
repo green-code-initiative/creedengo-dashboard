@@ -1,1 +1,1 @@
-export { default } from '@creedengo/sonar-services';
+export { default } from '../../polyfills/sonar-request';

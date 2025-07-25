@@ -1,5 +1,5 @@
-import SonarRequestPolyfill from '@creedengo/sonar-services'
+import SonarRequestPolyfill from '../polyfills/sonar-request'
 
-const SonarRequest = self.SonarRequest ?? SonarRequestPolyfill
+const SonarRequest = globalThis.SonarRequest ?? SonarRequestPolyfill
 
 export const getJSON = SonarRequest.getJSON
