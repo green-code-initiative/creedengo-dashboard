@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, defineProps } from 'vue';
+import { onMounted, ref, defineProps } from 'vue';
 
 const { storage } = defineProps({
   storage: {
@@ -14,24 +14,22 @@ const { storage } = defineProps({
   }
 })
 
-const data = reactive({
-  project: '',
-  server: '',
-  token: '',
-});
+const project = ref('')
+const server = ref('')
+const token = ref('')
 
 onMounted(async () => {
-  data.project = await storage.get('project')
-  data.server = await storage.get('server')
-  data.token = await storage.get('token')
+  project.value = await storage.get('project')
+  server.value = await storage.get('server')
+  token.value = await storage.get('token')
 });
 
 
 async function onSubmit(event) {
   event.preventDefault()
-  await storage.set('project', data.project)
-  await storage.set('server', data.server)
-  await storage.set('token', data.token)
+  await storage.set('project', project.value)
+  await storage.set('server', server.value)
+  await storage.set('token', token.value)
   alert("Settings Saved Successfully")
   return false;
 }
@@ -49,10 +47,10 @@ async function onSubmit(event) {
     <div>
       <input
         id="project"
-        :value="data.project"
+        v-model="project"
         type="text"
         minLength="5"
-        pattern="[a-zA-Z0-9-_](5,*)"
+        pattern="[a-zA-Z0-9-_]+"
         required
       >
     </div>
@@ -62,7 +60,7 @@ async function onSubmit(event) {
     <div>
       <input 
         id="server" 
-        :value="data.server"
+        v-model="server"
         type="url"
         required
       >
@@ -73,9 +71,11 @@ async function onSubmit(event) {
     <div>
       <input
         id="token"
-        :value="data.token"
+        v-model="token"
         type="password"
-        minLength="20"
+        minLength="40"
+        maxLength="40"
+        pattern="[a-zA-Z0-9]+"
         required
       >
     </div>
