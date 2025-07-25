@@ -39,6 +39,7 @@ The Creedengo components make its best to comply to this other RGESN rule:
 
 Which can be translated to **"Does the digital service mainly use functional components native to the operating system, browser or language used?"**
 
+As also mentioned later for [Accessibility](#-accessibility), [Performances](#-performances), and [Adaptability](#-adaptability) we do priorize usage of [native semantic HTML components](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)
 
 ## ♿ Accessibility
 
@@ -50,7 +51,14 @@ The Design System expects to follow Accessibility Guidelines the best possible w
   - [France] [**RGAA** (Référentiel général d'amélioration de l'accessibilité)](https://accessibilite.numerique.gouv.fr)
   - [United States] the [**Section 508**](https://www.section508.gov/) (1998) of the [Rehabilitation Act](https://www.access-board.gov/about/law/ra.html) 
 
-Accessibility is taken into consideration during the conception and also benefits from automatic tests provided by Storybook (see [Technologies](#-technologies))
+Accessibility is taken into consideration ,
+
+- during the conception
+  - priorizing usage of [native semantic HTML components](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements)
+  - looking if dedicated ARIA attributes may be necessary
+  - as required by ATAG rules, making sure the components API won't prevent from adding alternate contents if necessary
+- using automatic accessibility tests provided by Storybook (see [Technologies](#-technologies))
+- using automatic lighthouse accessibility test on the web app using these components
 
 > Note: beware Accessibility of digital services needs manual tests for full compliance validation. Any help is most wanted to participate to this effort (see [CONTRIBUTING](./CONTRIBUTING.md)). 
 
@@ -58,7 +66,12 @@ Accessibility is taken into consideration during the conception and also benefit
 
 By the reuse of "standardized" components, Design Systems prevent from code duplications and participate to the reduction of Web pages weight.
 
-Also, the Creedengo Design system uses different best practices pushing performances forward, like the Atomic Design principles ([see Atomic Design](#-atomic-design)), CSS spliting, Vectorial images, [native semantic HTML](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements) elements priorization.
+Also, the Creedengo Design system uses different best practices pushing performances forward, like 
+
+- the Atomic Design principles ([see Atomic Design](#-atomic-design)),
+- CSS spliting,
+- Vectorial images,
+- and [native semantic HTML components](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements) elements priorization.
 
 ## 🎨 Adaptability
 
