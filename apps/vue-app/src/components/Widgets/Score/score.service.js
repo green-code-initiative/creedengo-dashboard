@@ -3,8 +3,7 @@
  * @description This module provides functions to calculate the ABCDE score based on SonarQube issues.
  */
 
-import { getIssuesFacet } from '@/api/sonar/issues/sonar.issues.search.api'
-import { getNumberOfLineOfCode } from '@/api/sonar/measures/sonar.measures.component.api';
+import { getIssuesFacet, getNumberOfLineOfCode } from '@creedengo/sonar-services';
 
 /**
  * Calculate an ABCDE score from the sustainability issues related to the project size.
