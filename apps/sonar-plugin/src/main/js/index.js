@@ -5,9 +5,9 @@ import "@creedengo/vue-dashboard/script"
 import "@creedengo/vue-dashboard/stylesheet"
 
 function start(options) {
-    const rootNode = options.el;
-    rootNode.innerHTML = `
-        <div id="app"</div>
+    const { el, component, branchLike } = options;
+    el.innerHTML = `
+        <div id="app" project="${component}" branch="${branchLike}"></div>
     `;
     return () => stop(rootNode)
 }

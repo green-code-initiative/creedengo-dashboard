@@ -7,17 +7,18 @@ import { getIssuesFacet, getNumberOfLineOfCode } from '@creedengo/sonar-services
 
 /**
  * Calculate an ABCDE score from the sustainability issues related to the project size.
- * @param {string} projectKey Project Key
- * @param {string} branch Git Branch Name.
+ * @param {Object} params
+ * @param {string} params.project Project Key
+ * @param {string} params.branch Git Branch Name.
  * @returns {Promise<string>} Score between A and E.
  */
-export async function calculateProjectScore(projectKey, branch) {
+export async function calculateProjectScore(config) {
 
-    const severityFacets = await getIssuesFacet(projectKey, branch, 'severities');
+    const severityFacets = await getIssuesFacet('severities', config);
     const { info = 0, minor = 0, major = 0, critical = 0, blocker = 0 } = severityFacets;
     const consolidatedMinors = info + minor;
 
-    const numberOfLines = await getNumberOfLineOfCode();
+    const numberOfLines = await getNumberOfLineOfCode(config);
     const minorRatio = consolidatedMinors / numberOfLines;
 
     if (blocker >= 1) {

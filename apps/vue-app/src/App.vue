@@ -4,6 +4,17 @@ import Configuration from './components/pages/Settings.vue';
 import Dashboard from './components/pages/Dashboard.vue';
 import NotFound from './components/pages/NotFound.vue';
 
+const props = defineProps({
+  project: {
+    type: String,
+    required: true,
+  },
+  branch: {
+    type: String,
+    required: true,
+  }
+})
+
 const routes = {
   '/': Dashboard,
   '/settings': Configuration
@@ -22,7 +33,11 @@ const currentView = computed(() => {
 </script>
 
 <template>
-  <component :is="currentView" />
+  <component
+    :is="currentView"
+    :project="props.project"
+    :branch="props.branch"
+  />
   <aside>
     <a href="#/">Dashboard</a> |
     <a href="#/settings">Settings</a>

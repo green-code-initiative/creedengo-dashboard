@@ -20,7 +20,7 @@ import { AbcdeScore } from '@creedengo/vue-ui'
 import { calculateProjectScore } from './score.service';
 
 const props = defineProps({
-  projectKey: {
+  project: {
     type: String,
     required: true,
   },
@@ -34,7 +34,7 @@ const state = reactive({ score: '', error: null });
 
 onMounted(async () => {
   try {
-    state.score = await calculateProjectScore(props.projectKey, props.branch);
+    state.score = await calculateProjectScore({ ...props });
   } catch (error) {
     state.score = 'N/A';
     console.error('Error fetching score:', error);
