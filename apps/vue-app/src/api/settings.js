@@ -12,7 +12,7 @@ const defaultStore = {
 
 export default  {
     get storageReady() {
-        return Boolean(this.get !== nullStore.get)
+        return Boolean(this.get && (this.get !== nullStore.get))
     },
     get servicesReady() {
         return Boolean(this.services)
