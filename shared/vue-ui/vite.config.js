@@ -11,7 +11,7 @@ const rootFolder = fileURLToPath(new URL('./src', import.meta.url))
 export default defineConfig({
   plugins: [vue(), tsconfigPaths()],
   build: {
-    target: 'esnext',
+    target: 'es2015', // Compliance with RGESN 2.4, WSG 2.2
     lib: {
       entry: resolve(rootFolder, 'index.js'),
       name: 'vue-ui',
