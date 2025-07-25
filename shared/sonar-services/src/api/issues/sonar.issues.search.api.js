@@ -13,14 +13,15 @@ const sustainabilitySearchParams = {
  * Return issues detected by Sonarqube
  * !! only gather sustainability tagged issues that are NOT closed !!
  *
- * @param {string} componentKeys  key of the project
- * @param {string} branch
+ * @param {Object} params
+ * @param {string} params.componentKeys  key of the project
+ * @param {string} params.branch
  * @returns Promise<Array<{[key: string]: any}>>
  */
-export async function findIssues(componentKeys, branch) {
+export async function findIssues({ project, branch }) {
   const searchParams = {
     ...sustainabilitySearchParams,
-    componentKeys,
+    componentKeys: project,
     branch,
   }
   const page = await sonarRequestAPI.getJSON(routeUrl, searchParams)
@@ -37,15 +38,16 @@ function facetFormater(result, severity) {
 /**
  * Get an issues facet for a given project, branch, and facet name.
  * 
- * @param {string} componentKeys key of the project
- * @param {string} branch 
  * @param {string} facetName 
+ * @param {Object} options
+ * @param {string} options.project key of the project
+ * @param {string} options.branch 
  * @returns Promise<{[key: string]: number}>
  */
-export async function getIssuesFacet(componentKeys, branch, facetName) {
+export async function getIssuesFacet(facetName, { project, branch}) {
   const searchParams = {
     ...sustainabilitySearchParams,
-    componentKeys,
+    componentKeys: project,
     branch,
     facets: facetName,
     ps: 1, // no issues parsing, we only want the facets
