@@ -1,3 +1,3 @@
-import { handlers as sonarHandlers } from '../api/sonar/mock/msw-handler'
+import { sonarMswHandler } from '@creedengo/sonar-services'
 
-export const handlers = [...sonarHandlers]
+export const handlers = [...sonarMswHandler]
