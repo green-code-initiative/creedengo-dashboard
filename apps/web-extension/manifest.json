@@ -5,12 +5,15 @@
     "permissions": ["storage"],
     "description": "Environment dashboard",
     "action": {
-      "default_popup": "src/index.html",
-      "default_icon": "src/images/icon.png"
+      "default_popup": "index.html"
     },
     "options_page": "src/options.html",
     "background": {
-        "scripts": ["compat/browser-polyfill.js", "src/background.js"]
+      "service_worker": "src/background.js",
+      "type": "module"
+    },
+    "content_security_policy": {
+        "extension_pages": "default-src 'self' http://localhost:5173"
     },
     "browser_specific_settings": {
       "gecko": {

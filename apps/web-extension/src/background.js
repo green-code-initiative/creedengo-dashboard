@@ -1,17 +1,25 @@
 //import configuration from '../configuration-sample.js'
 
-browser.runtime.onInstalled.addListener(() => {
-    browser.contextMenus.create({
+//import '../compat/browser-polyfill'
+
+//const browser = chrome;
+
+chrome.runtime.onInstalled.addListener(async () => {
+  /*
+    await chrome.contextMenus.create({
       id: 'openSidePanel',
       title: 'Open side panel',
       contexts: ['all']
     });
-    browser.tabs.create({ url: 'index.html' });
+    */
+    await chrome.tabs.create({ url: 'http://localhost:5173' });
+    /*
+    chrome.contextMenus.onClicked.addListener((info, tab) => {
+        if (info.menuItemId === 'openSidePanel') {
+          // This will open the panel in all the pages on the current window.
+          chrome.sidebarAction.open({ windowId: tab.windowId });
+        }
+    });
+    */
 });
   
-browser.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === 'openSidePanel') {
-      // This will open the panel in all the pages on the current window.
-      browser.sidebarAction.open({ windowId: tab.windowId });
-    }
-});

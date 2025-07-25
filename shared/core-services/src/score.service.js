@@ -3,22 +3,22 @@
  * @description This module provides functions to calculate the ABCDE score based on SonarQube issues.
  */
 
-import { getIssuesFacet, getNumberOfLineOfCode } from '@creedengo/sonar-services';
+import api from './adapter';
 
 /**
  * Calculate an ABCDE score from the sustainability issues related to the project size.
- * @param {Object} params
- * @param {string} params.project Project Key
- * @param {string} params.branch Git Branch Name.
+ * @param {Object} config
+ * @param {string} config.project Project Key
+ * @param {string} config.branch Git Branch Name.
  * @returns {Promise<string>} Score between A and E.
  */
 export async function calculateProjectScore(config) {
 
-    const severityFacets = await getIssuesFacet('severities', config);
+    const severityFacets = await api.getIssuesFacet('severities', config);
     const { info = 0, minor = 0, major = 0, critical = 0, blocker = 0 } = severityFacets;
     const consolidatedMinors = info + minor;
 
-    const numberOfLines = await getNumberOfLineOfCode(config);
+    const numberOfLines = await api.getNumberOfLineOfCode(config);
     const minorRatio = consolidatedMinors / numberOfLines;
 
     if (blocker >= 1) {
