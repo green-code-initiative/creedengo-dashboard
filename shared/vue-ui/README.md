@@ -6,13 +6,37 @@ Design System component have no interaction with any server. Their displayed dat
 
 ## 🌍 Sustainability 
 
-The implementation of a Design System participates to provide more sustainable digital services. The [W3C Web Sustainability Guidelines](https://w3c.github.io/sustainableweb-wsg/) mentions it in on of its rules 
+The implementation of a Design System participates to provide more sustainable digital services. 
+
+The [W3C Web Sustainability Guidelines](https://w3c.github.io/sustainableweb-wsg/) mentions it in on of its rules 
 
 > [2.13 Use a design system to prioritize interface consistency](https://w3c.github.io/sustainableweb-wsg/#use-a-design-system-to-prioritize-interface-consistency)
 >
 > A design system is employed based on web standards and recognizable patterns to mutualize interface components and provide a consistent experience for visitors.
 
-Its additional informations explain how Design Systems benefits to the Environment, Social Equity, Accessibility, Performance, Economic, and Conversions
+Its additional informations explain how Design Systems benefits to the **Environment**, **Social Equity**, **Accessibility**, **Performance**, **Economic**, and **Conversions**
+
+In France, there is a sustainability guideline called [RGESN (Référentiel général d'écoconception de services numériques)](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/) which means **"General reference framework for eco-design of digital services"** 
+
+> WARNING: This "Guide" specify ways to validate project compliance and is referenced by the law REEN (Réduction de l'Empreinte Environnementale du Numérique) which expect since 2022 that all public services produce at least a report regarding their compliance level with RDESN recommendation. It is taken the same path as Accessibility related laws which regularly produce sentences to pay a expensive fines
+
+Its first dedicated rule regarding Design System components is
+
+> [2.9 Le service numérique a-t-il pris en compte les impacts environnementaux des composants d’interface prêts à l’emploi utilisés ?](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/critere/2.9/)
+
+Which can be translated to **"Has the digital service taken into account the environmental impacts of the ready-to-use interface components used?"**, and that we should either
+
+- use an existing component library taking care to select the one with the lighter impact
+- or use one of our own but taking care of it not being eager than existing ones
+
+Anyway, existing component libraries can only provide low level components ([atoms](#-atomic-design)) and we still need to develop and share at least upper level components.
+
+The Creedengo components make its best to comply to this other RGESN rule:
+
+> [4.5 ](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/critere/4.5/)
+
+Which can be translated to **"Does the digital service mainly use functional components native to the operating system, browser or language used?"**
+
 
 ## ♿ Accessibility
 
