@@ -18,7 +18,9 @@ Its additional informations explain how Design Systems benefits to the **Environ
 
 In France, there is a sustainability guideline called [RGESN (Référentiel général d'écoconception de services numériques)](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/) which means **"General reference framework for eco-design of digital services"** 
 
-> WARNING: This "Guide" specify ways to validate project compliance and is referenced by the law REEN (Réduction de l'Empreinte Environnementale du Numérique) which expect since 2022 that all public services produce at least a report regarding their compliance level with RDESN recommendation. It is taken the same path as Accessibility related laws which regularly produce sentences to pay a expensive fines
+> WARNING: This "Guide" specify ways to validate project compliance and is referenced by the law REEN (Réduction de l'Empreinte Environnementale du Numérique) which expect since 2022 that all public services produce at least a report regarding their compliance level with RDESN recommendation.
+>
+> **It is taking the same path as Accessibility related laws which regularly produce sentences to pay a expensive fines**
 
 Its first dedicated rule regarding Design System components is
 
@@ -33,7 +35,7 @@ Anyway, existing component libraries can only provide low level components ([ato
 
 The Creedengo components make its best to comply to this other RGESN rule:
 
-> [4.5 ](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/critere/4.5/)
+> [4.5 Le service numérique utilise-t-il majoritairement des composants fonctionnels natifs du système d’exploitation, du navigateur ou du langage utilisé ?](https://ecoresponsable.numerique.gouv.fr/publications/referentiel-general-ecoconception/critere/4.5/)
 
 Which can be translated to **"Does the digital service mainly use functional components native to the operating system, browser or language used?"**
 
