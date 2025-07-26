@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.17.0
+          cache: 'pnpm'
+          cache-dependency-path: '../pnpm-lock.yml'
         
       - id: build-publish
         uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
