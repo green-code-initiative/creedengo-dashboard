@@ -6,6 +6,7 @@ ci:
 	CI=true pnpm build
 	CI=true pnpm lint
 	CI=true pnpm coverage
+	CI=true pnpm exec playwright install --with-deps --only-shell
 	CI=true pnpm test:e2e
 
 build:
