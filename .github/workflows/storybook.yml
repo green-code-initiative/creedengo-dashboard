@@ -15,9 +15,13 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - id: build-publish
-      uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
-      with:
-        path: shared/vue-ui/docs
-        install_command: pnpm install
-        build_command: pnpm build-storybook
+    
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        
+      - id: build-publish
+        uses: bitovi/github-actions-storybook-to-github-pages@v1.0.3
+        with:
+          path: shared/vue-ui/docs
+          install_command: pnpm install
+          build_command: pnpm build-storybook
