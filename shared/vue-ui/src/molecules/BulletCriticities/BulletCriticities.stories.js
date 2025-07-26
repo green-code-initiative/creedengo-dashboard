@@ -2,10 +2,13 @@ import BulletCriticity from './BulletCriticity.vue'
 
 const projectLink = 'project/issues?branch=$main&id=my-project&resolved=false&tags='
 
+
+
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
   title: 'Design System/Molecules/BulletCriticity',
   component: BulletCriticity,
+  decorators: [() => ({ template: '<ul><story/></ul>' })],
   tags: ['autodocs'],
   argTypes: {
     count: { control: { type: 'number', min: 0 }, required: true },
