@@ -16,6 +16,7 @@
 import { onMounted, reactive } from 'vue';
 
 import { AbcdeScore } from '@creedengo/vue-ui'
+
 import SonarAPI from '@creedengo/sonar-services'
 import core from '@creedengo/core-services';
 

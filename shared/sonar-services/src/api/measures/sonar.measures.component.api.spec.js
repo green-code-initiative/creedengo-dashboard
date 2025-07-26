@@ -19,7 +19,7 @@ afterEach(() => server.resetHandlers())
 
 describe('getNumberOfLineOfCode', () => {
   test('getNumberOfLineOfCode retrieves the number of lines of code', async () => {
-    const numberOfLines = await getNumberOfLineOfCode('foo', 'master')   
+    const numberOfLines = await getNumberOfLineOfCode({ project: 'foo', branch: 'master' })   
     expect(numberOfLines).toStrictEqual(114)
   })
 })

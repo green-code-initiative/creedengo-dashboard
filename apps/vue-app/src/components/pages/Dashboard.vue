@@ -1,5 +1,16 @@
 <script setup>
 import ScoreWidget from '../Widgets/Score/ScoreWidget.vue';
+
+const props = defineProps({
+  project: {
+    type: String,
+    required: true,
+  },
+  branch: {
+    type: String,
+    required: true,
+  }
+})
 </script>
 
 <template>
@@ -8,8 +19,8 @@ import ScoreWidget from '../Widgets/Score/ScoreWidget.vue';
   </header>
   <main>
     <ScoreWidget
-      project-key="my-project-key"
-      branch="main"
+      :project="props.project"
+      :branch="props.branch"
     />
   </main>
 </template>
