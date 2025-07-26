@@ -7,6 +7,9 @@
     "node": ">=22",
     "pnpm": ">=9"
   },
+  "executionEnv": {
+    "nodeVersion": "22.17.1"
+  },
   "exports": {
     "./script": "./dist/view.js",
     "./stylesheet": "./dist/view.css" 

@@ -7,6 +7,9 @@
   "engines": {
     "vscode": "^1.102.0"
   },
+  "executionEnv": {
+    "nodeVersion": "22.17.1"
+  },
   "categories": [
     "Other"
   ],

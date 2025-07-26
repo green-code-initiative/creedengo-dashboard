@@ -4,6 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "type": "module",
+  "executionEnv": {
+    "nodeVersion": "22.17.1"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",

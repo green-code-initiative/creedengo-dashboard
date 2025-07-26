@@ -2,6 +2,9 @@
   "name": "creedengo-dashboard",
   "version": "0.0.0",
   "private": true,
+  "executionEnv": {
+    "nodeVersion": "22.17.1"
+  },
   "scripts": {
     "lint": "turbo lint",
     "test:unit": "turbo test:unit",

@@ -3,6 +3,9 @@
   "license": "GPL-3.0",
   "version": "0.0.1",
   "type": "module",
+  "executionEnv": {
+    "nodeVersion": "22.17.1"
+  },
   "scripts": {
     "build:web": "vite build",
     "verify": "mvn -e -B verify -Dlicense.skip=true "
