@@ -1,21 +1,47 @@
 <script setup>
-import ScoreWidget from './components/Widgets/Score/ScoreWidget.vue';
+import { ref, computed } from 'vue'
+import Configuration from './components/pages/Settings.vue';
+import Dashboard from './components/pages/Dashboard.vue';
+import NotFound from './components/pages/NotFound.vue';
+
+const props = defineProps({
+  project: {
+    type: String,
+    required: true,
+  },
+  branch: {
+    type: String,
+    required: true,
+  }
+})
+
+const routes = {
+  '/': Dashboard,
+  '/settings': Configuration
+}
+
+const currentPath = ref(window.location.hash)
+
+window.addEventListener('hashchange', () => {
+  currentPath.value = window.location.hash
+})
+
+const currentView = computed(() => {
+  return routes[currentPath.value.slice(1) || '/'] || NotFound
+})
+
 </script>
 
 <template>
-  <header>
-    <h1>You did it!</h1>
-  </header>
-  <main>
-    <p>
-      You have successfully installed the Creedengo Dashboard plugin. This plugin is designed to help you
-      monitor and improve the sustainability of your codebase.
-    </p>
-    <ScoreWidget
-      project-key="my-project-key"
-      branch="main"
-    />
-  </main>
+  <component
+    :is="currentView"
+    :project="props.project"
+    :branch="props.branch"
+  />
+  <aside>
+    <a href="#/">Dashboard</a> |
+    <a href="#/settings">Settings</a>
+  </aside>
 </template>
 
 <style scoped>

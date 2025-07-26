@@ -1,4 +1,4 @@
-## Creedengo Dashboards
+## Creedengo Pages & Dashboards
 
 Creedengo Dashboards are "ready-to-use" dashboards that can be integgrated into one or more solutions.
 

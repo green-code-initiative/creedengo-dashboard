@@ -35,6 +35,7 @@
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@creedengo/core-services": "workspace: *",
     "@creedengo/sonar-services": "workspace: *",
     "@creedengo/vue-ui": "workspace: *",
     "@creedengo/eslint-config": "workspace: *",

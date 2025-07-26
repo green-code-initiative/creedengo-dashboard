@@ -1,0 +1,14 @@
+{
+  "version": { "license": "GPL-3.0" },
+  "categories": { "firefox": ["sustainability"] },
+  "contributions_url": "https://greencodeinitiative.org",
+  "requires_payment": false,
+  "homepage": {
+    "en-US": "https://github.com/green-code-initiative/creedengo-dashboard",
+    "fr": "https://github.com/green-code-initiative/creedengo-dashboard"
+  },
+  "support_email": {
+    "en-US": "support@example.org",
+    "fr": "support-fr@example.org"
+  }
+}
