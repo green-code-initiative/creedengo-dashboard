@@ -10,6 +10,7 @@
     "test:unit": "turbo test:unit",
     "coverage": "turbo coverage",
     "build": "turbo build",
+    "build-storybook": "turbo build-storybook",
     "test:e2e": "turbo test:e2e",
     "verify": "turbo verify"
   },
