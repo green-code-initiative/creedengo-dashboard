@@ -26,7 +26,7 @@
     "lint": "eslint src --fix",
     "format": "prettier --write src/",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build -o docs"
   },
   "dependencies": {
     "@creedengo/sonar-services": "workspace:*",

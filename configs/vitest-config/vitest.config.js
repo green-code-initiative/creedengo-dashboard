@@ -22,7 +22,7 @@ export function defineVitestConfig({
   const include = ['**/*.spec.js'];
   const exclude = [
     ...configDefaults.exclude, 
-    '.*rc*', '*.config.js', 'mockServiceWorker.js', 
+    '.*rc*', '*.config.js', '**/mockServiceWorker.js', 
     ...extraExclude
   ]
   const coverage = { reporter, exclude } 
