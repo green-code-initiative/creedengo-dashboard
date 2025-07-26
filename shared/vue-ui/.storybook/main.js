@@ -20,6 +20,6 @@ const config = {
     name: '@storybook/vue3-vite',
     options: {}
   },
-  staticDirs: ['../public', '../dist'],
+  staticDirs: ['../public', '../dist', '../docs'],
 }
 export default config
