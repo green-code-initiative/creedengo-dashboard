@@ -5,11 +5,27 @@
 !.github/
 
 # Ignore generated files
-node_modules
+node_modules/
+**/.turbo/
+**/node_modules/
+**/coverage
+**/test-results/
+**/playwright-report/
+**/dist/
+**/docs/
+**/web-ext-artifacts/
+**/node/
+**/target/
+
+# Logs
+**/pnpm-debug.log*
+**/*storybook.log
+**/*.tsbuildinfo
 
 # Local files
 .DS_Store
 *.local
+**/*.local
 
 # Editor directories and files to keep or ignore
 !.editorconfig
