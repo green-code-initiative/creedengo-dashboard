@@ -7,7 +7,7 @@ Sonarqube has 2 versions of its Web API (v1 and v2) while Sonarcloud has only th
 Unfortunately Sonar:
 
 - Does not officially document its Web API v1 anymore
-- Does not provide an Open API version of its Web API
+- Does not publicly provide an Open API version of its Web API
 
 ## Creedengo Sonar Web API Support
 
@@ -31,7 +31,7 @@ It allows to be in an authenticated context so the plugin does not need authenti
 
 > **Warning**
 > Those API are recommended for integration in the Sonar interface from a Sonar plugin BUT an alternative API call integration will have to be implemented for other targets
-
+---------------------------------------------------------------------------------
 > **Custom API retro-documentation based on Sonarqube source code**
 >
 > This API is exposed from this Sonar Source file: [sonar-web app/components/extensions
@@ -46,6 +46,7 @@ Most of the implementation is in this helper: [sonar-web helpers/request.ts](htt
 #### `request(url: string)`
 
 Create a Request object with this API:
+
 ```ts
 class Request {
     setMethod(method: string) {}
@@ -72,9 +73,10 @@ Shortcut to do a GET request and return a Response
 
 Shortcut to do a GET request and return response json
 
-Example:
+##### Example
 
 [sonar-custom-plugin-example common/api.js](https://github.com/SonarSource/sonar-custom-plugin-example/blob/10.x/src/main/js/common/api.js)
+
 ```js
 const responseMetrics = await getJSON(
     "/api/project_analyses/search", 
@@ -93,7 +95,6 @@ Request options are:
 - `isExternal`: `boolean` used only in SonarCloud
 - `useQueryParams`: `boolean` used only in SonarCloud
 
-
 Source: [sonar-web sonar-aligned/helpers
 /request.ts](https://github.com/SonarSource/sonarqube/blob/37e0ed33d0d419ec8f366490f64a427e24827886/server/sonar-web/src/main/js/sonar-aligned/helpers/request.ts#L38)
 
@@ -107,7 +108,8 @@ The response body is returned as a string
 
 Return a copy object without the `null` properties
 
-Example
+##### Example
+
 ```js
 const query = new URLSearchParams(omitNil(data)).toString();
 ```
@@ -117,7 +119,6 @@ In this example, it prevents from adding query parameters without values
 #### `async parseError(response: Response)`
 
 Parse error response of failed request and return the message as a string
-
 
 #### `async post(url: string, data?: RequestData, bypassRedirect = false)`
 
@@ -135,28 +136,29 @@ Shortcut to do a POST request with a json body and return response json
 
 Shows an Error message to the user and returns a rejected promise
 
-Examples
-```js 
+##### Examples
+
+```js
 getJSON('/api/ce/analysis_status', params)
   .catch(throwGlobalError);
 ```
-```js 
+
+```js
 postJSON('/api/alm_integrations/import_azure_project', data)
   .catch(throwGlobalError)
 ```
 
-
 If the `options.redirectUnauthorizedNoReasons` is set to `true`, it will call `handleRequiredAuthentication()`
-
 
 #### `addGlobalSuccessMessage(message: ReactNode, overrides?: ToastOptions)`
 
 The `message` parameter can be either a string or a JSX ReactNode
 
-**Examples**
+##### Examples
 
 [sonar-web queries
 /settings.ts](https://github.com/SonarSource/sonarqube/blob/37e0ed33d0d419ec8f366490f64a427e24827886/server/sonar-web/src/main/js/queries/settings.ts#L92)
+
 ```js
 addGlobalSuccessMessage(
   t('settings.authentication.form.settings.save_success')
@@ -164,6 +166,7 @@ addGlobalSuccessMessage(
 ```
 
 [sonar-web create/project/components](https://github.com/SonarSource/sonarqube/blob/37e0ed33d0d419ec8f366490f64a427e24827886/server/sonar-web/src/main/js/apps/create/project/components/NewCodeDefinitionSelection.tsx#L30)
+
 ```jsx
 addGlobalSuccessMessage(
   <FormattedMessage
@@ -179,8 +182,10 @@ addGlobalSuccessMessage(
 The `overrides` parameter accepts [React-toastify](https://fkhadra.github.io/react-toastify/introduction/) options
 
 Source:
+
 - [sonar-web/design-system/src/components/toast-message
 /toast-utils.tsx](https://github.com/SonarSource/sonarqube/blob/master/server/sonar-web/design-system/src/components/toast-message/toast-utils.tsx#L38)
+
 ### Localization
 
 Localizable UI strings are defined in `src/main/resources/org/sonar/l10n/example/`. 
@@ -207,12 +212,14 @@ Retrive the translation for the given key and return the associated string with 
 
 [main/resources/org/sonar/l10n/example.properties](https://github.com/SonarSource/sonar-custom-plugin-example/blob/10.x/src/main/resources/org/sonar/l10n/example.properties#L14C1-L15C1)
 
-```
+```ini
 example.admin_page.we_have_x_y=We have {0} {1}
 example.admin_page.issues=Issues
 ```
+
 [admin_page/components
 /InstanceStatisticsApp.js](https://github.com/SonarSource/sonar-custom-plugin-example/blob/4efde8954e0820331729f481908a681b3ffbeb4c/src/main/js/admin_page/components/InstanceStatisticsApp.js#L78)
+
 ```js
 window.tp(
     "example.admin_page.we_have_x_y",
@@ -220,6 +227,7 @@ window.tp(
     window.t("example.admin_page.issues")
 )
 ```
+
 This will return something like
 
 > We have 42 Issues

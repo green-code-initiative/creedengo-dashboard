@@ -38,6 +38,7 @@ export default ({ basePath = '', port }) => {
     ],
     webServer: {
       command: process.env.CI ? `vite preview --port ${port}` : 'vite dev',
+      // command: process.env.CI ? `vite dev --port ${port}` : 'vite dev',
       url: baseURL,
       reuseExistingServer: !process.env.CI
     }

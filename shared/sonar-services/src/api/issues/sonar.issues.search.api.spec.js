@@ -19,14 +19,14 @@ afterEach(() => server.resetHandlers())
 
 describe('findIssues', () => {
   test('findIssues retrieve 1 issue', async () => {
-    const issues = await findIssues('foo', 'js', 'master')   
+    const issues = await findIssues({ project: 'foo', branch: 'master' })
     expect(issues).toStrictEqual(mockIssueList.issues)
   })
 })
 
 describe('getIssuesFacet', () => {
   test('getIssuesFacet severities', async () => {
-    const severityFacets = await getIssuesFacet('foo', 'master', 'severities')   
+    const severityFacets = await getIssuesFacet('severities', { project: 'foo', branch: 'master' })   
     expect(severityFacets).toStrictEqual({
       info: 5,
       major: 1,

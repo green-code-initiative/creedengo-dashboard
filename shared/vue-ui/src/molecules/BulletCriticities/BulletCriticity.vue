@@ -44,8 +44,10 @@ function onClickOpenIssues(impact) {
     @click="hasIssues ? onClickOpenIssues(impact) : null"
     @keyUp="hasIssues ? onClickOpenIssues(impact) : null"
   >
-    &nbsp;&nbsp;<ImpactTag :impact="`${impact}`" 
-                           :customLabel="`${customLabel}`" />
+    &nbsp;&nbsp;<ImpactTag
+                  :impact="`${impact}`" 
+                  :custom-label="`${customLabel}`"
+                />
     <strong :class="{ 'no-issues': !hasIssues }">{{ count }}</strong>
     <IconArrowRight v-if="hasIssues" />
   </li>

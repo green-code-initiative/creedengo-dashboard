@@ -1,19 +1,26 @@
 <script setup>
 import ScoreWidget from './components/Widgets/Score/ScoreWidget.vue';
+
+const props = defineProps({
+  project: {
+    type: String,
+    required: true,
+  },
+  branch: {
+    type: String,
+    required: true,
+  }
+})
 </script>
 
 <template>
   <header>
-    <h1>You did it!</h1>
+    <h1>Creedengo Dashboard</h1>
   </header>
   <main>
-    <p>
-      You have successfully installed the Creedengo Dashboard plugin. This plugin is designed to help you
-      monitor and improve the sustainability of your codebase.
-    </p>
     <ScoreWidget
-      project-key="my-project-key"
-      branch="main"
+      :project="props.project"
+      :branch="props.branch"
     />
   </main>
 </template>

@@ -3,6 +3,7 @@
 !.gitignore
 !.gitattributes
 !.github/
+!.nvmrc
 
 # Ignore generated files
 node_modules/

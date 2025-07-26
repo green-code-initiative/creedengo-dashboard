@@ -1,9 +1,17 @@
-export { default } from './polyfills/sonar-request'
-export * from './polyfills/sonar-request'
-export * from './polyfills/sonar-i18n'
-export * from './polyfills/sonar-toast'
+import * as request from './polyfills/sonar-request'
+import * as i18n from './polyfills/sonar-i18n'
+import * as toast from './polyfills/sonar-toast'
 
-export { handlers as sonarMswHandler } from './api/mock/msw-handler'
+import { handlers } from './api/mock/msw-handler'
 
-export * from './api/issues/sonar.issues.search.api'
-export * from './api/measures/sonar.measures.component.api'
+import * as issues from './api/issues/sonar.issues.search.api'
+import * as measures from './api/measures/sonar.measures.component.api'
+
+export default {
+    ...request,
+    ...i18n,
+    ...toast,
+    ...issues,
+    ...measures,
+    handlers
+}

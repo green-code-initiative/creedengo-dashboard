@@ -1,5 +1,5 @@
 import { http, HttpResponse, delay } from 'msw';
-import { sonarMswHandler } from '@creedengo/sonar-services';
+import sonar from '@creedengo/sonar-services'
 
 import ScoreWidget from './ScoreWidget.vue'
 
@@ -9,10 +9,10 @@ export default {
   component: ScoreWidget,
   tags: ['autodocs'],
   argTypes: {
-    project: { control: { type: 'text' }, default: 'my-project' },
+    projectKey: { control: { type: 'text' }, default: 'my-project' },
     branch: { control: { type: 'text' }, default: 'main' },
   },
-  parameters: { msw: { handlers: sonarMswHandler } },
+  parameters: { msw: { handlers: sonar.handlers } },
 }
 
 export const MockedSuccess = {};

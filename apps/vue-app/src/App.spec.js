@@ -2,28 +2,24 @@ import { vi, beforeAll, describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
 
-import { getIssuesFacet } from '@/api/sonar/issues/sonar.issues.search.api'
-import { getNumberOfLineOfCode } from '@/api/sonar/measures/sonar.measures.component.api';
+import core from '@creedengo/core-services'
 
 import App from './App.vue'
 
-vi.mock('@/api/sonar/issues/sonar.issues.search.api')
-vi.mock('@/api/sonar/measures/sonar.measures.component.api');
+vi.mock('@creedengo/core-services')
 
 beforeAll(() => {
   // Mock the API calls
-  vi.mocked(getIssuesFacet).mockResolvedValue({ minor: 25 });
-  vi.mocked(getNumberOfLineOfCode).mockResolvedValue(100);
+  vi.mocked(core.calculateProjectScore).mockResolvedValue('D');
 });
 
 
 describe('App', () => {
     
     it('App renders properly by default', () => {
-        const wrapper = mount(App) 
+        const wrapper = mount(App, { props: { project: 'my-project', branch: 'master' }}) 
         expect(wrapper.exists()).toBeTruthy()
-        expect(wrapper.html()).toContain('You did it!')
+        expect(wrapper.find('h1').text()).toEqual('Creedengo Dashboard')
     })
 
 })
-  
