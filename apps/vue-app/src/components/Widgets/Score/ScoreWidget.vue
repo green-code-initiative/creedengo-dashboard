@@ -16,6 +16,7 @@
 import { onMounted, reactive } from 'vue';
 
 import { AbcdeScore } from '@creedengo/vue-ui'
+
 import SonarAPI from '@creedengo/sonar-services'
 import core from '@creedengo/core-services';
 
@@ -24,7 +25,7 @@ const { api, calculateProjectScore } = core;
 api.init(SonarAPI)
 
 const props = defineProps({
-  projectKey: {
+  project: {
     type: String,
     required: true,
   },
@@ -38,7 +39,7 @@ const state = reactive({ score: '', error: null });
 
 onMounted(async () => {
   try {
-    state.score = await calculateProjectScore(props.projectKey, props.branch);
+    state.score = await calculateProjectScore({ ...props });
   } catch (error) {
     state.score = 'N/A';
     console.error('Error fetching score:', error);

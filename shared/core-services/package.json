@@ -21,7 +21,6 @@
   },
   "devDependencies": {
     "@creedengo/eslint-config": "workspace:*",
-    "@creedengo/sonar-services": "workspace:*",
     "@creedengo/vitest-config": "workspace:*"
   },
   "peerDependencies": {

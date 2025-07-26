@@ -1,13 +1,15 @@
 install:
 	./scripts/install.sh
 
-test:
-	turbo lint
-	turbo coverage
-	turbo e2e
+ci:
+	pnpm env use -g 22.17.0
+	CI=true pnpm build
+	CI=true pnpm lint
+	CI=true pnpm coverage
+	CI=true pnpm test:e2e
 
 build:
-	turbo build
+	pnpm build
 
 dev:
-	turbo dev
+	pnpm dev

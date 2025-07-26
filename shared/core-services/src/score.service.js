@@ -12,7 +12,7 @@ import api from './adapter';
  * @param {string} config.branch Git Branch Name.
  * @returns {Promise<string>} Score between A and E.
  */
-export async function calculateProjectScore(projectKey, branch) {
+export async function calculateProjectScore(config) {
 
     const severityFacets = await api.getIssuesFacet('severities', config);
     const { info = 0, minor = 0, major = 0, critical = 0, blocker = 0 } = severityFacets;

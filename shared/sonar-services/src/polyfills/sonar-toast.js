@@ -49,4 +49,3 @@ export function addGlobalErrorMessage(message, options) {
 export function addGlobalSuccessMessage(message, options) {
   return options ? toast.success(message, filter(options)) : toast.success(message)
 }
-
