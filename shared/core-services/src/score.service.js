@@ -14,11 +14,11 @@ import api from './adapter';
  */
 export async function calculateProjectScore(config) {
 
-    const severityFacets = await api.getIssuesFacet('severities', config);
+    const severityFacets = await api.services.getIssuesFacet('severities', config);
     const { info = 0, minor = 0, major = 0, critical = 0, blocker = 0 } = severityFacets;
     const consolidatedMinors = info + minor;
 
-    const numberOfLines = await api.getNumberOfLineOfCode(config);
+    const numberOfLines = await api.services.getNumberOfLineOfCode(config);
     const minorRatio = consolidatedMinors / numberOfLines;
 
     if (blocker >= 1) {

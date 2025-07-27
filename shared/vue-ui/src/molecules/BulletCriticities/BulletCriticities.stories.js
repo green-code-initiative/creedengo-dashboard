@@ -6,6 +6,7 @@ const projectLink = 'project/issues?branch=$main&id=my-project&resolved=false&ta
 export default {
   title: 'Design System/Molecules/BulletCriticity',
   component: BulletCriticity,
+  decorators: [() => ({ template: '<ul><story/></ul>' })],
   tags: ['autodocs'],
   argTypes: {
     count: { control: { type: 'number', min: 0 }, required: true },
