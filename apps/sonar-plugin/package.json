@@ -14,7 +14,7 @@
     "@creedengo/vue-dashboard": "workspace:*"
   },
   "devDependencies": {
-    "vite": "^7.0.5"
+    "vite": "^7.0.6"
   },
   "packageManager": "pnpm@10.13.1"
 }
