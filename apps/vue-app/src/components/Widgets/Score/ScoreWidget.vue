@@ -1,6 +1,6 @@
 <script setup>
 import { onMounted, reactive } from 'vue';
-import { ScoreBlock } from '@creedengo/vue-ui'
+import { AbcdeScore } from '@creedengo/vue-ui'
 import SonarAPI from '@creedengo/sonar-services'
 import core from '@creedengo/core-services';
 
@@ -41,7 +41,7 @@ onMounted(async () => {
       <i class="fa fa-exclamation-triangle" /> Score not available - {{ state.error }}
     </span>
     <span v-else>
-      <ScoreBlock :value="state.score" />
+      <AbcdeScore :value="state.score" />
     </span>
   </div>
 </template>
