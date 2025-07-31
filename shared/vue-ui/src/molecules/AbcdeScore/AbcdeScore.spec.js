@@ -8,4 +8,9 @@ describe('AbcdeScore', () => {
     const wrapper = mount(AbcdeScore, { props: { value: 'C' } })
     expect(wrapper.text()).toContain('C')
   })
+
+  it('sets score to empty string when no value is provided', () => {
+    const wrapper = mount(AbcdeScore)
+    expect(wrapper.vm.score).toBe('')
+  })
 })
