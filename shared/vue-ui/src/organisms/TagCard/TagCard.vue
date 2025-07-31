@@ -3,6 +3,7 @@
 import { computed } from 'vue';
 import PieChart from '../../molecules/PieChart/PieChart.vue';
 import RulesCriticities from '../..//molecules/RuleCriticities/RuleCriticities.vue';
+import TooltipBox from '@components/molecules/TooltipBox/TooltipBox.vue';
 
 const props = defineProps({
   metricTag: { type: String, required: true },
@@ -40,24 +41,12 @@ const projectLink = computed(() => {
         <div class="title">
           <strong>{{ props.metricTag }}</strong>
         </div>
-        <div
-          class="ellispse"
-          data-for="issue_ellispse_tooltip"
-          data-tip="Affected rules correspond to the number of rules associated with errors identified by SonarQube, among the Greensight rules that impact this component"
-          data-iscapture="true"
-        >
-          i
-          <q-tooltip
-            class="tooltip tooltip-bg-dark"
-            anchor="top middle"
-            self="bottom middle"
-          >
-            <div class="tooltip-small">
-              Affected rules correspond to the number of rules associated with
-              errors identified by SonarQube, among the Greensight rules that
-              impact this component
-            </div>
-          </q-tooltip>
+        <div>
+          <tooltip-box anchor>
+            Affected rules correspond to the number of rules associated with
+            errors identified by SonarQube, among the Greensight rules that
+            impact this component
+          </tooltip-box>
         </div>
       </div>
       <a
@@ -70,7 +59,7 @@ const projectLink = computed(() => {
     </div>
     <div class="body">
       <div class="body-left">
-        <PieChart
+        <pie-chart
           :metric-tag="props.metricTag"
           :nb-rules="props.nbRules"
           :optimized-rules="props.optimizedRules"
@@ -81,7 +70,7 @@ const projectLink = computed(() => {
       </div>
 
       <div class="body-right">
-        <RulesCriticities
+        <rules-criticities
           :metric-tag="props.metricTag"
           :optimized-rules="props.optimizedRules"
           :minor-issues="props.minorIssues"
@@ -102,9 +91,6 @@ const projectLink = computed(() => {
   height: fit-content;
   background: #ffffff;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.05);
-  padding-left: 30px;
-  padding: 15px 10px 15px 30px;
-  margin: 15px;
   border-radius: 10px;
 }
 .head {
@@ -124,18 +110,6 @@ const projectLink = computed(() => {
   margin-left: 5px;
   font-size: 18px;
   height: 10px;
-}
-.ellispse {
-  border-radius: 100%;
-  text-align: center;
-  background-color: #4aa9d5;
-  width: 13px;
-  height: 13px;
-  color: white;
-  font-weight: 500;
-  font-size: smaller;
-  float: right;
-  margin-left: 5px;
 }
 .body {
   display: flex;

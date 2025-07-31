@@ -1,8 +1,8 @@
 <script setup>
-import { ref, computed } from 'vue';
+import { computed } from 'vue';
 import AbcdeScore from '../../molecules/AbcdeScore/AbcdeScore.vue';
-import SensitizationTooltip from '../../molecules/SensitizationTooltip/SensitizationTooltip.vue';
-import { nextTick, onMounted } from 'vue';
+import TooltipBox from '../../molecules/TooltipBox/TooltipBox.vue';
+import RuleCriticities from '@components/molecules/RuleCriticities/RuleCriticities.vue';
 
 const props = defineProps({
   value: {
@@ -23,33 +23,6 @@ const props = defineProps({
   criticalSeverities: { type: Number, required: true },
 });
 
-const refSensitizationTooltip = ref(null);
-const scoreTooltipClosable = ref(true);
-
-onMounted(() => {
-  console.log('-----PARENT MOUNTED-----');
-  console.log('TOOLTIP REF:', refSensitizationTooltip.value);
-  console.log('TYPEOF SHOW:', typeof refSensitizationTooltip.value?.show);
-  console.log('TYPEOF HIDE:', typeof refSensitizationTooltip.value?.hide);
-});
-
-function showScoreTooltip() {
-  nextTick(() => {
-    if (refSensitizationTooltip.value?.show) {
-      console.log('Calling show from parent component on mouseover');
-      refSensitizationTooltip.value.show();
-    } else {
-      console.warn('Tooltip method show is not available in parent on mouseover');
-    }
-  });
-  
-  refSensitizationTooltip.value?.show?.();
-
-  scoreTooltipClosable.value = false;
-  setTimeout(() => {
-    scoreTooltipClosable.value = true;
-  }, 2000);
-}
 const projectLink = computed(() => {
     const id = props.projectKey
     const filter = `branch=${props.branch}&id=${id}&resolved=false`
@@ -59,27 +32,31 @@ const projectLink = computed(() => {
 
 <template>
   <h2>Your eco-design score is</h2>
-  <AbcdeScore :value="value" />
+  <abcde-score :value="value" />
   <div class="rate-description">
     <strong>{{ labelBold }}</strong>
     <br>
     <br>
     {{ label }}
     <br>
-    <div
-      class="tooltip-calc"
-      @mouseover="showScoreTooltip"
-      @focusin="showScoreTooltip"
-    >
+    <div class="tooltip-calc">
       how my score is calculated ?
-      <SensitizationTooltip
-        ref="refSensitizationTooltip"
-        :label="labelLong"
-        :minor-severities="minorSeverities"
-        :major-severities="majorSeverities"
-        :critical-severities="criticalSeverities"
-        :project-link="projectLink"
-      />
+      <tooltip-box>
+        <p>
+          <strong>{{ label }} </strong><br>
+          {{ text }}
+        </p>
+        <br>
+        <p>
+          <strong>Identified issues in your app:</strong>
+        </p>
+        <rule-criticities
+          :minor-severities="minorSeverities"
+          :major-severities="majorSeverities"
+          :critical-severities="criticalSeverities"
+          :project-link="projectLink"
+        />
+      </tooltip-box>
     </div>
   </div>
 </template>
