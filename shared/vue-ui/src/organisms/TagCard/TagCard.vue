@@ -2,8 +2,8 @@
 <script setup>
 import { computed } from 'vue';
 import PieChart from '../../molecules/PieChart/PieChart.vue';
-import RulesCriticities from '../..//molecules/RuleCriticities/RuleCriticities.vue';
-import TooltipBox from '@components/molecules/TooltipBox/TooltipBox.vue';
+import RulesCriticities from '../../molecules/RuleCriticities/RuleCriticities.vue';
+import TooltipBox from '../../molecules/TooltipBox/TooltipBox.vue';
 
 const props = defineProps({
   metricTag: { type: String, required: true },
@@ -15,8 +15,6 @@ const props = defineProps({
 
   projectKey: { type: String, required: true },
   branch: { type: String, required: true },
-// tagIssues: { type: TagIssues, required: true },
-// branchLike: { type: String, required: true }
 });
 
 const noIssues = computed(

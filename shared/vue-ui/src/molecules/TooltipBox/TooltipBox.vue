@@ -3,18 +3,10 @@
  * Accessible Tooltip
  * @see https://web.dev/articles/building/a-tooltip-component
  */
-
-import { onMounted } from 'vue'
-
 defineProps({
   anchor: { type: Boolean, required: false, default: false },
 });
 
-onMounted(() => {
-  if (!CSS.supports('selector(:has(*))')) {
-    this.parentNode.classList.add('tool-tip-owner')
-  }
-})
 </script>
 <template>
   <div 
@@ -31,22 +23,6 @@ onMounted(() => {
     <slot />
   </div>
 </template>
-
-<script>
-if (!CSS.supports('selector(:has(*))')) {
-  const styles = document.createElement('style')
-  styles.textContent = `
-    .tool-tip-owner {
-      position: relative;
-    }
-    .tool-tip-owner:is(:hover, :focus-visible, :active) > div[role="tooltip"] {
-      opacity: 1;
-      transition-delay: 200ms;
-    }
-  `
-  document.head.appendChild(styles)
-}
-</script>
 
 <style scoped>
 
@@ -100,7 +76,9 @@ div[role=tooltip] {
   margin: 0;
   border-radius: 5px;
 
+  /* Use System Colors https://developer.mozilla.org/en-US/docs/Web/CSS/system-color */
   color: CanvasText;
+  background-color: Canvas;
 
   border: 1px solid
 
@@ -130,17 +108,6 @@ div[role="tooltip"]::before {
   padding: 0;
   position: absolute;
 }
-
-/* tooltip shape is a pseudo element so we can cast a shadow */
-div[role="tooltip"]::after {
-  content: "";
-  background: var(--_bg);
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  mask: var(--_tip);
-}
-
 
 /* top tooltip styles */
 div[role="tooltip"]:is(

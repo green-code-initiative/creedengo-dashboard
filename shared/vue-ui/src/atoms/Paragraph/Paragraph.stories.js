@@ -1,5 +1,5 @@
 export default {
-    title: 'Design System/Atoms/Paragraph',
+    title: 'Atoms/Paragraph [test]',
     component: HTMLParagraphElement,
     tags: ['autodocs'],
     argTypes: {

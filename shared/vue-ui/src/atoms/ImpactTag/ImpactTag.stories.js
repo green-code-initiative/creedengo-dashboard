@@ -2,7 +2,7 @@ import ImpactTag from './ImpactTag.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Design System/Atoms/Impact Tag',
+  title: 'Atoms/Impact Tag',
   component: ImpactTag,
   tags: ['autodocs'],
   argTypes: {

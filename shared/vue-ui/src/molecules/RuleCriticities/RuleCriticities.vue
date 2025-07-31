@@ -2,7 +2,7 @@
 <script setup>
 import { computed } from 'vue';
 
-import BulletCriticity from '../BulletCriticities/BulletCriticity.vue';
+import BulletCriticity from '../BulletCriticity/BulletCriticity.vue';
 
 const props = defineProps({
   metricTag: { type: String, required: false, default: '' },

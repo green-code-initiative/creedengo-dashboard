@@ -1,4 +1,4 @@
-# Creedengo Design System
+# Creedengo Design System Components
 
 The **Creedengo Design System** provides a library of components to be used for Dashboards and Settings page creation.
 

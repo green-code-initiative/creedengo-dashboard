@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 import AbcdeScore from '../../molecules/AbcdeScore/AbcdeScore.vue';
 import TooltipBox from '../../molecules/TooltipBox/TooltipBox.vue';
-import RuleCriticities from '@components/molecules/RuleCriticities/RuleCriticities.vue';
+import RuleCriticities from '../../molecules/RuleCriticities/RuleCriticities.vue';
 
 const props = defineProps({
   value: {
