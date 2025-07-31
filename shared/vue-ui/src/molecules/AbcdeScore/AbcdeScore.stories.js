@@ -11,6 +11,12 @@ export default {
 }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
+export const NEUTRAL = {
+  args: {
+    value: undefined
+  }
+}
+
 export const A = {
   args: {
     value: 'A'
@@ -37,6 +43,6 @@ export const D = {
 
 export const E = {
   args: {
-    value: 'E '
+    value: 'E'
   }
 }
