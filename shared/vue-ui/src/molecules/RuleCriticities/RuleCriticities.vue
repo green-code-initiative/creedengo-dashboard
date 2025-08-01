@@ -2,11 +2,11 @@
 <script setup>
 import { computed } from 'vue';
 
-import BulletCriticity from '../BulletCriticities/BulletCriticity.vue';
+import BulletCriticity from '../BulletCriticity/BulletCriticity.vue';
 
 const props = defineProps({
-  metricTag: { type: String, required: true },
-  optimizedRules: { type: Number, required: true },
+  metricTag: { type: String, required: false, default: '' },
+  optimizedRules: { type: Number, required: false, default: NaN },
   minorIssues: { type: Number, required: true },
   majorIssues: { type: Number, required: true },
   criticalIssues: { type: Number, required: true },
@@ -35,8 +35,8 @@ const criticities = computed(() => [
 <template>
   <ul class="rules-criticities">
     <BulletCriticity
+      v-if="!isNaN(optimizedRules)"
       impact="Optimized"
-      type="rule"
       :metric-tag="props.metricTag"
       :count="`${optimizedRules}`"
       :project-link="props.projectLink"
@@ -44,7 +44,6 @@ const criticities = computed(() => [
     <BulletCriticity
       v-for="criticity in criticities"
       :key="criticity.criticity"
-      type="issue"
       :metric-tag="props.metricTag"
       :impact="criticity.criticity"
       :count="criticity.issues"

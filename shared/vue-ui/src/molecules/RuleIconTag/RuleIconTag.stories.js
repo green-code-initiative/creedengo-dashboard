@@ -2,7 +2,7 @@ import RuleIconTag, { icons } from './RuleIconTag.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Design System/Molecules/RuleIconTag',
+  title: 'Molecules/RuleIconTag',
   component: RuleIconTag,
   tags: ['autodocs'],
   argTypes: {

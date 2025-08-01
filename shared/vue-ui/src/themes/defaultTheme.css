@@ -1,0 +1,36 @@
+:root {
+
+ /* ===========================
+    TYPOGRAPHY
+    =========================== */
+
+    --weight-regular: normal;
+    --weight-bold: bold;
+    --size-xs: 30px /* 12px */
+    --size-sm: 0.875rem; /* 14px */
+    --size-md: 1rem; /* 16px */
+    --size-xl: 1.25rem; /* 20px */
+    --style-normal: normal;
+      
+/* ===========================
+   COLOR PALETTE
+   =========================== */
+
+    --color-black: #000000;
+    --color-white: #ffffff;
+    --color-grey: #757575 ;
+    --color-red: #bb1d1d;
+    
+    --bg-color-green: #85bb2f;
+    --bg-color-yellow: #fecb02;
+    --bg-color-orange: #ff8e12;
+    --bg-color-red: #e30021;
+    --bg-color-blue: #4aa9d5;
+
+/* ===========================
+   SPACING
+   =========================== */
+
+    --line-height-text: 1.125;
+    --line-height-heading: 1.25;
+}

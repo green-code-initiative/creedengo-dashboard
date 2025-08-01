@@ -2,7 +2,7 @@ import TagCard from './TagCard.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Design System/Organisms/TagCard',
+  title: 'Organisms/TagCard',
   component: TagCard,
   tags: ['autodocs'],
   argTypes: {

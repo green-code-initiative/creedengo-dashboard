@@ -1,7 +1,7 @@
 import IconArrowRight from './IconArrowRight.vue'
 
 export default {
-  title: 'Design System/Atoms/Icons/ArrowRight',
+  title: 'Design Tokens/Icons/ArrowRight',
   component: IconArrowRight,
   tags: ['autodocs'],
   argTypes: {

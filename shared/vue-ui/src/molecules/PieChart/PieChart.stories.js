@@ -2,7 +2,7 @@ import PieChart from './PieChart.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Design System/Molecules/PieChart',
+  title: 'Molecules/PieChart',
   component: PieChart,
   tags: ['autodocs'],
   argTypes: {

@@ -16,10 +16,10 @@
     "verify": "turbo verify"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.3.0",
-    "@commitlint/config-conventional": "^19.2.2",
-    "@playwright/test": "^1.54.1",
-    "prettier": "^3.5.3",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@playwright/test": "^1.54.2",
+    "prettier": "^3.6.2",
     "turbo": "^2.5.5"
   },
   "packageManager": "pnpm@10.13.1"

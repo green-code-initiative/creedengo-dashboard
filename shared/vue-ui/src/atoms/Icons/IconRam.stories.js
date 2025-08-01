@@ -1,7 +1,7 @@
 import IconRam from './IconRam.vue'
 
 export default {
-  title: 'Design System/Atoms/Icons/RAM',
+  title: 'Design Tokens/Icons/RAM',
   component: IconRam,
   tags: ['autodocs'],
   argTypes: {

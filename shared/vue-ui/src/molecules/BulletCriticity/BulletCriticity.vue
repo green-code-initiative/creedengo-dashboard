@@ -6,17 +6,12 @@ import ImpactTag from '../../atoms/ImpactTag/ImpactTag.vue';
 
 const props = defineProps({
   count: { type: Number, required: true },
-  type: { type: String, required: true,
-    validator(value) {
-      return ['rule', 'issue'].includes(value)
-    }
-  },
   impact: { type: String, required: false, default: 'Optimized',
     validator(value) {
       return ['Low', 'Medium', 'High', 'Optimized'].includes(value)
     }
   },
-  metricTag: { type: String, required: true,
+  metricTag: { type: String, required: false, default: '',
     validator(value) {
       return ['CPU', 'RAM', 'Disk', 'Network'].includes(value)
     }
@@ -24,7 +19,7 @@ const props = defineProps({
   projectLink: { type: String, required: true },
 });
 
-const isRule = computed(() => props.type === 'rule');
+const isRule = computed(() => props.impact === 'Optimized');
 const hasIssues = computed(() => !isRule.value && props.count > 0);
 const customLabel = computed(() => isRule.value ? `${props.metricTag} rules` : 'impact issues');
 
@@ -32,6 +27,7 @@ function onClickOpenIssues(impact) {
   window.open(`${props.projectLink}&severities=${impact.toUpperCase()}`);
 }
 </script>
+
 
 <template>
   <li

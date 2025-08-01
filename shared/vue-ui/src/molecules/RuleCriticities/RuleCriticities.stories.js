@@ -4,7 +4,7 @@ const projectLink = 'project/issues?branch=$main&id=my-project&resolved=false&ta
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Design System/Molecules/RuleCriticities',
+  title: 'Molecules/RuleCriticities',
   component: RuleCriticities,
   tags: ['autodocs'],
   argTypes: {
