@@ -6,14 +6,14 @@ export default {
   component: AbcdeScore,
   tags: ['autodocs'],
   argTypes: {
-    value: { control: { type: 'select' }, options: ['A', 'B', 'C', 'D', 'E'] }
+    value: { control: { type: 'select' }, options: ['A', 'B', 'C', 'D', 'E',''] }
   }
 }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const NEUTRAL = {
+export const ScoreUnavailable = {
   args: {
-    value: undefined
+    value: ''
   }
 }
 

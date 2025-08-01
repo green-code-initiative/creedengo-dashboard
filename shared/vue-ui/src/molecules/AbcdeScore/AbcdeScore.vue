@@ -4,9 +4,9 @@ import { computed } from 'vue';
 const props = defineProps({
   value: {
     type: String,
-    default: undefined,
+    default: '',
     validator(value) {
-      return value === undefined || ['A', 'B', 'C', 'D', 'E'].includes(value)
+      return ['A', 'B', 'C', 'D', 'E', ''].includes(value)
     }
   }
 })
@@ -16,16 +16,16 @@ const score = computed(() => props.value);
 <template>
   <ul class="rate-list">
     <li 
-      v-if="score !== undefined"
-      :class="['rate', score.toLowerCase()]"
+      v-if="score === ''"
+      style="display: none;"
     >
-      <strong class="rate-note">{{ score }}</strong>
+      Unavailable score
     </li>
     <li 
       v-else
-      style="display: none;"
+      :class="['rate', score.toLowerCase()]"
     >
-      NEUTRAL SCORE
+      <strong class="rate-note">{{ score }}</strong>
     </li>
     <li>A</li>
     <li>B</li>
