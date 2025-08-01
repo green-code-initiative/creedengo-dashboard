@@ -43,7 +43,7 @@ const projectLink = computed(() => {
       how my score is calculated ?
       <tooltip-box>
         <p>
-          <strong>{{ label }} </strong><br>
+          <strong>{{ labelLong }} </strong><br>
           {{ text }}
         </p>
         <br>
