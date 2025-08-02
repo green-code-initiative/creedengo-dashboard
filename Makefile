@@ -20,8 +20,8 @@ ci:
 	CI=true pnpm exec playwright install --with-deps --only-shell
 	CI=true pnpm test:e2e
 
-build: use
+build:
 	pnpm build
 
-dev: use
+dev:
 	pnpm dev
