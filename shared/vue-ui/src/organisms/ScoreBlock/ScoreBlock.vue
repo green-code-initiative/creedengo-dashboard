@@ -26,7 +26,7 @@ const props = defineProps({
 const projectLink = computed(() => {
     const id = props.projectKey
     const filter = `branch=${props.branch}&id=${id}&resolved=false`
-    return `${window.baseUrl}/project/issues?${filter}`;
+    return `${globalThis.baseUrl}/project/issues?${filter}`;
 })
 </script>
 

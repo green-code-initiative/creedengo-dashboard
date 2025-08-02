@@ -24,7 +24,7 @@ const hasIssues = computed(() => !isRule.value && props.count > 0);
 const customLabel = computed(() => isRule.value ? `${props.metricTag} rules` : 'impact issues');
 
 function onClickOpenIssues(impact) {
-  window.open(`${props.projectLink}&severities=${impact.toUpperCase()}`);
+  globalThis.window.open(`${props.projectLink}&severities=${impact.toUpperCase()}`);
 }
 </script>
 

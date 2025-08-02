@@ -32,7 +32,7 @@ async function onSubmit(event) {
   await storage.set('project', data.project)
   await storage.set('server', data.server)
   await storage.set('token', data.token)
-  alert("Settings Saved Successfully")
+  globalThis.alert("Settings Saved Successfully")
   return false;
 }
 

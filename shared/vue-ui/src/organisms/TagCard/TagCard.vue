@@ -28,7 +28,7 @@ const projectLink = computed(() => {
     const id = props.projectKey
     const tags = props.metricTag.toLowerCase()
     const filter = `branch=${props.branch}&id=${id}&resolved=false&tags=${tags}`
-    return `${window.baseUrl}/project/issues?${filter}`;
+    return `${globalThis.baseUrl}/project/issues?${filter}`;
 })
 
 </script>

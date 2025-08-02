@@ -1,6 +1,6 @@
 export default {
     title: 'Atoms/Paragraph [test]',
-    component: HTMLParagraphElement,
+//    component: HTMLParagraphElement,
     tags: ['autodocs'],
     argTypes: {
         score: {
