@@ -1,7 +1,7 @@
 
 <script setup>
 import { computed } from 'vue';
-import IconArrowRight from '../../atoms/Icons/IconArrowRight.vue';
+import IconArrowRight from '../../design-tokens/icons/IconArrowRight.vue';
 import ImpactTag from '../../atoms/ImpactTag/ImpactTag.vue';
 
 const props = defineProps({
