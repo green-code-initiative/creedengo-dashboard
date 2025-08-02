@@ -1,16 +1,27 @@
+all:
+	install
+
+.PHONY: clean
+clean:
+	rm -rf **/dist **/coverage **/playwright-report **/node **/target
+
 install:
 	./scripts/install.sh
 
+use:
+	$(pnpm env use -g $(cat .nvmrc))
+
 ci:
-	pnpm env use -g 22.17.0
-	CI=true pnpm build
+	$(pnpm env use -g $(cat .nvmrc))
+
 	CI=true pnpm lint
 	CI=true pnpm coverage
+	CI=true pnpm build
 	CI=true pnpm exec playwright install --with-deps --only-shell
 	CI=true pnpm test:e2e
 
-build:
+build: use
 	pnpm build
 
-dev:
+dev: use
 	pnpm dev
