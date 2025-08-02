@@ -14,16 +14,16 @@ import PieChart from './molecules/PieChart/PieChart.vue'
 import RuleCriticities from './molecules/RuleCriticities/RuleCriticities.vue'
 import RuleIconTag from './molecules/RuleIconTag/RuleIconTag.vue'
 import TooltipBox from './molecules/TooltipBox/TooltipBox.vue'
+import SettingsForm from './molecules/SettingsForm/SettingsForm.vue'
 // Organisms
 import ScoreBlock from './organisms/ScoreBlock/ScoreBlock.vue'
 import TagCard from './organisms/TagCard/TagCard.vue'
-import SettingsForm from './molecules/SettingsForm/SettingsForm.vue'
 
 
 // Atoms
 export { IconArrowRight, IconBug, IconCpu, IconDisk, IconMaintenance, IconNetwork, IconRam }
 export { ImpactTag }
 // Molecules
-export { AbcdeScore, BulletCriticities, PieChart, RuleIconTag, RuleCriticities, TooltipBox }
+export { AbcdeScore, BulletCriticities, PieChart, RuleIconTag, RuleCriticities, SettingsForm, TooltipBox }
 // Organisms
 export { ScoreBlock, TagCard }
