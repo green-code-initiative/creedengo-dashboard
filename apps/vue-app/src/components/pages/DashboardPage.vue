@@ -26,7 +26,7 @@ onMounted(async () => {
     state.score = await calculateProjectScore({ ...props });
   } catch (error) {
     state.score = 'N/A';
-    console.error('Error fetching score:', error);
+    globalThis.console.error('Error fetching score:', error);
     state.error = JSON.stringify(Object.values(error));
   }
 });

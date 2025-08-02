@@ -6,7 +6,7 @@ import storybook from 'eslint-plugin-storybook'
 
 export default defineConfig({
   importMeta: import.meta,
-  globals: globals.node,
+  globals: { ...globals.node, ...globals.browser },
   extraFiles: ['**/*.vue'],
   extraConfig: [
     ...vue.configs['flat/recommended'],

@@ -9,10 +9,10 @@ const routes = {
   '/settings': SettingsPage
 }
 
-const currentPath = ref(window.location.hash)
+const currentPath = ref(globalThis.location.hash)
 
-window.addEventListener('hashchange', () => {
-  currentPath.value = window.location.hash
+globalThis.addEventListener('hashchange', () => {
+  currentPath.value = globalThis.location.hash
 })
 
 const currentView = computed(() => {

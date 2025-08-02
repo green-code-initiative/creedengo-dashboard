@@ -3,10 +3,10 @@ const nullStore = { get() {}, set() {} };
 
 const defaultStore = {
     get(key){
-        return localStorage.getItem(key)
+        return globalThis.localStorage.getItem(key)
     },
     set(key, value){
-        return localStorage.setItem(key, value)
+        return globalThis.localStorage.setItem(key, value)
     }
 }
 
