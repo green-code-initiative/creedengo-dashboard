@@ -6,7 +6,7 @@
       "@atoms/*": ["./src/atoms/*"],
       "@molecules/*": ["./src/molecules/*"],
       "@organisms/*": ["./src/organisms/*"],
-      "@icons/*": ["./src/atoms/Icons/*"]
+      "@icons/*": ["./src/design-tokens/icons/*"]
     }
   },
   "exclude": ["node_modules", "dist"]
