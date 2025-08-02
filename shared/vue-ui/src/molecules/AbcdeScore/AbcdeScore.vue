@@ -40,6 +40,7 @@ const score = computed(() => props.value);
   vertical-align: middle;
   position: relative;
   margin: 1em 0;
+  padding-left: 0;
 }
 .rate-list li {
   box-sizing: content-box;
@@ -98,26 +99,26 @@ const score = computed(() => props.value);
 .rate.a {
   --bg-color: #178c3d;
   --top: -10px;
-  --left: 36px;
+  --left: -4px;
 }
 .rate.b {
   --bg-color: #85bb2f;
   --top: -10px;
-  --left: 76px;
+  --left: 36px;
 }
 .rate.c {
   --bg-color: #fecb02;
   --top: -10px;
-  --left: 116px;
+  --left: 76px;
 }
 .rate.d {
   --bg-color: #ff8e12;
   --top: -10px;
-  --left: 158px;
+  --left: 118px;
 }
 .rate.e {
   --bg-color: #e30021;
   --top: -10px;
-  --left: 198px;
+  --left: 158px;
 }
 </style>

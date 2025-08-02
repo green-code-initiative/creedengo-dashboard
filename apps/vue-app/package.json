@@ -33,12 +33,12 @@
   },
   "dependencies": {
     "@creedengo/sonar-services": "workspace:*",
+    "@creedengo/vue-ui": "workspace: *",
     "vue": "^3.5.17"
   },
   "devDependencies": {
     "@creedengo/core-services": "workspace: *",
     "@creedengo/sonar-services": "workspace: *",
-    "@creedengo/vue-ui": "workspace: *",
     "@creedengo/eslint-config": "workspace: *",
     "@creedengo/playwright-config": "workspace:*",
     "@creedengo/vitest-config": "workspace:*",
