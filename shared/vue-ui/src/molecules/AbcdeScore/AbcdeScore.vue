@@ -1,19 +1,31 @@
 <script setup>
-defineProps({
+import { computed } from 'vue';
+
+const props = defineProps({
   value: {
     type: String,
-    required: true,
+    default: '',
     validator(value) {
-      return ['A', 'B', 'C', 'D', 'E'].includes(value)
+      return ['A', 'B', 'C', 'D', 'E', ''].includes(value)
     }
   }
 })
+const score = computed(() => props.value);
 </script>
 
 <template>
   <ul class="rate-list">
-    <li :class="['rate', value.toLowerCase()]">
-      <strong class="rate-note">{{ value }}</strong>
+    <li 
+      v-if="score === ''"
+      style="display: none;"
+    >
+      Unavailable score
+    </li>
+    <li 
+      v-else
+      :class="['rate', score.toLowerCase()]"
+    >
+      <strong class="rate-note">{{ score }}</strong>
     </li>
     <li>A</li>
     <li>B</li>
