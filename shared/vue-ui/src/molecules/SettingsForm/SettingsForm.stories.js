@@ -2,7 +2,7 @@ import SettingsForm from './SettingsForm.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Design System/Molecules/SettingsForm',
+  title: 'Organisms/SettingsForm',
   component: SettingsForm,
   tags: ['autodocs'],
   argTypes: {
