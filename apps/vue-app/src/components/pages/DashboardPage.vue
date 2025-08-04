@@ -1,9 +1,9 @@
 <script setup>
 import { onMounted, reactive } from 'vue';
 
-import { AbcdeScore } from '@creedengo/vue-ui'
 import SonarAPI from '@creedengo/sonar-services'
 import core from '@creedengo/core-services';
+import ScorePage from '@creedengo/vue-ui/src/pages/ScorePage.vue';
 
 const { api, calculateProjectScore } = core;
 
@@ -45,7 +45,7 @@ onMounted(async () => {
         <i class="fa fa-exclamation-triangle" /> Score not available - {{ state.error }}
       </span>
       <span v-else>
-        <AbcdeScore :value="state.score" />
+        <ScorePage />
       </span>
     </div>
   </main>

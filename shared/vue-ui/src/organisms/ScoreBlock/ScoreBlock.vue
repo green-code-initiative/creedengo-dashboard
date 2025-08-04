@@ -57,11 +57,15 @@ const projectLink = computed(() => {
 </template>
 
 <style scoped>
+h2 {
+  margin-top: 30px;
+}
 .rate-description {
   padding-top: 20px;
 }
 .tooltip-calc {
   margin-top: 20px;
+  margin-bottom: 1.25rem;
   text-decoration: underline dashed 1px;
   display: inline-block;
   cursor: help;

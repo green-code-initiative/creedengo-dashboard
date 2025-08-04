@@ -19,6 +19,8 @@ import SettingsForm from './molecules/SettingsForm/SettingsForm.vue'
 // Organisms
 import ScoreBlock from './organisms/ScoreBlock/ScoreBlock.vue'
 import TagCard from './organisms/TagCard/TagCard.vue'
+// Pages
+import ScorePage from './pages/ScorePage.vue'
 
 // Design Tokens
 export { IconArrowRight, IconBug, IconCpu, IconDisk, IconMaintenance, IconNetwork, IconRam }
@@ -28,3 +30,5 @@ export { ImpactTag }
 export { AbcdeScore, BulletCriticities, PieChart, RuleIconTag, RuleCriticities, SettingsForm, TooltipBox }
 // Organisms
 export { ScoreBlock, TagCard }
+// Pages
+export { ScorePage }
