@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 jobs:
   playwright:
-    name: 'Playwright end-to-end Tests'
+    name: Playwright
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.54.0-noble
