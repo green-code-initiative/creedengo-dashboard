@@ -1,8 +1,8 @@
 # Creedengo-Dashboard
 
 [![Build and Tests](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/build.yml/badge.svg)](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/build.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_ecoCode-dashboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_ecoCode-dashboard)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_ecoCode-dashboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_ecoCode-dashboard)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
 
 This project is meant to provide Sustainable Code Dashboards to
 
