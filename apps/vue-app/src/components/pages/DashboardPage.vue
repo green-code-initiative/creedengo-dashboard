@@ -2,12 +2,10 @@
 import { onMounted, reactive } from 'vue';
 
 import { AbcdeScore } from '@creedengo/vue-ui'
-import SonarAPI from '@creedengo/sonar-services'
 import core from '@creedengo/core-services';
 
-const { api, calculateProjectScore } = core;
+const { calculateProjectScore } = core;
 
-api.init(SonarAPI)
 const props = defineProps({
   project: {
     type: String,
@@ -39,10 +37,10 @@ onMounted(async () => {
   <main>
     <div class="wrapper">
       <span v-if="!state.score">
-        <i class="fa fa-spinner fa-spin" /> Loading score...
+        <em>Loading score...</em>
       </span>
       <span v-else-if="state.error">
-        <i class="fa fa-exclamation-triangle" /> Score not available - {{ state.error }}
+        <em>Score not available - {{ state.error }}</em>
       </span>
       <span v-else>
         <AbcdeScore :value="state.score" />

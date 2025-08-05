@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive, defineProps } from 'vue';
+import { onMounted, reactive } from 'vue';
 
 const { storage } = defineProps({
   storage: {

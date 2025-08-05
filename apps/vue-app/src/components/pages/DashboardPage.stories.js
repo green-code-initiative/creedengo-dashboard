@@ -12,7 +12,7 @@ export default {
     projectKey: { control: { type: 'text' }, default: 'my-project' },
     branch: { control: { type: 'text' }, default: 'main' },
   },
-  parameters: { msw: { handlers: sonar.handlers } },
+  parameters: { msw: { handlers: sonar.mockHandlers } },
 }
 
 export const MockedSuccess = {};

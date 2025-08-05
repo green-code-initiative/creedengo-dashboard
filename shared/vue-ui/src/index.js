@@ -11,13 +11,16 @@ import ImpactTag from './atoms/ImpactTag/ImpactTag.vue'
 // Molecules
 import AbcdeScore from './molecules/AbcdeScore/AbcdeScore.vue'
 import BulletCriticities from './molecules/BulletCriticity/BulletCriticity.vue'
+import DetailledChoiceCheckbox from './molecules/DetailledChoiceCheckbox/DetailledChoiceCheckbox.vue'
 import PieChart from './molecules/PieChart/PieChart.vue'
 import RuleCriticities from './molecules/RuleCriticities/RuleCriticities.vue'
 import RuleIconTag from './molecules/RuleIconTag/RuleIconTag.vue'
 import TooltipBox from './molecules/TooltipBox/TooltipBox.vue'
-import SettingsForm from './molecules/SettingsForm/SettingsForm.vue'
 // Organisms
+import TokenConnectionForm from './organisms/TokenConnectionForm/TokenConnectionForm.vue'
+import ProjectSelectorForm from './organisms/ProjectSelectorForm/ProjectSelectorForm.vue'
 import ScoreBlock from './organisms/ScoreBlock/ScoreBlock.vue'
+import SettingsForm from './organisms/SettingsForm/SettingsForm.vue'
 import TagCard from './organisms/TagCard/TagCard.vue'
 
 // Design Tokens
@@ -25,6 +28,6 @@ export { IconArrowRight, IconBug, IconCpu, IconDisk, IconMaintenance, IconNetwor
 // Atoms
 export { ImpactTag }
 // Molecules
-export { AbcdeScore, BulletCriticities, PieChart, RuleIconTag, RuleCriticities, SettingsForm, TooltipBox }
+export { AbcdeScore, BulletCriticities, DetailledChoiceCheckbox, PieChart, RuleIconTag, RuleCriticities, TooltipBox }
 // Organisms
-export { ScoreBlock, TagCard }
+export { TokenConnectionForm, ProjectSelectorForm, ScoreBlock, SettingsForm, TagCard }
