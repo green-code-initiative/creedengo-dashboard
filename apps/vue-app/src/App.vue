@@ -4,6 +4,9 @@ import SettingsPage from './components/pages/SettingsPage.vue';
 import DashboardPage from './components/pages/DashboardPage.vue';
 import NotFoundPage from './components/pages/NotFoundPage.vue';
 
+import { isSonarPlugin, isWebExtension, isWebsite } from './context';
+import ConnectionPage from './components/pages/ConnectionPage.vue';
+
 const routes = {
   '/': DashboardPage,
   '/settings': SettingsPage
@@ -33,15 +36,43 @@ const props = defineProps({
 </script>
 
 <template>
-  <component
-    :is="currentView"
-    :project="props.project"
-    :branch="props.branch"
-  />
-  <aside>
-    <a href="#/">Dashboard</a> |
-    <a href="#/settings">Settings</a>
-  </aside>
+  <div v-if="isSonarPlugin">
+    <h2>Creedengo Sonar Dashboard</h2>
+    <DashboardPage
+      :project="props.project"
+      :branch="props.branch"
+    />
+  </div>
+  <div v-if="isWebExtension">
+    <header>
+      <h1>Creedengo Extension Dashboard</h1>
+    </header>
+    <main>
+      <component
+        :is="currentView"
+        :project="props.project"
+        :branch="props.branch"
+      />
+    </main>
+    <nav aria-labelledby="menu-web-extension">
+      <strong id="menu-web-extension">Menu</strong>
+      <a href="#/">Dashboard</a> |
+      <a href="#/settings">Settings</a>
+    </nav>
+  </div>
+  <div v-if="isWebsite">
+    <header>
+      <h1>Creedengo Website Dashboard</h1>
+    </header>
+    <main>
+      <ConnectionPage></ConnectionPage>
+    </main>
+    <nav aria-labelledby="menu-website">
+      <strong id="menu-website">Menu</strong>
+      <a href="#/">Dashboard</a> |
+      <a href="#/settings">Settings</a>
+    </nav>
+  </div>
 </template>
 
 <style scoped>

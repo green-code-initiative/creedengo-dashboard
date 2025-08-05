@@ -2,6 +2,12 @@ import './assets/main.css'
 
 import { createApp } from 'vue'
 import App from './App.vue'
+//import router from './router'
+
+import core from '@creedengo/core-services'
+import SonarApi from '@creedengo/sonar-services'
+
+core.api.init(SonarApi)
 
 // MOCK
 if (globalThis?.process.env.NODE_ENV === 'development') {
@@ -9,4 +15,6 @@ if (globalThis?.process.env.NODE_ENV === 'development') {
     await worker.start()
 }
 
-createApp(App).mount('#app')
+createApp(App)
+    //.use(router)
+    .mount('#app')
