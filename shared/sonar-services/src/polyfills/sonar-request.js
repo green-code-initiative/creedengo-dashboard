@@ -21,7 +21,7 @@ import { memoize, omitBy, isNil } from 'lodash-es'
 import { t } from './sonar-i18n'
 import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast'
 
-export function initSettings({ token, server }) {
+function initSettings({ token, server }) {
   SONAR_TOKEN = token;
   SONAR_BASE_URL = server;
 }
@@ -46,6 +46,7 @@ const HttpStatus = {
 }
 
 const SonarRequest = {
+  initSettings,
   request,
   get,
   getJSON,

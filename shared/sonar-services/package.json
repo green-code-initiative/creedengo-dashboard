@@ -23,6 +23,7 @@
     "vue3-toastify": "^0.2.8"
   },
   "devDependencies": {
+    "@creedengo/core-services": "workspace:*",
     "@creedengo/eslint-config": "workspace:*",
     "@creedengo/vitest-config": "workspace:*"
   },
