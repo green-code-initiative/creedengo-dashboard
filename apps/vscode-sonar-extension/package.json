@@ -7,6 +7,9 @@
   "engines": {
     "vscode": "^1.102.0"
   },
+  "executionEnv": {
+    "nodeVersion": "22.17.1"
+  },
   "categories": [
     "Other"
   ],
@@ -26,11 +29,11 @@
   "devDependencies": {
     "@types/vscode": "^1.102.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
+    "@types/node": "^24.2.1",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.25.1",
+    "eslint": "^9.33.0",
     "globals":"^16.3.0"
   },
-  "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
+  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }

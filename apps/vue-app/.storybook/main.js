@@ -17,10 +17,13 @@ const config = {
       options: coverageConfig,
     },
   ],
+  core: {
+    builder: '@storybook/builder-vite',
+  },
   framework: {
     name: '@storybook/vue3-vite',
     options: {}
   },
-  staticDirs: ['../public', '../dist'],
+  staticDirs: ['../public'],
 }
 export default config

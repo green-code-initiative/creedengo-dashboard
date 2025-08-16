@@ -1,6 +1,5 @@
 /**
  * @see https://github.com/SonarSource/sonarqube/blob/master/server/sonar-web/src/main/js/helpers/__tests__/l10n-test.ts
- * @see
  */
 
 import { vi, describe, beforeAll, afterEach, test, expect } from 'vitest'

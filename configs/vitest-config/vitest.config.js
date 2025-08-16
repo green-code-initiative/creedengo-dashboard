@@ -1,5 +1,10 @@
 import { fileURLToPath } from 'node:url'
-import { mergeConfig, defineConfig, configDefaults } from 'vitest/config'
+import { 
+  mergeConfig,
+  defineConfig,
+  configDefaults,
+  coverageConfigDefaults
+} from 'vitest/config'
 
 const reporter = ['text', 'lcov'];
 
@@ -22,10 +27,14 @@ export function defineVitestConfig({
   const include = ['**/*.spec.js'];
   const exclude = [
     ...configDefaults.exclude, 
-    '.*rc*', '*.config.js', 'mockServiceWorker.js', 
+    'node_modules',
+    '.*rc*', '*.config.js', '**/mockServiceWorker.js', 
     ...extraExclude
   ]
-  const coverage = { reporter, exclude } 
+  const coverage = { 
+    reporter, 
+    exclude: [...coverageConfigDefaults.exclude, ...exclude] 
+  } 
   
   return mergeConfig(
     viteConfig,

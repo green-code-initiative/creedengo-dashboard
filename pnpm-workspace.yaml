@@ -2,3 +2,4 @@ packages:
 - 'apps/*'
 - 'configs/*'
 - 'shared/*'
+useNodeVersion: 22.17.1
