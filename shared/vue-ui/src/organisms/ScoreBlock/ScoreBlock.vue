@@ -62,6 +62,9 @@ const projectLink = computed(() => {
 </template>
 
 <style scoped>
+h2 {
+  margin-top: 30px;
+}
 .rate-description {
   padding-top: 20px;
 }
