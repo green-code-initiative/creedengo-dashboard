@@ -46,9 +46,16 @@ li {
   font-size: 12px;
   margin-bottom: 17px;
 }
+
 li strong {
+  margin-top: auto;
   margin-left: auto;
   margin-right: 10px;
+}
+
+li svg{
+  margin-top: auto;
+  margin-bottom: 2px;
 }
 .clickable {
   cursor: pointer;
