@@ -5,58 +5,52 @@ import IconArrowRight from '../../design-tokens/icons/IconArrowRight.vue';
 import ImpactTag from '../../atoms/ImpactTag/ImpactTag.vue';
 
 const props = defineProps({
-  count: { type: Number, required: true },
   impact: { type: String, required: false, default: 'Optimized',
     validator(value) {
       return ['Low', 'Medium', 'High', 'Optimized'].includes(value)
     }
   },
-  metricTag: { type: String, required: false, default: '',
-    validator(value) {
-      return ['CPU', 'RAM', 'Disk', 'Network'].includes(value)
-    }
-  },
-  projectLink: { type: String, required: true },
+  label: { type: String, required: false, default: () => 'impact issues' },
+  count: { type: Number, required: false, default: 0 },
+  link: { type: String, required: false, default: '' },
 });
 
-const isRule = computed(() => props.impact === 'Optimized');
-const hasIssues = computed(() => !isRule.value && props.count > 0);
-const customLabel = computed(() => isRule.value ? `${props.metricTag} rules` : 'impact issues');
+const hasIssues = computed(() => props.count);
+const showLink = computed(() => hasIssues.value && props.link);
 
-function onClickOpenIssues(impact) {
-  globalThis.window.open(`${props.projectLink}&severities=${impact.toUpperCase()}`);
+function onClickOpenIssues() {
+  globalThis.window.open(props.link);
 }
 </script>
 
-
 <template>
   <li
-    :class="[
-      'criticity',
-      'bullet',
-      `bullet-${impact}-impact`,
-      { clickable: isIssues },
-    ]"
-    @click="hasIssues ? onClickOpenIssues(impact) : null"
-    @keyUp="hasIssues ? onClickOpenIssues(impact) : null"
+    :class="{ clickable: showLink }"
+    @click="showLink ? onClickOpenIssues() : null"
+    @keyUp="showLink ? onClickOpenIssues() : null"
   >
-    &nbsp;&nbsp;<ImpactTag
-                  :impact="`${impact}`" 
-                  :custom-label="`${customLabel}`"
-                />
-    <strong :class="{ 'no-issues': !hasIssues }">{{ count }}</strong>
-    <IconArrowRight v-if="hasIssues" />
+    <ImpactTag
+      :impact="`${impact}`" 
+      :custom-label="`${label}`"
+    />
+    <strong>{{ count }}</strong>
+    <IconArrowRight v-if="showLink" />
   </li>
 </template>
 
 <style scoped>
-.bullet-minor-impact::before {
-  background-color: #fecb02;
+
+li {
+  display: flex;
+  list-style-type: none;
+  font-size: 12px;
+  margin-bottom: 17px;
 }
-.bullet-major-impact::before {
-  background-color: #ff8e12;
+li strong {
+  margin-left: auto;
+  margin-right: 10px;
 }
-.bullet-critical-impact::before {
-  background-color: #e30021;
+.clickable {
+  cursor: pointer;
 }
 </style>

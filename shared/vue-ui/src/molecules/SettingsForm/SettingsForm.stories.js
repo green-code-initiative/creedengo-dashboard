@@ -2,7 +2,7 @@ import SettingsForm from './SettingsForm.vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
-  title: 'Design System/Molecules/SettingsForm',
+  title: 'Organisms/SettingsForm',
   component: SettingsForm,
   tags: ['autodocs'],
   argTypes: {
@@ -24,13 +24,13 @@ export const MemoryStorage = {
     const projectInput = canvas.getByLabelText('Project Key', {
       selector: 'input',
     });
-    await userEvent.type(projectInput, 'reen-code-initiative_creedengo-dashboard', {
+    await userEvent.type(projectInput, 'green-code-initiative_creedengo-dashboard', {
       delay: 100,
     });
     const serverInput = canvas.getByLabelText('Server URL', {
       selector: 'input',
     });
-    await userEvent.type(serverInput, 'http://my-sonar-server.com', {
+    await userEvent.type(serverInput, 'https://my-sonar-server.com', {
       delay: 100,
     });
     const tokenInput = canvas.getByLabelText('Authentication Token', {
