@@ -145,10 +145,9 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
   height: 271px;
 }
 
-@media (min-width: 601px) and (max-width: 1024px)  {
+@media (max-width: 500px)  {
   .main-container {
     max-width: 100%;
-    margin: 0;
     padding: 0.5rem;
   }
   .score-card-container {
@@ -167,6 +166,47 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
     height: auto;
     width: 100%;
   }
+  .score-block-inner,
+  .priority-block-inner {
+    margin: 0 1rem;
+  }
+  .divider-block {
+    width: calc(100% - 5rem);
+    height: 0.125rem;
+    margin: 0.5rem 2.5rem;
+  }
+}
+
+@media (min-width: 500px) and (max-width: 1024px)  {
+  .main-container {
+    max-width: 100%;
+    padding: 0.5rem;
+  }
+  .score-card-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tag-card-container {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .score-block,
+  .priority-score,
+  .tag-card {
+    min-width: unset;
+    flex: none;
+    height: auto;
+    width: 100%;
+  }
+  .score-block-inner,
+  .priority-block-inner {
+    margin: 0 2.625rem 0 4rem;
+  }
+  .divider-block {
+    width: calc(100% - 10rem);
+    height: 0.125rem;
+    margin: 1rem 5rem;
+  }
 }
 
 @media (min-width: 1025px) {
@@ -178,6 +218,12 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
   }
   .tag-card-container {
     justify-content: flex-start;
+  }
+  .score-block-inner {
+    margin: 0 4rem 0 2.625rem;
+  }
+  .priority-block-inner {
+    margin: 0 2.625rem 0 4rem;
   }
 }
 

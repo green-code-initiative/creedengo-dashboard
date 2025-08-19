@@ -70,6 +70,7 @@ h2 {
 }
 .tooltip-calc {
   margin-top: 20px;
+  margin-bottom: 1.25rem;
   text-decoration: underline;
   display: inline-block;
 }
