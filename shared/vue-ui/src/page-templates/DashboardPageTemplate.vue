@@ -2,6 +2,41 @@
 import TagCard from '../organisms/TagCard/TagCard.vue';
 import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
 
+const props = defineProps({
+  score: {
+    type: String,
+    required: true
+  },
+  scoreBlock: {
+    type: Object,
+    required: true,
+    validator: (obj) =>
+      obj &&
+      typeof obj.labelBold === 'string' &&
+      typeof obj.label === 'string' &&
+      typeof obj.labelLong === 'string' &&
+      typeof obj.projectKey === 'string' &&
+      typeof obj.branch === 'string' &&
+      typeof obj.minorSeverities === 'number' &&
+      typeof obj.majorSeverities === 'number' &&
+      typeof obj.criticalSeverities === 'number'
+  },
+  tags: {
+    type: Array,
+    required: true,
+    validator: (arr) => arr.every(tag => 
+      tag && 
+      typeof tag.name === 'string' &&
+      typeof tag.nbRules === 'number' &&
+      typeof tag.optimizedRules === 'number' &&
+      typeof tag.minorIssues === 'number' &&
+      typeof tag.majorIssues === 'number' &&
+      typeof tag.criticalIssues === 'number' &&
+      typeof tag.projectKey === 'string' &&
+      typeof tag.branch === 'string'
+    )
+  }
+});
 
 </script>
 
@@ -9,75 +44,40 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
   <div class="main-container">
     <div class="score-card-container">
       <div class="score-block">
-        <div class="score-block-inner">
-          <ScoreBlock 
-            :value="'C'"
-            :label-bold="'Your app is not fully optimized.'"
-            :label="'Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.'"
-            :label-long="'You have between 10 and 19 minor severities or you have 1 or many major severity.'"
-            :project-key="'FOO'"
-            :branch="'main'"
-            :minor-severities="15"
-            :major-severities="3"
-            :critical-severities="0"
-          />
-        </div>
+        <ScoreBlock 
+          :value="props.score"
+          :label-bold="scoreBlock.labelBold"
+          :label="scoreBlock.label"
+          :label-long="scoreBlock.labelLong"
+          :project-key="scoreBlock.projectKey"
+          :branch="scoreBlock.branch"
+          :minor-severities="scoreBlock.minorSeverities"
+          :major-severities="scoreBlock.majorSeverities"
+          :critical-severities="scoreBlock.criticalSeverities"
+        />
       </div>
-      <div class="divider-block" />
-      <div class="priority-score">
-        <div class="priority-block-inner">
-          <h2>PriorityScore</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, dolorem. Magnam iure magni rem commodi consequatur officiis asperiores vel eum accusantium vitae officia, provident cupiditate cumque? Fuga, vero. Ullam, sequi.</p>
-        </div>
+      <div class="divider-block"></div>
+      <div class="priority-block">
+        <h2>Priority Rule</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, dolorem. Magnam iure magni rem commodi consequatur officiis asperiores vel eum accusantium vitae officia, provident cupiditate cumque? Fuga, vero. Ullam, sequi.</p>
       </div>
     </div>
     <div class="tag-card-container">
-      <div class="tag-card">
+      <div 
+        v-for="(tag, index) in props.tags"
+        :key="index" 
+        v-bind="tag"
+        class="tag-card"
+      >
         <TagCard
-          :metric-tag="'CPU'"
-          :nb-rules="19"
-          :optimized-rules="12"
-          :minor-issues="40"
-          :major-issues="19"
-          :critical-issues="0"
-          :project-key="'foo'"
-          :branch="'main'"
-        />
-      </div>
-      <div class="tag-card">
-        <TagCard
-          :metric-tag="'Network'"
-          :nb-rules="19"
-          :optimized-rules="12"
-          :minor-issues="40"
-          :major-issues="19"
-          :critical-issues="0"
-          :project-key="'foo'"
-          :branch="'main'"
-        />
-      </div>
-      <div class="tag-card">
-        <TagCard
-          :metric-tag="'RAM'"
-          :nb-rules="19"
-          :optimized-rules="12"
-          :minor-issues="40"
-          :major-issues="19"
-          :critical-issues="0"
-          :project-key="'foo'"
-          :branch="'main'"
-        />
-      </div>
-      <div class="tag-card">
-        <TagCard
-          :metric-tag="'Disk'"
-          :nb-rules="19"
-          :optimized-rules="12"
-          :minor-issues="40"
-          :major-issues="19"
-          :critical-issues="0"
-          :project-key="'foo'"
-          :branch="'main'"
+          :metric-tag="tag.metricTag"
+          :nb-rules="tag.nbRules"
+          :optimized-rules="tag.optimizedRules"
+          :minor-issues="tag.minorIssues"
+          :major-issues="tag.majorIssues"
+          :critical-issues="tag.criticalIssues"
+          :project-key="tag.projectKey"
+          :branch="tag.branch"
         />
       </div>
     </div>
@@ -88,13 +88,20 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
 
 .main-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 1rem;
   max-width: 1250px;
   margin: auto;
 }
 
-/* SCORE CARDS */
+.divider-block {
+  width: 0.125rem;
+  margin: 2.375rem 0;
+  background: #BBBBBB;
+}
+
+/* SCORE AND PRIORITY RULE CARDS */
 .score-card-container {
   display: flex;
   flex-wrap: wrap;
@@ -104,31 +111,17 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
 }
 
 .score-block {
+  margin: 0 2rem 0 2.625rem;
   background-color: none;
   flex: 0 0 38%;
-  min-width: 250px;
   height: 320px;
 }
 
-.score-block-inner {
-  margin: 0 4rem 0 2.625rem;
-}
-
-.divider-block {
-  width: 0.125rem;
-  margin: 2.375rem 0;
-  background: #BBBBBB;
-}
-
-.priority-score {
+.priority-block {
+  margin: 0 2.625rem 0 3rem;
   background-color: none;
   flex: 1;
-  min-width: 250px;
   height: 320px;
-}
-
-.priority-block-inner {
-  margin: 0 2.625rem 0 4rem;
 }
 
 /* TAG CARDS */
@@ -159,16 +152,15 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
     gap: 0.5rem;
   }
   .score-block,
-  .priority-score,
+  .priority-block,
   .tag-card {
     min-width: unset;
     flex: none;
     height: auto;
-    width: 100%;
   }
-  .score-block-inner,
-  .priority-block-inner {
-    margin: 0 1rem;
+  .score-block,
+  .priority-block {
+    margin: 0 1.125rem;
   }
   .divider-block {
     width: calc(100% - 5rem);
@@ -191,16 +183,15 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
     gap: 0.5rem;
   }
   .score-block,
-  .priority-score,
+  .priority-block,
   .tag-card {
     min-width: unset;
     flex: none;
     height: auto;
-    width: 100%;
   }
-  .score-block-inner,
-  .priority-block-inner {
-    margin: 0 2.625rem 0 4rem;
+  .score-block,
+  .priority-block {
+    margin: 0 3rem;
   }
   .divider-block {
     width: calc(100% - 10rem);
@@ -218,12 +209,6 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
   }
   .tag-card-container {
     justify-content: flex-start;
-  }
-  .score-block-inner {
-    margin: 0 4rem 0 2.625rem;
-  }
-  .priority-block-inner {
-    margin: 0 2.625rem 0 4rem;
   }
 }
 
