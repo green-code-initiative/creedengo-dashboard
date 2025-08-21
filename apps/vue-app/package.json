@@ -43,7 +43,6 @@
     "@creedengo/playwright-config": "workspace:*",
     "@creedengo/vitest-config": "workspace:*",
     "@storybook/addon-a11y": "^9.1.2",
-    "@storybook/addon-coverage": "^2.0.0",
     "@storybook/addon-docs": "^9.1.2",
     "@storybook/addon-links": "^9.1.2",
     "@storybook/builder-vite": "^9.1.2",
