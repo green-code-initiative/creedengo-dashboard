@@ -1,11 +1,5 @@
 import DashboardPageTemplate from "./DashboardPageTemplate.vue";
 
-// export default {
-//   title: "Page Templates/DashboardPageTemplate",
-//   component: DashboardPageTemplate,
-//   tags: ['autodocs']
-// };
-
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
  title: 'Page Templates/DashboardPageTemplate',
@@ -14,17 +8,11 @@ export default {
  argTypes: {
    score: {
      control: {
-       type: 'text'
-     },
-     required: true
-   },
-   scoreBlock: {
-     control: {
        type: 'object'
      },
      required: true
    },
-   tags: {
+   metricTags: {
      control: {
        type: 'array'
      },
@@ -33,22 +21,22 @@ export default {
   }
 };
 
-export const ScoreAndTags = {
+export const ScoreAndMetricTags = {
   args: {
-    score: "C",
-    scoreBlock: {
-      labelBold: "Your app is not fully optimized.",
-      label: "Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
-      labelLong: "You have between 10 and 19 minor severities or you have 1 or many major severity.",
+    score: {
+      value: "C",
+      label: "Your app is not fully optimized.",
+      description: "Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
+      tips: "You have between 10 and 19 minor severities or you have 1 or many major severity.",
       projectKey: 'FOO',
       branch: 'main',
       minorSeverities: 15,
       majorSeverities: 3,
       criticalSeverities: 0
     },
-    tags: [
+    metricTags: [
       {
-        metricTag: "CPU",
+        name: "CPU",
         nbRules: 19,
         optimizedRules: 12, 
         minorIssues: 40,
@@ -58,7 +46,7 @@ export const ScoreAndTags = {
         branch: 'main'
       },
       {
-        metricTag: "RAM",
+        name: "RAM",
         nbRules: 17,
         optimizedRules: 11, 
         minorIssues: 40,
@@ -68,7 +56,7 @@ export const ScoreAndTags = {
         branch: 'main'
       },
       {
-        metricTag: "Network",
+        name: "Network",
         nbRules: 1,
         optimizedRules: 1,
         minorIssues: 0,
@@ -78,7 +66,7 @@ export const ScoreAndTags = {
         branch: 'main'
       },
       {
-        metricTag: "Disk",
+        name: "Disk",
         nbRules: 1,
         optimizedRules: 1, 
         minorIssues: 0,
@@ -93,20 +81,20 @@ export const ScoreAndTags = {
 
 export const ScoreWithCPUAndRAM = {
   args: {
-    score: "C",
-    scoreBlock: {
-      labelBold: "Your app is not fully optimized.",
-      label: "Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
-      labelLong: "You have between 10 and 19 minor severities or you have 1 or many major severity.",
+    score: {
+      value: "C",
+      label: "Your app is not fully optimized.",
+      description: "Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
+      tips: "You have between 10 and 19 minor severities or you have 1 or many major severity.",
       projectKey: 'FOO',
       branch: 'main',
       minorSeverities: 15,
       majorSeverities: 3,
       criticalSeverities: 0
     },
-    tags: [
+    metricTags: [
       {
-        metricTag: "CPU",
+        name: "CPU",
         nbRules: 19,
         optimizedRules: 12, 
         minorIssues: 40,
@@ -116,7 +104,7 @@ export const ScoreWithCPUAndRAM = {
         branch: 'main'
       },
       {
-        metricTag: "RAM",
+        name: "RAM",
         nbRules: 17,
         optimizedRules: 11, 
         minorIssues: 40,
@@ -129,19 +117,19 @@ export const ScoreWithCPUAndRAM = {
   }
 };
 
-export const ScoreWithoutTags = {
+export const ScoreWithoutMetricTags = {
   args: {
-    score: "C",
-    scoreBlock: {
-      labelBold: "Your app is not fully optimized.",
-      label: "Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
-      labelLong: "You have between 10 and 19 minor severities or you have 1 or many major severity.",
+    score: {
+      value: "C",
+      label: "Your app is not fully optimized.",
+      description: "Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
+      tips: "You have between 10 and 19 minor severities or you have 1 or many major severity.",
       projectKey: 'FOO',
       branch: 'main',
       minorSeverities: 15,
       majorSeverities: 3,
       criticalSeverities: 0
     },
-    tags: []
+    metricTags: []
   }
 };

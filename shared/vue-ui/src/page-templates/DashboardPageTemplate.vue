@@ -4,36 +4,33 @@ import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
 
 const props = defineProps({
   score: {
-    type: String,
-    required: true
-  },
-  scoreBlock: {
     type: Object,
     required: true,
     validator: (obj) =>
       obj &&
-      typeof obj.labelBold === 'string' &&
+      typeof obj.value === 'string' &&
       typeof obj.label === 'string' &&
-      typeof obj.labelLong === 'string' &&
+      typeof obj.description === 'string' &&
+      typeof obj.tips === 'string' &&
       typeof obj.projectKey === 'string' &&
       typeof obj.branch === 'string' &&
       typeof obj.minorSeverities === 'number' &&
       typeof obj.majorSeverities === 'number' &&
       typeof obj.criticalSeverities === 'number'
   },
-  tags: {
+  metricTags: {
     type: Array,
     required: true,
-    validator: (arr) => arr.every(tag => 
-      tag && 
-      typeof tag.name === 'string' &&
-      typeof tag.nbRules === 'number' &&
-      typeof tag.optimizedRules === 'number' &&
-      typeof tag.minorIssues === 'number' &&
-      typeof tag.majorIssues === 'number' &&
-      typeof tag.criticalIssues === 'number' &&
-      typeof tag.projectKey === 'string' &&
-      typeof tag.branch === 'string'
+    validator: (arr) => arr.every(metricTag => 
+      metricTag && 
+      typeof metricTag.name === 'string' &&
+      typeof metricTag.nbRules === 'number' &&
+      typeof metricTag.optimizedRules === 'number' &&
+      typeof metricTag.minorIssues === 'number' &&
+      typeof metricTag.majorIssues === 'number' &&
+      typeof metricTag.criticalIssues === 'number' &&
+      typeof metricTag.projectKey === 'string' &&
+      typeof metricTag.branch === 'string'
     )
   }
 });
@@ -45,15 +42,15 @@ const props = defineProps({
     <div class="score-card-container">
       <div class="score-block">
         <ScoreBlock 
-          :value="props.score"
-          :label-bold="scoreBlock.labelBold"
-          :label="scoreBlock.label"
-          :label-long="scoreBlock.labelLong"
-          :project-key="scoreBlock.projectKey"
-          :branch="scoreBlock.branch"
-          :minor-severities="scoreBlock.minorSeverities"
-          :major-severities="scoreBlock.majorSeverities"
-          :critical-severities="scoreBlock.criticalSeverities"
+          :value="score.value"
+          :label-bold="score.label"
+          :label="score.description"
+          :label-long="score.tips"
+          :project-key="score.projectKey"
+          :branch="score.branch"
+          :minor-severities="score.minorSeverities"
+          :major-severities="score.majorSeverities"
+          :critical-severities="score.criticalSeverities"
         />
       </div>
       <div class="divider-block"></div>
@@ -64,20 +61,20 @@ const props = defineProps({
     </div>
     <div class="tag-card-container">
       <div 
-        v-for="(tag, index) in props.tags"
+        v-for="(metricTag, index) in props.metricTags"
         :key="index" 
-        v-bind="tag"
+        v-bind="metricTag"
         class="tag-card"
       >
         <TagCard
-          :metric-tag="tag.metricTag"
-          :nb-rules="tag.nbRules"
-          :optimized-rules="tag.optimizedRules"
-          :minor-issues="tag.minorIssues"
-          :major-issues="tag.majorIssues"
-          :critical-issues="tag.criticalIssues"
-          :project-key="tag.projectKey"
-          :branch="tag.branch"
+          :metric-tag="metricTag.name"
+          :nb-rules="metricTag.nbRules"
+          :optimized-rules="metricTag.optimizedRules"
+          :minor-issues="metricTag.minorIssues"
+          :major-issues="metricTag.majorIssues"
+          :critical-issues="metricTag.criticalIssues"
+          :project-key="metricTag.projectKey"
+          :branch="metricTag.branch"
         />
       </div>
     </div>
