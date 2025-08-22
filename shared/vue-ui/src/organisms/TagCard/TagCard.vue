@@ -35,17 +35,13 @@ const projectLink = computed(() => {
 <template>
   <div class="tag-card">
     <div class="head">
-      <div>
-        <div class="title">
-          <strong>{{ props.metricTag }}</strong>
-        </div>
-        <div>
-          <tooltip-box anchor>
-            Affected rules correspond to the number of rules associated with
-            errors identified by SonarQube, among the Greensight rules that
-            impact this component
-          </tooltip-box>
-        </div>
+      <div class="title">
+        <strong>{{ props.metricTag }}</strong>
+        <tooltip-box anchor>
+          Affected rules correspond to the number of rules associated with
+          errors identified by SonarQube, among the Greensight rules that
+          impact this component
+        </tooltip-box>
       </div>
       <a
         v-if="!noIssues"

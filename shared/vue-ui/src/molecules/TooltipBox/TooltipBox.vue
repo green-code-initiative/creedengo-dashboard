@@ -8,6 +8,7 @@ defineProps({
 });
 
 </script>
+
 <template>
   <div 
     v-if="anchor" 
@@ -37,11 +38,12 @@ defineProps({
   font-size: smaller;
   float: right;
   margin-left: 5px;
+  margin-top: 5px;
 }
 
 div[role=tooltip] {
 
-  --_p-inline: 1.5ch;
+  --_p-inline: 2.5ch;
   --_p-block: .75ch;
   --_triangle-size: 7px;
   --_shadow-alpha: 50%;
@@ -62,26 +64,24 @@ div[role=tooltip] {
 
   inline-size: max-content;
 
-  max-inline-size: 25ch;
+  max-inline-size: 50ch;
 
   text-align: start;
 
   font-size: 1rem;
 
   font-weight: normal;
-  line-height: normal;
   line-height: initial;
 
   padding: var(--_p-block) var(--_p-inline);
   margin: 0;
+
+  border: 1px solid;
   border-radius: 5px;
 
   /* Use System Colors https://developer.mozilla.org/en-US/docs/Web/CSS/system-color */
   color: CanvasText;
   background-color: Canvas;
-
-  border: 1px solid
-
 }
 
 /* create a stacking context for elements with tooltips */

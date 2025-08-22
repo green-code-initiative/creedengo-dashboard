@@ -42,14 +42,9 @@ const projectLink = computed(() => {
     <div class="tooltip-calc">
       how my score is calculated ?
       <tooltip-box>
-        <p>
-          <strong>{{ labelLong }} </strong><br>
-          {{ text }}
-        </p>
-        <br>
-        <p>
-          <strong>Identified issues in your app:</strong>
-        </p>
+        <strong>{{ labelLong }}</strong>
+        <br><br>
+        <strong>Identified issues in your app:</strong>
         <rule-criticities
           :minor-severities="minorSeverities"
           :major-severities="majorSeverities"
