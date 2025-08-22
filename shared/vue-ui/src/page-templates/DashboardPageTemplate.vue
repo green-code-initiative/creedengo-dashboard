@@ -18,11 +18,24 @@ const props = defineProps({
       typeof obj.majorSeverities === 'number' &&
       typeof obj.criticalSeverities === 'number'
   },
+  priorityRule: {
+    type: Object,
+    required: true,
+    validator: (obj) =>
+      obj &&
+      typeof obj.percentage === 'number' &&
+      typeof obj.ruleKey === 'string' &&
+      typeof obj.ruleName === 'string' &&
+      typeof obj.ruleHtmlDesc === 'string' &&
+      typeof obj.ruleImpact === 'string' &&
+      typeof obj.ruleMetricTags === 'object' &&
+      Array.isArray(obj.ruleMetricTags)
+  },
   metricTags: {
     type: Array,
     required: true,
     validator: (arr) => arr.every(metricTag => 
-      metricTag && 
+      metricTag &&
       typeof metricTag.name === 'string' &&
       typeof metricTag.nbRules === 'number' &&
       typeof metricTag.optimizedRules === 'number' &&
@@ -39,8 +52,11 @@ const props = defineProps({
 
 <template>
   <div class="main-container">
-    <div class="score-card-container">
-      <div class="score-block">
+    <div class="top-card-container">
+      <div
+        v-if="score" 
+        class="score-block"
+      >
         <ScoreBlock 
           :value="score.value"
           :label-bold="score.label"
@@ -53,14 +69,25 @@ const props = defineProps({
           :critical-severities="score.criticalSeverities"
         />
       </div>
-      <div class="divider-block"></div>
-      <div class="priority-block">
+      <div 
+        v-if="score && priorityRule" 
+        class="divider-block"
+      >
+      </div>
+      <div 
+        v-if="priorityRule"
+        class="priority-block"
+      >
         <h2>Priority Rule</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi, dolorem. Magnam iure magni rem commodi consequatur officiis asperiores vel eum accusantium vitae officia, provident cupiditate cumque? Fuga, vero. Ullam, sequi.</p>
+        <strong>{{ priorityRule.ruleName }}</strong>
+        <p>{{ priorityRule.ruleHtmlDesc }}</p>
       </div>
     </div>
-    <div class="tag-card-container">
-      <div 
+    <div
+      v-if="metricTags"
+      class="tag-card-container"
+    >
+      <div
         v-for="(metricTag, index) in props.metricTags"
         :key="index" 
         v-bind="metricTag"
@@ -99,7 +126,7 @@ const props = defineProps({
 }
 
 /* SCORE AND PRIORITY RULE CARDS */
-.score-card-container {
+.top-card-container {
   display: flex;
   flex-wrap: wrap;
   background: #FFFFFF;
@@ -140,7 +167,7 @@ const props = defineProps({
     max-width: 100%;
     padding: 0.5rem;
   }
-  .score-card-container {
+  .top-card-container {
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -171,7 +198,7 @@ const props = defineProps({
     max-width: 100%;
     padding: 0.5rem;
   }
-  .score-card-container {
+  .top-card-container {
     flex-direction: column;
     gap: 0.5rem;
   }
@@ -201,7 +228,7 @@ const props = defineProps({
   .main-container {
     margin: 0 0.5rem;
   }
-  .score-card-container {
+  .top-card-container {
     flex-direction: row;
   }
   .tag-card-container {
