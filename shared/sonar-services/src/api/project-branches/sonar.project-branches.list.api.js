@@ -1,5 +1,5 @@
 //import sonarRequestAPI from '@sonar/sonar-request'
-import sonarRequestAPI from './sonar-request.js'
+import sonarRequestAPI from '../polyfills/sonar-request.js'
 
 const API = 'api/project_branches'
 const routeUrl = `${API}/list`

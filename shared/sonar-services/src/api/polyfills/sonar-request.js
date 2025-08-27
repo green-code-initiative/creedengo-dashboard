@@ -1,1 +1,1 @@
-export { default } from '../../polyfills/sonar-request';
+export { default } from '../../polyfills/sonar-request.js';

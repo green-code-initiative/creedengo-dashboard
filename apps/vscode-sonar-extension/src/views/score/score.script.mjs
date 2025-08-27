@@ -1,6 +1,8 @@
 /* global acquireVsCodeApi */
 //@ts-check
 
+import { addMessageHandler } from '../../services/message.service.mjs'
+
 // It cannot access the main VS Code APIs directly.
 (function () {
     // Global provided by VS Code
@@ -16,22 +18,14 @@
         const oldState = vscode.getState() || { score: '', branch: '' };
         let { score, branch } = oldState;
 
+        const messageHandler = addMessageHandler({
+            updateScore: data => updateScore(data.value),
+            updateBranches: data => updateBranches(data.value),
+            clearScore: () => updateScore(''),
+        }, logError)
+
         // Handle messages sent from the extension to the webview
-        window.addEventListener('message', ({ data }) => {
-            switch (data.type) {
-                case 'updateScore':
-                    updateScore(data.value);
-                    break;
-                case 'updateBranches':
-                    updateBranches(data.value);
-                    break;
-                case 'clearScore':
-                    updateScore('');
-                    break;
-                default:
-                    logError(`Unexpected message type: ${data.type}`);
-            }
-        });
+        window.addEventListener('message', ({ data }) => messageHandler(data));
 
         /**
          * @param {string} newScore

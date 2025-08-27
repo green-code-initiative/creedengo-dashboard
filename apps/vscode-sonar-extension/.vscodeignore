@@ -1,0 +1,12 @@
+.turbo/
+.vscode/
+dist/*.map
+node_modules/
+src/
+test/
+.gitignore
+.vscode-test.mjs
+esbuild.js
+eslint.config.mjs
+jsconfig.json
+test.mjs
