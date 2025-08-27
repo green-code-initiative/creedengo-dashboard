@@ -1,5 +1,5 @@
 //import sonarRequestAPI from '@sonar/sonar-request'
-import sonarRequestAPI from '../polyfills/sonar-request'
+import sonarRequestAPI from '../polyfills/sonar-request.js'
 
 const API = 'api/issues'
 const routeUrl = `${API}/search`

@@ -3,7 +3,7 @@
  * @description This module provides functions to calculate the ABCDE score based on SonarQube issues.
  */
 
-import api from './adapter';
+import api from './adapter.js';
 
 /**
  * Calculate an ABCDE score from the sustainability issues related to the project size.

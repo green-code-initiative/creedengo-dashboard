@@ -1,9 +1,95 @@
 {
   "name": "creedengo-dashboard",
+  "displayName": "Creedengo",
+  "description": "Sustainability Ecoscore based on code analyses",
   "version": "0.0.0",
+  "license": "GPL-2.0-or-later",
+  "author": "Green Code Initiative",
+  "homepage": "https://github.com/green-code-initiative/creedengo-dashboard#readme",
+  "bugs": "https://github.com/green-code-initiative/creedengo-dashboard/issues",
+  "repository": "https://github.com/green-code-initiative/creedengo-dashboard",
   "private": true,
+  "type": "module",
   "executionEnv": {
     "nodeVersion": "22.17.1"
+  },
+  "engines": {
+    "vscode": "^1.102.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10",
+      "onFail": "error"
+    }
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./src/vscode/extension.js",
+  "extensionDependencies": [
+    "sonarsource.sonarlint-vscode"
+  ],
+  "contributes": {
+    "views": {
+      "SonarLint": [
+        {
+          "id": "Creedengo.Score",
+          "name": "Sustainability Score",
+          "type": "webview"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Creedengo Dashboard Configuration",
+      "properties": {
+        "creedengo.sonarUrl": {
+          "type": "string",
+          "default": "https://sonarcloud.io/",
+          "description": "The Sonarqube Server URL. Default to Sonarcloud."
+        },
+        "creedengo.sonarToken": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Authentication Token."
+        },
+        "creedengo.sonarOrganisationKey": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Organisation Key. Leave empty to use the one from sonar-project.properties."
+        },
+        "creedengo.sonarProjectKey": {
+          "type": "string",
+          "default": "",
+          "description": "The Sonar Project Key. Leave empty to use the one from sonar-project.properties."
+        },
+        "creedengo.enableNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable notifications from Creedengo."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "Creedengo.updateScore",
+        "category": "Creedengo Score",
+        "title": "Update Score",
+        "icon": "$(sync~spin)"
+      },
+      {
+        "command": "Creedengo.clearScore",
+        "category": "Creedengo Score",
+        "title": "Clear Score",
+        "icon": "$(trash)"
+      }
+    ]
   },
   "scripts": {
     "lint": "turbo lint",

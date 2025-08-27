@@ -1,6 +1,6 @@
-# creedengo-for-sonar README
+# Creedengo for Sonar
 
-This is the README for your extension "creedengo-for-sonar". After writing up a brief description, we recommend including the following sections.
+Sustainability Dashboard based the on result of Sonarqube/Sonarcloud code analyses
 
 ## Features
 
