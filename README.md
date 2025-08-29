@@ -2,16 +2,26 @@
 
 [![Build and Tests](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/build.yml/badge.svg)](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/build.yml)
 [![E2E Tests](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/playwright.yml/badge.svg)](https://github.com/green-code-initiative/creedengo-dashboard/actions/workflows/playwright.yml)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=bugs)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
 [![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
 
 This project is meant to provide Sustainable Code Dashboards to
 
 - show potential impact on sustainability of unffollowed recommendations
 - help decisions regarding code enhancement priorisation
 - and even potentially prevent new issues to be pushed to production
+
+## Installation
+
+> As of today, we still need to finish few steps so you can use the dashboard in production
+
+- **VSCode Extension:** an early stage first [0.1.0](https://github.com/green-code-initiative/creedengo-dashboard/releases/tag/v0.1.0-vscode) release can be downloaded from Github
+- **Sonar plugin:** no realease are yet available - we hope to publish one in September, 2025
+
+> We dearly welcome contributors
+
 
 ## Open Architecture
 
