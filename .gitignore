@@ -1,5 +1,6 @@
 # Ignore all files and folders starting with ".", except a few exceptions
 .*
+!.changeset/
 !.gitignore
 !.gitattributes
 !.github/
@@ -32,6 +33,7 @@ node_modules/
 !.editorconfig
 !.vscode/extensions.json
 !.vscode/settings.json
+
 # VSCode extensions
 !.vscode/launch.json
 !.vscode-test.js

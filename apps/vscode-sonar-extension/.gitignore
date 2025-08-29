@@ -3,6 +3,6 @@
 dist/
 node_modules/
 dist/
-LICENSE.md
+LICENSE
 !.vscode-test.mjs
 *.vsix

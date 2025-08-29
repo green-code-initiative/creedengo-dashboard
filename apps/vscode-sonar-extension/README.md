@@ -1,65 +1,55 @@
 # Creedengo for Sonar
 
-Sustainability Dashboard based the on result of Sonarqube/Sonarcloud code analyses
+Sustainability Score based the on result of **Sonarqube** / **Sonarcloud** static code analyses. It mainly relies on issues detected by **Creedengo** (formerly known as **Ecocode**) for the [Green Code Initiative](https://green-code-initiative.org), and [Capgemini](https://www.capgemini.com) **Greensight** Sonar plugins
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+This extension provides a "Sustainability" panel in which it shows an  `A` to `E` "Eco Design Score" for the current project
 
-For example if there is an image subfolder under your extension project workspace:
+![Eco Score](images/creedengo-for-sonar.png)
 
-\!\[feature X\]\(images/feature-x.png\)
+This score is calculated from issues detected by Sonar with the following labels:
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- **`creedengo`**: this tag should be added on sustainability rules introduced by the following Creedengo Sonar plugins:
+  - [creedengo-csharp](https://github.com/green-code-initiative/creedengo-csharp)
+  - [creedengo-ios](https://github.com/green-code-initiative/creedengo-ios)
+  - [creedengo-java](https://github.com/green-code-initiative/creedengo-java)
+  - [creedengo-javascript](https://github.com/green-code-initiative/creedengo-javascript)
+  - [creedengo-php](https://github.com/green-code-initiative/creedengo-php)
+  - [creedengo-python](https://github.com/green-code-initiative/creedengo-python)
+  - [creedengo-rust](https://github.com/green-code-initiative/creedengo-rust)
+- **`ecocode`**: this tag should be added on sustainability rules introduced by the following Ecocode Sonar plugins:
+  - [ecoCode-android](https://github.com/green-code-initiative/ecoCode-android)
+- **`greensight`**: this tag is added on sustainability rules introduced by the Capgemini Greensight Sonar plugin
+- **`sustainability`**: this tag is applied on some natively supported Sonarqube & Sonarcloud rules (few are available at least for android projects)
 
+> This panel shows up by default in the [SonarQube for IDE](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode) extension sidebar if it is installed.
+> 
+> Otherwise, it is made available from the main Explorer sidebar.
+  
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+As of this version, this score requires
+
+- Sonar connection settings (server URL & Authentication token)
+- a `sonar-project.properties` file at the root folder of the project (to retrieve the idetifier of the Sonar project to inspect)
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- `creedengo.sonarUrl`: URL of the Sonar Server.
+- `creedengo.sonarToken`: Token generated from 'My Account > Security' in SonarQube Server".
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+There is no remaining explicit message yet in the "Sustainability" panel when the extension is missing:
+
+- connection settings from the configuration
+- or an available `sonar-project.properties` file at the root of the project
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.1.0
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- Added the initial connection to sonnar + calculation of the score

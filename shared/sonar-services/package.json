@@ -1,7 +1,8 @@
 {
   "name": "@creedengo/sonar-services",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
+  "description": "Creedengo dashboard Sonarqube / SonarCloud API interface",
   "main": "src/index.js",
   "type": "module",
   "executionEnv": {

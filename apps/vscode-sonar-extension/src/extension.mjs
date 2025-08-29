@@ -11,23 +11,22 @@ export function activate(context) {
   const  { subscriptions, extensionUri } = context
   console.log('Activating "Creedengo for Sonar" extension');
 
-  const id = 'creedengo-for-sonar';
   const provider = new CreedengoScoreViewProvider(extensionUri);
 
   // Commands
   subscriptions.push(
-	  commands.registerCommand(`${id}.clearScore`, () => provider.clearScore())
+	  commands.registerCommand('creedengo.clearScore', () => provider.clearScore())
   );
   subscriptions.push(
-	  commands.registerCommand(`${id}.updateScore`, () => provider.updateScore())
+	  commands.registerCommand('creedengo.updateScore', () => provider.updateScore())
   );
   subscriptions.push(
-	  commands.registerCommand(`${id}.refresh`, () => provider.refresh())
+	  commands.registerCommand('creedengo.refresh', () => provider.refresh())
   );
 
   // Views
   subscriptions.push(
-  	window.registerWebviewViewProvider(`${id}.scoreView`, provider)
+  	window.registerWebviewViewProvider('creedengo.scoreView', provider)
   );
 
   // Auto Refresh on configuration change

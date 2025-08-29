@@ -5,17 +5,6 @@ const esbuild = require('esbuild');
 const production = process.argv.includes('--production');
 const watch = process.argv.includes('--watch');
 
-// const importMetaCode = fs.readFileSync(
-//     './src/compat/import.meta-polyfill.cjs', { encoding: 'utf8', flag: 'r' }
-// )
-
-const importMetaCode = typeof document === 'undefined' ? new (require('url'.replace('', '')).URL)('file:' + __filename).href :
-    (document.currentScript && document.currentScript.src || new URL('main.js', document.baseURI).href)
-
-const importMetaPolyfill = {
-  'import.meta': 'importMeta'
-}
-
 /**
  * @param {string} entryPoint 
  * @param {Object} [options]
@@ -30,6 +19,7 @@ function addContext(entryPoint, options) {
   const outdir = 'dist'
   const outExtension = { '.js': '.mjs' }
   const outConfig = outfile ? { outfile: `${outdir}/${outfile}`} : { outdir, outExtension }
+  const importMetaPolyfill = { 'import.meta': 'importMeta' }
   const polyfill = {}
   if (format === 'cjs' && platform === 'node') {
     polyfill.inject = ['src/compat/import.meta-polyfill.cjs']
@@ -66,7 +56,7 @@ async function main() {
   ]);
   await cpy('src/**/*.(html|png)', 'dist', { flat: true})
   if (production) {
-    await cpy('../../LICENSE.md', '.')
+    await cpy('../../LICENSE.md', './LICENSE')
   }
 
   if (watch) {

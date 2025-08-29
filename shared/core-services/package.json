@@ -1,7 +1,8 @@
 {
   "name": "@creedengo/core-services",
   "version": "1.0.0",
-  "description": "",
+  "private": true,
+  "description": "Creedengo dashboard generic API for frontend components",
   "main": "src/index.js",
   "type": "module",
   "scripts": {

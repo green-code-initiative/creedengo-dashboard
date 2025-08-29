@@ -13,83 +13,12 @@
   "executionEnv": {
     "nodeVersion": "22.17.1"
   },
-  "engines": {
-    "vscode": "^1.102.0"
-  },
   "devEngines": {
     "runtime": {
       "name": "node",
       "version": ">=22",
       "onFail": "error"
-    },
-    "packageManager": {
-      "name": "pnpm",
-      "version": ">=10",
-      "onFail": "error"
     }
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
-  "main": "./src/vscode/extension.js",
-  "extensionDependencies": [
-    "sonarsource.sonarlint-vscode"
-  ],
-  "contributes": {
-    "views": {
-      "SonarLint": [
-        {
-          "id": "Creedengo.Score",
-          "name": "Sustainability Score",
-          "type": "webview"
-        }
-      ]
-    },
-    "configuration": {
-      "title": "Creedengo Dashboard Configuration",
-      "properties": {
-        "creedengo.sonarUrl": {
-          "type": "string",
-          "default": "https://sonarcloud.io/",
-          "description": "The Sonarqube Server URL. Default to Sonarcloud."
-        },
-        "creedengo.sonarToken": {
-          "type": "string",
-          "default": "",
-          "description": "The Sonar Authentication Token."
-        },
-        "creedengo.sonarOrganisationKey": {
-          "type": "string",
-          "default": "",
-          "description": "The Sonar Organisation Key. Leave empty to use the one from sonar-project.properties."
-        },
-        "creedengo.sonarProjectKey": {
-          "type": "string",
-          "default": "",
-          "description": "The Sonar Project Key. Leave empty to use the one from sonar-project.properties."
-        },
-        "creedengo.enableNotifications": {
-          "type": "boolean",
-          "default": true,
-          "description": "Enable or disable notifications from Creedengo."
-        }
-      }
-    },
-    "commands": [
-      {
-        "command": "Creedengo.updateScore",
-        "category": "Creedengo Score",
-        "title": "Update Score",
-        "icon": "$(sync~spin)"
-      },
-      {
-        "command": "Creedengo.clearScore",
-        "category": "Creedengo Score",
-        "title": "Clear Score",
-        "icon": "$(trash)"
-      }
-    ]
   },
   "scripts": {
     "lint": "turbo lint",
@@ -99,14 +28,17 @@
     "build-storybook": "turbo build-storybook",
     "test:e2e": "turbo test:e2e",
     "ci": "turbo lint && turbo 'test:unit' && turbo 'test:e2e'",
+    "ci:publish": "pnpm publish -r",
+    "version": "pnpm changeset version",
     "verify": "turbo verify"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.6",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
     "@playwright/test": "^1.54.2",
     "prettier": "^3.6.2",
     "turbo": "^2.5.6"
   },
-  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b"
 }
