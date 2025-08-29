@@ -1,6 +1,6 @@
 {
   "name": "creedengo-for-sonar",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Creedengo for Sonar",
   "description": "Sustainability Dashboard based on Sonarqube/Sonarcloud code analyses",
   "icon": "./images/favicon.png",
