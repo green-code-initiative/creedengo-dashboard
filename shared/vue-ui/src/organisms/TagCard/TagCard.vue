@@ -102,8 +102,9 @@ const projectLink = computed(() => {
 .title {
   float: left;
   margin-left: 5px;
+}
+.title strong {
   font-size: 18px;
-  height: 10px;
 }
 .body {
   display: flex;

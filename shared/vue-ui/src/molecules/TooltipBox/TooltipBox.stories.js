@@ -11,26 +11,26 @@ export default {
   },
 }
 
-export const WithAnchor = {
-  args: { 
-    anchor: true,
-    default: "Hyper Text Markup Language"
-  }
-}
-
 const Template = (args) => ({
   components: { TooltipBox },
   setup() {
     return { args }
   },
   template: `
-    <p>Mouse hover this text to display the tooltip content.</p>
+    <p style='text-decoration: underline dashed 1px'>Mouse hover this text to display the tooltip content.</p>
     <tooltip-box v-bind="args">{{ args.default }}</tooltip-box>
   `,
 });
+
+export const WithAnchor = {
+  args: { 
+    anchor: true,
+    default: "Hyper Text Markup Language"
+  }
+}
  
 export const UseParentOnlyAsAnchor = Template.bind({});
 UseParentOnlyAsAnchor.args = {
-  default: "Hyper Text Markup Languag",
+  default: "Hyper Text Markup Language",
   anchor: false,
 }

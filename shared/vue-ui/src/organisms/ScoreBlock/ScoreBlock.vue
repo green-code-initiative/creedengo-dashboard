@@ -62,7 +62,8 @@ const projectLink = computed(() => {
 }
 .tooltip-calc {
   margin-top: 20px;
-  text-decoration: underline;
+  text-decoration: underline dashed 1px;
   display: inline-block;
+  cursor: help;
 }
 </style>
