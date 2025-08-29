@@ -1,5 +1,5 @@
 {
-  "name": "@creedengo/creedengo-for-sonar",
+  "name": "creedengo-for-sonar",
   "version": "0.1.0",
   "displayName": "Creedengo for Sonar",
   "description": "Sustainability Dashboard based on Sonarqube/Sonarcloud code analyses",

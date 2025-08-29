@@ -56,7 +56,7 @@ async function main() {
   ]);
   await cpy('src/**/*.(html|png)', 'dist', { flat: true})
   if (production) {
-    await cpy('../../LICENSE.md', './LICENSE')
+    await cpy('../../LICENSE.md', '.')
   }
 
   if (watch) {
