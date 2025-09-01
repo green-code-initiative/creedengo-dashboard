@@ -5,6 +5,7 @@ function missImplementation() {
 }
 
 const nullService = {
+    initSettings: missImplementation,
     getIssuesFacet: missImplementation,
     getNumberOfLineOfCode: missImplementation
 }

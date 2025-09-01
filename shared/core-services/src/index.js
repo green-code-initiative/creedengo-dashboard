@@ -1,6 +1,6 @@
-import api from './adapter'
-import settings from './settings.service'
-import * as score from './score.service'
+import api from './adapter.js'
+import settings from './settings.service.js'
+import * as score from './score.service.js'
 
 export default {
     api,

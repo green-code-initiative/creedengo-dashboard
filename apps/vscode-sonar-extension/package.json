@@ -1,39 +1,124 @@
 {
   "name": "creedengo-for-sonar",
-  "displayName": "creedengo-for-sonar",
-  "description": "",
-  "version": "0.0.1",
+  "version": "0.2.0",
+  "displayName": "Creedengo for Sonar",
+  "description": "Sustainability Dashboard based on Sonarqube/Sonarcloud code analyses",
+  "icon": "./images/favicon.png",
+  "categories": [
+    "Education",
+    "Linters",
+    "Other"
+  ],
+  "keywords": [
+    "Creedengo",
+    "Eco Design",
+    "Eco Conception",
+    "Green Code",
+    "Creedengo",
+    "Sustainability",
+    "SonarQube",
+    "Static Code Analysis",
+    "Code Quality",
+    "C++",
+    "Java",
+    "JavaScript",
+    "C#",
+    "Python",
+    "TypeScript"
+  ],
+  "author": "Green Code Initiative",
+  "publisher": "GreenCodeInitiative",
+  "license": "GPL-2.0-or-later",
+  "pricing": "Free",
+  "homepage": "https://github.com/green-code-initiative/creedengo-dashboard/tree/main/apps/vscode-sonar-extension",
+  "bugs": "https://github.com/green-code-initiative/creedengo-dashboard/issues",
+  "repository": "https://github.com/green-code-initiative/creedengo-dashboard",
+  "type": "commonjs",
   "private": true,
-  "engines": {
-    "vscode": "^1.102.0"
+  "main": "./dist/extension",
+  "activationEvents": [],
+  "contributes": {
+    "configuration": {
+      "title": "Creedengo",
+      "type": "object",
+      "properties": {
+        "creedengo.sonarUrl": {
+          "order": 1,
+          "type": "string",
+          "description": "URL of the Sonar Server"
+        },
+        "creedengo.sonarToken": {
+          "order": 2,
+          "type": "string",
+          "description": "Token generated from 'My Account > Security' in SonarQube Server"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "creedengo.clearScore",
+        "title": "Clear Creedengo Sustainability Score"
+      },
+      {
+        "command": "creedengo.updateScore",
+        "title": "Update Creedengo Sustainability Score"
+      }
+    ],
+    "views": {
+      "SonarLint": [
+        {
+          "id": "creedengo.scoreView",
+          "type": "webview",
+          "name": "Sustainability"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "pnpm lint",
+    "test": "vscode-test",
+    "watch": "node esbuild.js --watch",
+    "build": "node esbuild.js",
+    "build:production": "node esbuild.js --production",
+    "compile": "pnpm test && pnpm build",
+    "vscode:prepublish": "pnpm test && pnpm build:production",
+    "package": "pnpm vsce package --no-dependencies",
+    "publish:vscode": "pnpm vsce publish --no-dependencies"
   },
   "executionEnv": {
     "nodeVersion": "22.17.1"
   },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [],
-  "main": "./extension.js",
-  "contributes": {
-    "commands": [{
-      "command": "creedengo-for-sonar.helloWorld",
-      "title": "Hello World"
-    }]
+  "engines": {
+    "vscode": "^1.103.0"
   },
-  "scripts": {
-    "lint": "eslint .",
-    "pretest": "pnpm run lint",
-    "test": "vscode-test"
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": ">=10",
+      "onFail": "error"
+    }
+  },
+  "dependencies": {
+    "@creedengo/core-services": "workspace:*",
+    "@creedengo/sonar-services": "workspace:*"
   },
   "devDependencies": {
-    "@types/vscode": "^1.102.0",
     "@types/mocha": "^10.0.10",
-    "@types/node": "^24.2.1",
+    "@types/node": "^24.3.0",
+    "@types/vscode": "^1.103.0",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
-    "eslint": "^9.33.0",
-    "globals":"^16.3.0"
+    "@vscode/vsce": "^3.6.0",
+    "cpy": "^12.0.1",
+    "esbuild": "^0.25.9",
+    "eslint": "^9.34.0",
+    "globals": "^16.3.0"
   },
   "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
 }

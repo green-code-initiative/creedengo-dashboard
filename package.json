@@ -1,9 +1,24 @@
 {
   "name": "creedengo-dashboard",
+  "displayName": "Creedengo",
+  "description": "Sustainability Ecoscore based on code analyses",
   "version": "0.0.0",
+  "license": "GPL-2.0-or-later",
+  "author": "Green Code Initiative",
+  "homepage": "https://github.com/green-code-initiative/creedengo-dashboard#readme",
+  "bugs": "https://github.com/green-code-initiative/creedengo-dashboard/issues",
+  "repository": "https://github.com/green-code-initiative/creedengo-dashboard",
   "private": true,
+  "type": "module",
   "executionEnv": {
     "nodeVersion": "22.17.1"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": ">=22",
+      "onFail": "error"
+    }
   },
   "scripts": {
     "lint": "turbo lint",
@@ -13,14 +28,17 @@
     "build-storybook": "turbo build-storybook",
     "test:e2e": "turbo test:e2e",
     "ci": "turbo lint && turbo 'test:unit' && turbo 'test:e2e'",
+    "ci:publish": "pnpm publish -r",
+    "version": "pnpm changeset version",
     "verify": "turbo verify"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.6",
     "@commitlint/cli": "^19.8.1",
     "@commitlint/config-conventional": "^19.8.1",
-    "@playwright/test": "^1.54.2",
+    "@playwright/test": "^1.55.0",
     "prettier": "^3.6.2",
-    "turbo": "^2.5.5"
+    "turbo": "^2.5.6"
   },
-  "packageManager": "pnpm@10.14.0+sha512.ad27a79641b49c3e481a16a805baa71817a04bbe06a38d17e60e2eaee83f6a146c6a688125f5792e48dd5ba30e7da52a5cda4c3992b9ccf333f9ce223af84748"
+  "packageManager": "pnpm@10.15.0+sha512.486ebc259d3e999a4e8691ce03b5cac4a71cbeca39372a9b762cb500cfdf0873e2cb16abe3d951b1ee2cf012503f027b98b6584e4df22524e0c7450d9ec7aa7b"
 }
