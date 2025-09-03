@@ -5,20 +5,24 @@
  */
 defineProps({
   anchor: { type: Boolean, required: false, default: false },
+  position: { type: String, required: false, default: 'bottom',
+    validator(value) {
+      return ['top', 'top-left', 'top-right', 'left', 'right', 'bottom' ,'bottom-left', 'bottom-right'].includes(value)
+    }
+  },
 });
 
 </script>
+
 <template>
-  <div 
-    v-if="anchor" 
-    class="anchor"
-  >
-    i
-  </div>
+  <div  v-if="anchor" class="anchor">i</div>
+  <div class="main-anchor"></div>
+
   <div 
     ref="refTooltip"
     inert
     role="tooltip"
+    :class="['pos', position.toLowerCase()]"
   >
     <slot />
   </div>
@@ -32,16 +36,19 @@ defineProps({
   background-color: #4aa9d5;
   width: 13px;
   height: 13px;
+  line-height: 13px;
   color: white;
   font-weight: 500;
-  font-size: smaller;
+  font-size: small;
   float: right;
   margin-left: 5px;
+  margin-top: 3px;
+  cursor: help;
 }
 
 div[role=tooltip] {
 
-  --_p-inline: 1.5ch;
+  --_p-inline: 2.5ch;
   --_p-block: .75ch;
   --_triangle-size: 7px;
   --_shadow-alpha: 50%;
@@ -62,26 +69,24 @@ div[role=tooltip] {
 
   inline-size: max-content;
 
-  max-inline-size: 25ch;
+  max-inline-size: 50ch;
 
   text-align: start;
 
   font-size: 1rem;
 
   font-weight: normal;
-  line-height: normal;
   line-height: initial;
 
   padding: var(--_p-block) var(--_p-inline);
-  margin: 0;
+  margin: 0px 5px 30px 5px;
+
+  border: 1px solid;
   border-radius: 5px;
 
   /* Use System Colors https://developer.mozilla.org/en-US/docs/Web/CSS/system-color */
   color: CanvasText;
   background-color: Canvas;
-
-  border: 1px solid
-
 }
 
 /* create a stacking context for elements with tooltips */
@@ -94,6 +99,47 @@ div[role=tooltip] {
   opacity: 1;
 
   transition-delay: 200ms;
+}
+
+/* Positionning tooltip around the main-anchor*/
+.main-anchor {
+  anchor-name: --main-anchor;
+}
+
+.pos {
+  position-anchor: --main-anchor;
+}
+
+.top {
+  position-area: y-start;
+}
+
+.top-left {
+  position-area: y-start x-start;
+}
+
+.top-right {
+  position-area: y-start x-end;
+}
+
+.bottom {
+  position-area: y-end;
+}
+
+.bottom-left {
+  position-area: y-end x-start;
+}
+
+.bottom-right {
+  position-area: y-end x-end;
+}
+
+.left {
+  position-area: x-start;
+}
+
+.right {
+  position-area: x-end;
 }
 
 /* prepend some prose for screen readers only */
