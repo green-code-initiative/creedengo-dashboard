@@ -1,7 +1,6 @@
-import { vi, beforeEach, describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test } from 'vitest'
 
 import settings from './settings.service'
-import { set } from 'lodash-es';
 
 let store;
 
