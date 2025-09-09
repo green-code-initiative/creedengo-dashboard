@@ -8,7 +8,7 @@ export default {
     docs: {
       canvas: {
         sourceState: 'shown',
-      }
+      },
       codePanel: true,
     },
   },
