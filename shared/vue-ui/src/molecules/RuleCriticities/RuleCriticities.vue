@@ -44,7 +44,6 @@ const link = computed(() => `${props.link}&tags=${props.metricTag.toLowerCase()}
 .rules-criticities {
   width: 100%;
   height: 100%;
-  border-left: 1px solid #f2f2f2;
-  padding-left: 25px;
+  padding-left: 10px;
 }
 </style>
