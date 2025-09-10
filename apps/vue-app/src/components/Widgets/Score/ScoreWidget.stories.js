@@ -1,13 +1,7 @@
 import { http, HttpResponse, delay } from 'msw';
-import mockIssueList from '@/api/sonar/issues/sonar.issues.search.mock';
-import mockComponentMeasuresList from '@/api/sonar/measures/sonar.measures.component.mock';
+import sonar from '@creedengo/sonar-services'
 
 import ScoreWidget from './ScoreWidget.vue'
-
-const handlers = [
-  http.get('/api/issues/search', () => HttpResponse.json(mockIssueList)),
-  http.get('/api/measures/component', () => HttpResponse.json(mockComponentMeasuresList)),
-];
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 export default {
@@ -18,7 +12,7 @@ export default {
     projectKey: { control: { type: 'text' }, default: 'my-project' },
     branch: { control: { type: 'text' }, default: 'main' },
   },
-  parameters: { msw: { handlers } },
+  parameters: { msw: { handlers: sonar.handlers } },
 }
 
 export const MockedSuccess = {};

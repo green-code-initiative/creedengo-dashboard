@@ -5,7 +5,8 @@
       "@components/*": ["./src/*"],
       "@atoms/*": ["./src/atoms/*"],
       "@molecules/*": ["./src/molecules/*"],
-      "@icons/*": ["./src/atoms/icons/*"]
+      "@organisms/*": ["./src/organisms/*"],
+      "@icons/*": ["./src/design-tokens/icons/*"]
     }
   },
   "exclude": ["node_modules", "dist"]

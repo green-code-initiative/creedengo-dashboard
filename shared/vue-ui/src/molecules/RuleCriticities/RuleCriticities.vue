@@ -2,53 +2,40 @@
 <script setup>
 import { computed } from 'vue';
 
-import BulletCriticity from '../BulletCriticities/BulletCriticity.vue';
+import BulletCriticity from '../BulletCriticity/BulletCriticity.vue';
 
 const props = defineProps({
-  metricTag: { type: String, required: true },
-  optimizedRules: { type: Number, required: true },
-  minorIssues: { type: Number, required: true },
-  majorIssues: { type: Number, required: true },
-  criticalIssues: { type: Number, required: true },
-  projectLink: { type: String, required: true },
+  metricTag: { type: String, required: false, default: '' },
+  optimizedRules: { type: Number, required: false, default: 0 },
+  minorIssues: { type: Number, required: false, default: 0 },
+  majorIssues: { type: Number, required: false, default: 0 },
+  criticalIssues: { type: Number, required: false, default: 0 },
+  link: { type: String, required: true },
 });
 
-const criticities = computed(() => [
-  {
-    criticity: 'minor',
-    text: 'Low',
-    issues: props.minorIssues,
-  },
-  {
-    criticity: 'major',
-    text: 'Medium',
-    issues: props.majorIssues,
-  },
-  {
-    criticity: 'critical',
-    text: 'High',
-    issues: props.criticalIssues,
-  },
+const levels = computed(() => [
+  { name: 'Low', count: props.minorIssues },
+  { name: 'Medium', count: props.majorIssues },
+  { name: 'High', count: props.criticalIssues },
 ]);
+
+const link = computed(() => `${props.link}&tags=${props.metricTag.toLowerCase()}`)
 </script>
 
 <template>
   <ul class="rules-criticities">
     <BulletCriticity
+      v-if="!isNaN(optimizedRules)"
       impact="Optimized"
-      type="rule"
-      :metric-tag="props.metricTag"
+      :label="`${props.metricTag} rules`"
       :count="`${optimizedRules}`"
-      :project-link="props.projectLink"
     />
     <BulletCriticity
-      v-for="criticity in criticities"
-      :key="criticity.criticity"
-      type="issue"
-      :metric-tag="props.metricTag"
-      :impact="criticity.criticity"
-      :count="criticity.issues"
-      :project-key="props.projectKey"
+      v-for="{ name, count } in levels"
+      :key="name"
+      :impact="name"
+      :count="count"
+      :link="`${link}&severities=${name.toUpperCase()}`"
     />
   </ul>
 </template>
@@ -59,40 +46,5 @@ const criticities = computed(() => [
   height: 100%;
   border-left: 1px solid #f2f2f2;
   padding-left: 25px;
-}
-.clickable {
-  cursor: pointer;
-}
-.bullet-not-covered::before {
-  background-color: #bbbbbb;
-}
-.bullet-optimized::before {
-  background-color: #85bb2f;
-}
-</style>
-
-<style>
-.criticity {
-  display: flex;
-  font-size: 12px;
-  margin-bottom: 17px;
-}
-.criticity strong {
-  margin-left: auto;
-  margin-right: 10px;
-}
-.bullet::before {
-  content: '';
-  display: inline-block;
-  vertical-align: middle;
-  margin-top: -1px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: black;
-  margin-right: 3px;
-}
-.no-issues {
-  margin-right: 17px !important;
 }
 </style>

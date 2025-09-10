@@ -1,19 +1,31 @@
 <script setup>
-defineProps({
+import { computed } from 'vue';
+
+const props = defineProps({
   value: {
     type: String,
-    required: true,
+    default: '',
     validator(value) {
-      return ['A', 'B', 'C', 'D', 'E'].includes(value)
+      return ['A', 'B', 'C', 'D', 'E', ''].includes(value)
     }
   }
 })
+const score = computed(() => props.value);
 </script>
 
 <template>
   <ul class="rate-list">
-    <li :class="['rate', value.toLowerCase()]">
-      <strong class="rate-note">{{ value }}</strong>
+    <li 
+      v-if="score === ''"
+      style="display: none;"
+    >
+      Unavailable score
+    </li>
+    <li 
+      v-else
+      :class="['rate', score.toLowerCase()]"
+    >
+      <strong class="rate-note">{{ score }}</strong>
     </li>
     <li>A</li>
     <li>B</li>
@@ -28,6 +40,7 @@ defineProps({
   vertical-align: middle;
   position: relative;
   margin: 1em 0;
+  padding-left: 0;
 }
 .rate-list li {
   box-sizing: content-box;
@@ -86,26 +99,26 @@ defineProps({
 .rate.a {
   --bg-color: #178c3d;
   --top: -10px;
-  --left: 36px;
+  --left: -4px;
 }
 .rate.b {
   --bg-color: #85bb2f;
   --top: -10px;
-  --left: 76px;
+  --left: 36px;
 }
 .rate.c {
   --bg-color: #fecb02;
   --top: -10px;
-  --left: 116px;
+  --left: 76px;
 }
 .rate.d {
   --bg-color: #ff8e12;
   --top: -10px;
-  --left: 158px;
+  --left: 118px;
 }
 .rate.e {
   --bg-color: #e30021;
   --top: -10px;
-  --left: 198px;
+  --left: 158px;
 }
 </style>

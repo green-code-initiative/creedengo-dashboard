@@ -1,17 +1,42 @@
 # Ignore all files and folders starting with ".", except a few exceptions
 .*
+!.changeset/
 !.gitignore
 !.gitattributes
 !.github/
+!.nvmrc
 
 # Ignore generated files
-node_modules
+node_modules/
+**/.turbo/
+**/node_modules/
+**/coverage
+**/test-results/
+**/playwright-report/
+**/dist/
+**/docs/
+**/web-ext-artifacts/
+**/node/
+**/target/
+
+# Logs
+**/pnpm-debug.log*
+**/*storybook.log
+**/*.tsbuildinfo
 
 # Local files
 .DS_Store
 *.local
+**/*.local
 
 # Editor directories and files to keep or ignore
 !.editorconfig
 !.vscode/extensions.json
 !.vscode/settings.json
+
+# VSCode extensions
+!.vscode/launch.json
+!.vscode-test.js
+!.vscodeignore
+.vscode-test/
+*.vsix

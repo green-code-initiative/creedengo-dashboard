@@ -17,6 +17,7 @@
     "verify": {},
     "sonar": {},
     "storybook": {},
+    "build-storybook": {},
     "dev": {
       "cache": false,
       "persistent": true

@@ -14,7 +14,13 @@ const preview = {
         color: /(background|color)$/i,
         date: /Date$/i
       }
-    }
+    },
+    docs: {
+      canvas: {
+        sourceState: 'shown',
+      },
+      codePanel: true,
+    },
   },
   loaders: [mswLoader],
 }

@@ -1,0 +1,15 @@
+import * as assert from 'assert';
+
+import vscode from '../../compat/vscode.cjs'
+import { CreedengoScoreViewProvider } from './score.view.mjs'
+
+describe('Extension Test Suite', () => {
+  suiteTeardown(() => {
+    vscode.window.showInformationMessage('All tests done!');
+  });
+
+  test('Sample test', () => {
+    assert.strictEqual(-1, [1, 2, 3].indexOf(5));
+    assert.strictEqual(-1, [1, 2, 3].indexOf(0));
+  });
+});
