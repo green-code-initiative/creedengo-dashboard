@@ -1,11 +1,11 @@
 <script setup>
 import { onMounted, reactive } from 'vue';
 
-import { AbcdeScore } from '@creedengo/vue-ui'
 import SonarAPI from '@creedengo/sonar-services'
 import core from '@creedengo/core-services';
+import { DashboardPageTemplate } from '@creedengo/vue-ui';
 
-const { api, calculateProjectScore } = core;
+const { api, calculateProjectScore, getScoreTexts } = core;
 
 api.init(SonarAPI)
 const props = defineProps({
@@ -23,7 +23,9 @@ const state = reactive({ score: '', error: null });
 
 onMounted(async () => {
   try {
-    state.score = await calculateProjectScore({ ...props });
+    const value = await calculateProjectScore({ ...props });
+    const { label, description, tips } = getScoreTexts(value);
+    state.score = { value, label, description, tips };
   } catch (error) {
     state.score = 'N/A';
     globalThis.console.error('Error fetching score:', error);
@@ -45,7 +47,7 @@ onMounted(async () => {
         <i class="fa fa-exclamation-triangle" /> Score not available - {{ state.error }}
       </span>
       <span v-else>
-        <AbcdeScore :value="state.score" />
+        <DashboardPageTemplate :score="state.score" />
       </span>
     </div>
   </main>
