@@ -114,7 +114,7 @@
     "@types/vscode": "^1.104.0",
     "@vscode/test-cli": "^0.0.11",
     "@vscode/test-electron": "^2.5.2",
-    "@vscode/vsce": "^3.6.0",
+    "@vscode/vsce": "^3.6.2",
     "cpy": "^12.0.1",
     "esbuild": "^0.25.10",
     "eslint": "^9.36.0",
