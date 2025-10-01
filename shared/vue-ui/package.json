@@ -25,7 +25,7 @@
     "build-storybook": "storybook build -o ./docs"
   },
   "dependencies": {
-    "vue": "^3.5.21"
+    "vue": "^3.5.22"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.0.0",
