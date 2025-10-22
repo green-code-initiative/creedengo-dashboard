@@ -175,6 +175,12 @@
                                   <exclude>javax/annotation/**</exclude>
                               </excludes>
                           </filter>
+                          <filter>
+                              <artifact>org.apache.commons:commons-lang3:*</artifact>
+                              <excludes>
+                                  <exclude>META-INF/**</exclude>
+                              </excludes>
+                          </filter>
                       </filters>
                   </configuration>
               </execution>
