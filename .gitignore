@@ -18,6 +18,7 @@ node_modules/
 **/web-ext-artifacts/
 **/node/
 **/target/
+package-lock.json
 
 # Logs
 **/pnpm-debug.log*

@@ -12,6 +12,8 @@
 
     <description>Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects</description>
 
+    <inceptionYear>2025</inceptionYear>
+
     <url>https://github.com/green-code-initiative/creedengo-dashboard</url>
     <organization>
         <name>green-code-initiative</name>
