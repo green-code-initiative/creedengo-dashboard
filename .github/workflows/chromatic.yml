@@ -1,0 +1,16 @@
+name: Chromatic
+
+on: workflow_dispatch
+
+jobs:
+  chromatic:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Publish vue-ui to Chromatic
+        uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_VUE_UI_PROJECT_TOKEN }}
+          outputDir: ./docs
+          workingDir: shared/vue-ui
+          skip: "dependabot/**"
