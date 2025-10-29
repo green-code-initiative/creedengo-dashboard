@@ -8,7 +8,7 @@
 
     <packaging>sonar-plugin</packaging>
 
-    <name>Creedengo Dashboard plugin</name>
+    <name>Creedengo Dashboard</name>
 
     <description>Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects</description>
 

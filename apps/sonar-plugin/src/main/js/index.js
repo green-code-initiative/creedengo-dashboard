@@ -7,7 +7,9 @@ import "@creedengo/vue-dashboard/stylesheet"
 function start(options) {
     const rootNode = options.el;
     rootNode.innerHTML = `
-        <div id="app"</div>
+        <H1>Creedengo Dashboard - TOTO 1</H1>
+        <div id="app"></div>
+        <H1>Creedengo Dashboard - TOTO 2</H1>
     `;
     return () => stop(rootNode)
 }
@@ -17,4 +19,4 @@ function stop(rootNode) {
     rootNode.innerHTML = ''
 }
 
-window.registerExtension('creedengo/view', start, true)
+window.registerExtension('creedengodashboard/view', start, true)

@@ -1,5 +1,5 @@
 /*
- * Creedengo Dashboard plugin - Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects
+ * Creedengo Dashboard - Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects
  * Copyright © 2025 Green Code Initiative (https://green-code-initiative.org)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -21,8 +21,6 @@ import org.greencodeinitiative.creedengo.dashboard.web.DashboardPageDefinition;
 import org.sonar.api.Plugin;
 
 public class DashboardPlugin implements Plugin {
-
-    public static final String NAME = "Creedengo";
 
     @Override
     public void define(Context context) {
