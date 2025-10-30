@@ -18,8 +18,10 @@ export default defineConfig({
     rollupOptions: {
       external: [],
       output: {
-        entryFileNames: `assets/view.js`,
-        assetFileNames: `assets/view.css`
+//        entryFileNames: `assets/view.js`,
+//        assetFileNames: `assets/view.css`
+        entryFileNames: `assets/static/view.js`,
+        assetFileNames: `assets/static/view.css`
       }
     }
   }

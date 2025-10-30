@@ -11,8 +11,8 @@
     "nodeVersion": "22.17.1"
   },
   "exports": {
-    "./script": "./dist/view.js",
-    "./stylesheet": "./dist/view.css" 
+    "./script": "./dist/assets/view.js",
+    "./stylesheet": "./dist/assets/view.css"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",
