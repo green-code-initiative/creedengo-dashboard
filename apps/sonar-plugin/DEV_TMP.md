@@ -26,9 +26,16 @@ Ceci est valable le temps de la mise en place d'un système automatique de test 
 - 4 - builder le plugin sonar "creedengo-dashboard" en local
   - aller dans le répertoire creedengo-dashboard/apps/sonar-plugin
   - lancer la commande : ./tool_build.sh
-- 5 installer le plugin buildé dans le sonarqube local (ex : celui de creedengo-python qui est déjà lancé et dispo)
+- 5 - installer le plugin buildé dans le sonarqube local (ex : celui de creedengo-python qui est déjà lancé et dispo)
   - lancer la commande : ./tool_docker-install-plugin.sh (WARNING : il y a en dur en param!ètres interne le fait qu'on utilise le plugin creedengo-python comme support, notamment référence au nom du sonar local pour le python => à variabiliser plus tard)
   - lancer la commande de log pour vérifier le bon redémarrage du sonar : ./tool_docker-logs.sh (dans le répertoire "creedengo-python" car c'est lui qui pilote le Soanrqube)
   - WARNING : le sonarqube a changé de port !!! (rechecker le port dans docker pour pouvoir se reconnecter à l'IHM web - les credentials sont conservés et l'analyse projet aussi)
   - vérifier via l'IHM web que le plugin creedengo-dashboard est bien installé (dans le marketplace de la partier d'admin de sonarqube)
   - vérifier que le plugin fonctionne sur l'IHM : aller dans le projet analysé, puis menu "More"
+
+## TODO DDC 
+- automatiser ce process de test manuel en automaytique via le système d'integration présent dans creedengo-python par exemple
+  - différence : un 1er plugin doit être dispo, le profil installé et un projet analysé
+  - piste : 
+    - utiliser le système de package de github pour y installer les JARs de chaque plugin (en même temps qu'une release via github action)
+    - voir comment maven peut référencer ces JARs dans les packages github pour pouvoir les utiliser pour le système TI
