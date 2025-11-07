@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
-NOM_CONTAINER=sonar_creedengo_dashboard
+#NOM_CONTAINER=sonar_creedengo_dashboard
+NOM_CONTAINER=sonar_creedengo_python
 REPERTOIRE_EXTENSIONS=/opt/sonarqube/extensions/plugins/.
 
 echo "********** AVANT installation du plugin (répertoire '') :"
