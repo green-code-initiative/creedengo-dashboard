@@ -8,9 +8,11 @@
 
     <packaging>sonar-plugin</packaging>
 
-    <name>Creedengo Dashboard plugin</name>
+    <name>Creedengo Dashboard</name>
 
     <description>Provides a Creedengo Sustainability Dashboard to have an overview of the status and the main sustainability issue of the projects</description>
+
+    <inceptionYear>2025</inceptionYear>
 
     <url>https://github.com/green-code-initiative/creedengo-dashboard</url>
     <organization>
@@ -171,6 +173,12 @@
                               <excludes>
                                   <exclude>META-INF/**</exclude>
                                   <exclude>javax/annotation/**</exclude>
+                              </excludes>
+                          </filter>
+                          <filter>
+                              <artifact>org.apache.commons:commons-lang3:*</artifact>
+                              <excludes>
+                                  <exclude>META-INF/**</exclude>
                               </excludes>
                           </filter>
                       </filters>
