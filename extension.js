@@ -12,16 +12,16 @@ function activate(context) {
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "creedengo-for-sonar" is now active!');
+	console.log('Congratulations, your extension "creedengo" is now active!');
 
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('creedengo-for-sonar.helloWorld', function () {
+	const disposable = vscode.commands.registerCommand('creedengo.helloWorld', function () {
 		// The code you place here will be executed every time your command is executed
 
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from creedengo-for-sonar!');
+		vscode.window.showInformationMessage('Hello World from Creedengo!');
 	});
 
 	context.subscriptions.push(disposable);

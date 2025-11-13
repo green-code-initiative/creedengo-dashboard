@@ -12,14 +12,13 @@
  * @see https://github.com/SonarSource/sonarqube/blob/master/server/sonar-web/src/main/js/sonar-aligned/helpers/request.ts
  **/
 
-// TODO: identify the correct way to retrieve the Sonar authentication token
 let SONAR_TOKEN = import.meta?.env?.VITE_SONAR_TOKEN;
 let SONAR_BASE_URL = '';
 
 import { memoize, omitBy, isNil } from 'lodash-es'
 
-import { t } from './sonar-i18n'
-import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast'
+import { t } from './sonar-i18n.js'
+import { addGlobalErrorMessage, addGlobalSuccessMessage } from './sonar-toast.js'
 
 export function initSettings({ token, server }) {
   SONAR_TOKEN = token;
@@ -258,7 +257,8 @@ class Request {
    */
   submit() {
     const { url, options } = this.getSubmitData({ ...getCSRFToken() })
-    return globalThis.fetch(`${getBaseUrl()}${url}`, options)
+    const fullUrl = `${getBaseUrl()}${url}`;
+    return globalThis.fetch(fullUrl, options)
   }
 }
 

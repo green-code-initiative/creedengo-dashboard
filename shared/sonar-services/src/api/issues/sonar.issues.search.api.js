@@ -1,12 +1,13 @@
 //import sonarRequestAPI from '@sonar/sonar-request'
-import sonarRequestAPI from '../polyfills/sonar-request'
+import sonarRequestAPI from '../polyfills/sonar-request.js'
+import { SUSTAINABILITY_TAGS } from '../constants.js'
 
 const API = 'api/issues'
 const routeUrl = `${API}/search`
 const sustainabilitySearchParams = {
   issueStatuses: 'OPEN,CONFIRMED',
   statuses: 'OPEN,CONFIRMED,REOPENED', // legacy support 
-  tags: 'sustainability,greensight,ecocode,creedengo',
+  tags: SUSTAINABILITY_TAGS,
 }
 
 /**
@@ -39,18 +40,19 @@ function facetFormater(result, severity) {
  * Get an issues facet for a given project, branch, and facet name.
  * 
  * @param {string} facetName 
- * @param {Object} options
- * @param {string} options.project key of the project
- * @param {string} options.branch 
+ * @param {Object} config
+ * @param {string} config.project key of the project
+ * @param {string} config.branch 
  * @returns Promise<{[key: string]: number}>
  */
-export async function getIssuesFacet(facetName, { project, branch}) {
+export async function getIssuesFacet(facetName, { project, branch, severity }) {
   const searchParams = {
     ...sustainabilitySearchParams,
     componentKeys: project,
     branch,
+    severity,
     facets: facetName,
-    ps: 1, // no issues parsing, we only want the facets
+    ps: 0, // no issues parsing, we only want the facets
   }
   const { facets } = await sonarRequestAPI.getJSON(routeUrl, searchParams);
 

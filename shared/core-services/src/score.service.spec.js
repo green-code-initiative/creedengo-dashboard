@@ -15,7 +15,7 @@ beforeAll(() => {
 });
 
 afterAll(() => {
-  // Mock the API calls
+  // Clean the API calls
 });
 
 describe('calculateProjectScore', () => {

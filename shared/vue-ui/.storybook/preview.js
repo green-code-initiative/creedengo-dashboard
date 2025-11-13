@@ -6,9 +6,10 @@ export default {
       },
     },
     docs: {
-        canvas: {
-            sourceState: 'shown'
-        }
-    }
+      canvas: {
+        sourceState: 'shown',
+      },
+      codePanel: true,
+    },
   },
 };

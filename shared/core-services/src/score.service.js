@@ -3,7 +3,35 @@
  * @description This module provides functions to calculate the ABCDE score based on SonarQube issues.
  */
 
-import api from './adapter';
+import api from './adapter.js';
+
+const scoreTexts = {
+    A: { 
+        label: "Your app is fully optimized, congratulations!",
+        description: "Don't forget to check it again if you update your app.",
+        tips: "100 % optimized, congrats!"
+    },
+    B: { 
+        label: "Your app is nearly optimized.",
+        description: "Well done! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.",
+        tips: "You have between 1 and 9 minor severities."
+    },
+    C: { 
+        label: "Your app is not fully optimized.",
+        description: "Keep going! You can continue by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
+        tips: "You have between 10 and 19 minor severities or you have 1 or many major severity."
+    },
+    D: { 
+        label: "Many elements of your application can be optimized.",
+        description: "Don't worry! You can start by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
+        tips: "You have more than 20 minor severities or more than 10 major severities or 1 or many critical severities."
+    },
+    E: {
+        label: "Several elements of your application can be optimized.",
+        description: "Don't worry! You can start by fixing the recommended rule on the right side. This is the one that currently has the highest impact on your app.", 
+        tips: "You have 1 or more than 1 blocker severities."
+    }
+};
 
 /**
  * Calculate an ABCDE score from the sustainability issues related to the project size.
@@ -34,4 +62,13 @@ export async function calculateProjectScore(config) {
         return 'B';
     }
     return 'A';
+}
+
+/**
+ * Returns the texts corresponding to the score.
+ * @param {string} score the value of the project's score.
+ * @returns {Object} texts corresponding to the project score.
+ */
+export function getScoreTexts(score) {
+  return scoreTexts[score]
 }

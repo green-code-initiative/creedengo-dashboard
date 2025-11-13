@@ -1,0 +1,92 @@
+export default {
+  "rule": {
+    "key": "squid:ClassCyclomaticComplexity",
+    "repo": "squid",
+    "name": "Avoid too complex class",
+    "htmlDesc": "<p>The Cyclomatic Complexity is measured by the number of (&&, ||)\n\toperators and (if, while, do, for, ?:, catch, switch, case, return,\n\tthrow) statements in the body of a class plus one for each constructor,\n\tmethod (but not getter/setter), static initializer, or instance\n\tinitializer in the class. The last return stament in method, if exists,\n\tis not taken into account.</p>\n<p>\n\tEven when the Cyclomatic Complexity of a class is very high, this\n\tcomplexity might be well distributed among all methods. Nevertheless,\n\tmost of the time, a very complex class is a class which breaks the <a\n\t\thref='http://en.wikipedia.org/wiki/Single_responsibility_principle'>Single\n\t\tResponsibility Principle</a> and which should be re-factored to be split\n\tin several classes.\n</p>",
+    "severity": "MAJOR",
+    "status": "READY",
+    "internalKey": "ClassCyclomaticComplexity",
+    "template": false,
+    "tags": [],
+    "sysTags": [
+      "brain-overload"
+    ],
+    "remFnType": "LINEAR_OFFSET",
+    "remFnGapMultiplier": "5d",
+    "remFnBaseEffort": "10h",
+    "defaultRemFnType": "LINEAR_OFFSET",
+    "defaultRemFnGapMultiplier": "6d",
+    "defaultRemFnBaseEffort": "11h",
+    "remFnOverloaded": true,
+    "gapDescription": "java.S001.effortToFix",
+    "lang": "java",
+    "langName": "Java",
+    "scope": "MAIN",
+    "isExternal": false,
+    "type": "CODE_SMELL",
+    "cleanCodeAttributeCategory": "INTENTIONAL",
+    "cleanCodeAttribute": "CLEAR",
+    "impacts": [
+      {
+        "softwareQuality": "MAINTAINABILITY",
+        "severity": "HIGH"
+      }
+    ],
+    "descriptionSections": [
+      {
+        "key": "root_cause",
+        "content": "<h3 class=\"page-title coding-rules-detail-header\"><big>Unnecessary imports should be removed</big></h3>"
+      },
+      {
+        "key": "how_to_fix",
+        "content": "<h2>Recommended Secure Coding Practices</h2><ul><li> activate Spring Security's CSRF protection. </li></ul>",
+        "context": {
+          "displayName": "Spring",
+          "key": "spring"
+        }
+      },
+      {
+        "key": "how_to_fix",
+        "content": "<h2>Recommended Secure Coding Practices</h2><ul><li> activate hibernate protection. </li></ul>",
+        "context": {
+          "displayName": "Hibernate",
+          "key": "hibernate"
+        }
+      }
+    ],
+    "params": [
+      {
+        "key": "max",
+        "desc": "Maximum complexity allowed.",
+        "defaultValue": "200"
+      }
+    ]
+  },
+  "actives": [
+    {
+      "qProfile": "Sonar way with Findbugs:java",
+      "inherit": "NONE",
+      "severity": "MAJOR",
+      "prioritizedRule": false,
+      "params": [
+        {
+          "key": "max",
+          "value": "200"
+        }
+      ]
+    },
+    {
+      "qProfile": "Sonar way:java",
+      "inherit": "NONE",
+      "severity": "MAJOR",
+      "prioritizedRule": true,
+      "params": [
+        {
+          "key": "max",
+          "value": "200"
+        }
+      ]
+    }
+  ]
+}
