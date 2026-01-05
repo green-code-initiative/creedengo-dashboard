@@ -28,8 +28,8 @@
     "vue": "^3.5.26"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/cli": "^20.3.0",
+    "@commitlint/config-conventional": "^20.3.0",
     "@creedengo/eslint-config": "workspace:^",
     "@creedengo/vitest-config": "workspace:*",
     "@storybook/addon-a11y": "^10.1.11",
