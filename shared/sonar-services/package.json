@@ -20,7 +20,7 @@
   "keywords": [],
   "author": "",
   "dependencies": {
-    "lodash-es": "4.17.22",
+    "lodash-es": "4.17.23",
     "vue3-toastify": "^0.2.8"
   },
   "devDependencies": {
