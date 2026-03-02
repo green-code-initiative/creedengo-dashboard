@@ -110,15 +110,15 @@
   },
   "devDependencies": {
     "@types/mocha": "^10.0.10",
-    "@types/node": "^25.3.0",
+    "@types/node": "^25.3.3",
     "@types/vscode": "^1.109.0",
     "@vscode/test-cli": "^0.0.12",
     "@vscode/test-electron": "^2.5.2",
     "@vscode/vsce": "^3.7.1",
     "cpy": "^13.2.1",
     "esbuild": "^0.27.3",
-    "eslint": "^10.0.1",
-    "globals": "^17.3.0"
+    "eslint": "^10.0.2",
+    "globals": "^17.4.0"
   },
   "packageManager": "pnpm@10.22.0+sha512.bf049efe995b28f527fd2b41ae0474ce29186f7edcb3bf545087bd61fbbebb2bf75362d1307fda09c2d288e1e499787ac12d4fcb617a974718a6051f2eee741c"
 }
