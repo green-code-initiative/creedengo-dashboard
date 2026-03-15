@@ -18,27 +18,23 @@ Once you cloned the repository and went in its main foler, 3 solutions can be us
 If working on your system, you can use the `Makefile` to install the main tools (it also provides `test`, `build`, and `dev` commands)
 
 ```sh
-make install
+make init
 ```
 
-### script/install.sh
-
-Run [./script/install.sh](./scripts/install.sh) or read ir to retrieve the commands used  
-
 ### Manually install each tool
-
-### nvm
-
-Follow the [nvm installation process](https://github.com/nvm-sh/nvm?tab=readme-ov-file#install--update-script)
-
-> NOTE: you nay not use it and handle the Node.js version yourself but you would risk unexpected behaviors
 
 ### The expected node.js version
 
 The expected version is defined in the `.nvmrc` file.
 
 ```sh
-nvm use
+make node
+```
+
+or  
+
+```sh
+pnpm
 ```
 
 Nvm will probably ask to install a specific node version using the `nvm install` command
