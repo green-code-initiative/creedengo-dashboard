@@ -1,0 +1,161 @@
+{
+  "total": 19,
+  "p": 1,
+  "ps": 100,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 100,
+    "total": 19
+  },
+  "effortTotal": 95,
+  "issues": [
+    {
+      "key": "6631fe1e-5775-4ca6-bab7-b90e2104f8f8",
+      "rule": "java:S6909",
+      "severity": "MAJOR",
+      "component": "org.green-code-initiative:creedengo-java-plugin-test-project:src/main/java/org/greencodeinitiative/creedengo/java/checks/AvoidSetConstantInBatchUpdateCheck.java",
+      "project": "org.green-code-initiative:creedengo-java-plugin-test-project",
+      "line": 86,
+      "status": "OPEN",
+      "message": "Move this loop-invariant setter invocation out of this loop.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "sustainability",
+        "sql"
+      ],
+      "creationDate": "2025-03-30T23:19:03+0200",
+      "updateDate": "2025-12-02T21:25:26+0100",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN"
+    },
+    {
+      "key": "c316e8eb-977d-442e-82e5-2d2cfbe41685",
+      "rule": "java:S6912",
+      "severity": "MAJOR",
+      "component": "org.green-code-initiative:creedengo-java-plugin-test-project:src/main/java/org/greencodeinitiative/creedengo/java/checks/AvoidSQLRequestInLoopCheck.java",
+      "project": "org.green-code-initiative:creedengo-java-plugin-test-project",
+      "line": 57,
+      "status": "OPEN",
+      "message": "Use \"addBatch\" and \"executeBatch\" to execute multiple SQL statements in a single call.",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "sustainability",
+        "sql"
+      ],
+      "creationDate": "2023-03-17T17:13:02+0100",
+      "updateDate": "2025-12-02T21:25:26+0100",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN"
+    },
+    {
+      "key": "c910567f-d9cf-49ef-aec6-ec6ad376f42f",
+      "rule": "java:S6905",
+      "severity": "MAJOR",
+      "component": "org.green-code-initiative:creedengo-java-plugin-test-project:src/main/java/org/greencodeinitiative/creedengo/java/checks/AvoidSQLRequestInLoopCheck.java",
+      "project": "org.green-code-initiative:creedengo-java-plugin-test-project",
+      "line": 22,
+      "status": "OPEN",
+      "message": "Don't use the query \"SELECT *\".",
+      "effort": "5min",
+      "debt": "5min",
+      "tags": [
+        "sustainability",
+        "sql"
+      ],
+      "creationDate": "2023-03-09T23:32:36+0100",
+      "updateDate": "2026-02-23T22:39:34+0100",
+      "type": "CODE_SMELL",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ],
+      "issueStatus": "OPEN"
+    }
+  ],
+  "components": [
+    {
+      "key": "org.green-code-initiative:creedengo-java-plugin-test-project",
+      "enabled": true,
+      "qualifier": "TRK",
+      "name": "creedengo Java Sonar Plugin Test Project",
+      "longName": "creedengo Java Sonar Plugin Test Project"
+    },
+    {
+      "key": "org.green-code-initiative:creedengo-java-plugin-test-project:src/main/java/org/greencodeinitiative/creedengo/java/checks/AvoidSetConstantInBatchUpdateCheck.java",
+      "enabled": true,
+      "qualifier": "FIL",
+      "name": "AvoidSetConstantInBatchUpdateCheck.java",
+      "longName": "src/main/java/org/greencodeinitiative/creedengo/java/checks/AvoidSetConstantInBatchUpdateCheck.java",
+      "path": "src/main/java/org/greencodeinitiative/creedengo/java/checks/AvoidSetConstantInBatchUpdateCheck.java"
+    }
+  ],
+  "facets": [
+    {
+      "property": "severities",
+      "values": [
+        {
+          "val": "MAJOR",
+          "count": 19
+        },
+        {
+          "val": "INFO",
+          "count": 0
+        },
+        {
+          "val": "MINOR",
+          "count": 0
+        },
+        {
+          "val": "CRITICAL",
+          "count": 0
+        },
+        {
+          "val": "BLOCKER",
+          "count": 0
+        }
+      ]
+    },
+    {
+      "property": "types",
+      "values": [
+        {
+          "val": "CODE_SMELL",
+          "count": 19
+        },
+        {
+          "val": "BUG",
+          "count": 0
+        },
+        {
+          "val": "VULNERABILITY",
+          "count": 0
+        }
+      ]
+    }
+  ]
+}

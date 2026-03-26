@@ -42,7 +42,7 @@ public class SonarRulesApiIT {
         List<JSONObject> rules = rulesApi.findRules("my-project", "main");
 
         assertNotNull("Rules list should not be null", rules);
-        assertEquals("Should return 2 rules", 2, rules.size());
+        assertEquals("Should return 5 rules", 5, rules.size());
     }
 
     @Test
@@ -50,8 +50,8 @@ public class SonarRulesApiIT {
         List<JSONObject> rules = rulesApi.findRules("my-project", "main");
 
         JSONObject first = rules.get(0);
-        assertEquals("java:S1234", first.getString("key"));
-        assertEquals("Avoid energy-consuming pattern", first.getString("name"));
+        assertEquals("java:S6923", first.getString("key"));
+        assertEquals("Motion Sensor should not use gyroscope", first.getString("name"));
         assertEquals("MAJOR", first.getString("severity"));
         assertEquals("java", first.getString("lang"));
         assertEquals("CODE_SMELL", first.getString("type"));
@@ -62,9 +62,9 @@ public class SonarRulesApiIT {
         List<JSONObject> rules = rulesApi.findRules("my-project", "main");
 
         JSONObject first = rules.get(0);
-        assertTrue("Rule should have tags", first.has("tags"));
-        assertTrue("Tags should contain 'creedengo'",
-                first.getJSONArray("tags").toString().contains("creedengo"));
+        assertTrue("Rule should have sysTags", first.has("sysTags"));
+        assertTrue("sysTags should contain 'sustainability'",
+                first.getJSONArray("sysTags").toString().contains("sustainability"));
     }
 
     // ---- getRuleDetails ----
@@ -80,8 +80,8 @@ public class SonarRulesApiIT {
     public void getRuleDetails_shouldContainExpectedFields() throws SonarApiException {
         JSONObject rule = rulesApi.getRuleDetails("java:S1234");
 
-        assertEquals("java:S1234", rule.getString("key"));
-        assertEquals("Avoid energy-consuming pattern", rule.getString("name"));
+        assertEquals("java:S6923", rule.getString("key"));
+        assertEquals("Motion Sensor should not use gyroscope", rule.getString("name"));
         assertEquals("MAJOR", rule.getString("severity"));
         assertEquals("Java", rule.getString("langName"));
     }
@@ -90,8 +90,9 @@ public class SonarRulesApiIT {
     public void getRuleDetails_shouldContainDescription() throws SonarApiException {
         JSONObject rule = rulesApi.getRuleDetails("java:S1234");
 
-        assertTrue("Rule should have HTML description", rule.has("htmlDesc"));
-        assertTrue("Rule should have Markdown description", rule.has("mdDesc"));
-        assertFalse("HTML description should not be empty", rule.getString("htmlDesc").isEmpty());
+        // Modern SonarQube uses descriptionSections instead of htmlDesc/mdDesc
+        assertTrue("Rule should have descriptionSections", rule.has("descriptionSections"));
+        assertFalse("descriptionSections should not be empty",
+                rule.getJSONArray("descriptionSections").isEmpty());
     }
 }

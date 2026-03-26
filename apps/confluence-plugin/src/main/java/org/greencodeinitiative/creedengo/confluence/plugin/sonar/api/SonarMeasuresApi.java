@@ -19,11 +19,10 @@ package org.greencodeinitiative.creedengo.confluence.plugin.sonar.api;
 
 import java.util.Map;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import org.greencodeinitiative.creedengo.confluence.plugin.sonar.SonarApiException;
 import org.greencodeinitiative.creedengo.confluence.plugin.sonar.SonarClient;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 /**
  * Java equivalent of {@code sonar.measures.component.api.js}.
@@ -67,15 +66,20 @@ public class SonarMeasuresApi {
         if (measures == null || measures.length() == 0) {
             return 0;
         }
-        JSONObject firstMeasure = measures.getJSONObject(0);
-        String value = firstMeasure.optString("value", null);
-        if (value == null) {
-            return 0;
+        for (int i = 0; i < measures.length(); i++) {
+            JSONObject m = measures.getJSONObject(i);
+            if ("ncloc".equals(m.optString("metric"))) {
+                String value = m.optString("value", null);
+                if (value == null) {
+                    return 0;
+                }
+                try {
+                    return Long.parseLong(value);
+                } catch (NumberFormatException e) {
+                    return 0;
+                }
+            }
         }
-        try {
-            return Long.parseLong(value);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
+        return 0;
     }
 }

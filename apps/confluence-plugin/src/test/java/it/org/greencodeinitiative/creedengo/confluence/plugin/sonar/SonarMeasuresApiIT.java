@@ -34,7 +34,7 @@ public class SonarMeasuresApiIT {
     public void getNumberOfLineOfCode_shouldReturnExpectedValue() throws SonarApiException {
         long ncloc = measuresApi.getNumberOfLineOfCode("my-project", "main");
 
-        assertEquals("Should return 12345 lines of code", 12345L, ncloc);
+        assertEquals("Should return 1853 lines of code", 1853L, ncloc);
     }
 
     @Test

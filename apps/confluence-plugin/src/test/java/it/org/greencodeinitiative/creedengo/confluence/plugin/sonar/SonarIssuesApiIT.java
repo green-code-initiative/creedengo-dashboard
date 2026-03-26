@@ -43,7 +43,7 @@ public class SonarIssuesApiIT {
         List<JSONObject> issues = issuesApi.findIssues("my-project", "main");
 
         assertNotNull("Issues list should not be null", issues);
-        assertEquals("Should return 2 issues", 2, issues.size());
+        assertEquals("Should return 3 issues", 3, issues.size());
     }
 
     @Test
@@ -51,12 +51,12 @@ public class SonarIssuesApiIT {
         List<JSONObject> issues = issuesApi.findIssues("my-project", "main");
 
         JSONObject first = issues.get(0);
-        assertEquals("AYz1234", first.getString("key"));
-        assertEquals("java:S1234", first.getString("rule"));
+        assertEquals("6631fe1e-5775-4ca6-bab7-b90e2104f8f8", first.getString("key"));
+        assertEquals("java:S6909", first.getString("rule"));
         assertEquals("MAJOR", first.getString("severity"));
         assertEquals("OPEN", first.getString("status"));
-        assertEquals("my-project", first.getString("project"));
-        assertEquals(42, first.getInt("line"));
+        assertEquals("org.green-code-initiative:creedengo-java-plugin-test-project", first.getString("project"));
+        assertEquals(86, first.getInt("line"));
     }
 
     @Test
@@ -64,10 +64,10 @@ public class SonarIssuesApiIT {
         List<JSONObject> issues = issuesApi.findIssues("my-project", "main");
 
         JSONObject second = issues.get(1);
-        assertEquals("AYz5678", second.getString("key"));
-        assertEquals("java:S5678", second.getString("rule"));
-        assertEquals("MINOR", second.getString("severity"));
-        assertEquals("CONFIRMED", second.getString("status"));
+        assertEquals("c316e8eb-977d-442e-82e5-2d2cfbe41685", second.getString("key"));
+        assertEquals("java:S6912", second.getString("rule"));
+        assertEquals("MAJOR", second.getString("severity"));
+        assertEquals("OPEN", second.getString("status"));
     }
 
     @Test
@@ -93,9 +93,9 @@ public class SonarIssuesApiIT {
     public void getIssuesFacet_severities_shouldContainExpectedValues() throws SonarApiException {
         Map<String, Integer> facet = issuesApi.getIssuesFacet("severities", "my-project", "main", null);
 
-        assertEquals("MAJOR count", Integer.valueOf(5), facet.get("major"));
-        assertEquals("MINOR count", Integer.valueOf(3), facet.get("minor"));
-        assertEquals("CRITICAL count", Integer.valueOf(1), facet.get("critical"));
+        assertEquals("MAJOR count", Integer.valueOf(19), facet.get("major"));
+        assertEquals("MINOR count", Integer.valueOf(0), facet.get("minor"));
+        assertEquals("CRITICAL count", Integer.valueOf(0), facet.get("critical"));
     }
 
     @Test
@@ -111,8 +111,8 @@ public class SonarIssuesApiIT {
     public void getIssuesFacet_types_shouldReturnExpectedValues() throws SonarApiException {
         Map<String, Integer> facet = issuesApi.getIssuesFacet("types", "my-project", "main", null);
 
-        assertEquals("CODE_SMELL count", Integer.valueOf(7), facet.get("code_smell"));
-        assertEquals("BUG count", Integer.valueOf(2), facet.get("bug"));
+        assertEquals("CODE_SMELL count", Integer.valueOf(19), facet.get("code_smell"));
+        assertEquals("BUG count", Integer.valueOf(0), facet.get("bug"));
     }
 
     @Test(expected = SonarApiException.class)

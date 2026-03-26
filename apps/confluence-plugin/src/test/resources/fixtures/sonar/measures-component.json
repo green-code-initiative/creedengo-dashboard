@@ -1,0 +1,57 @@
+{
+  "component": {
+    "key": "org.green-code-initiative:creedengo-java-plugin-test-project",
+    "name": "creedengo Java Sonar Plugin Test Project",
+    "qualifier": "TRK",
+    "measures": [
+      {
+        "metric": "coverage",
+        "value": "0.0",
+        "bestValue": false
+      },
+      {
+        "metric": "alert_status",
+        "value": "OK"
+      },
+      {
+        "metric": "bugs",
+        "value": "71",
+        "bestValue": false
+      },
+      {
+        "metric": "reliability_rating",
+        "value": "5.0",
+        "bestValue": false
+      },
+      {
+        "metric": "code_smells",
+        "value": "381",
+        "bestValue": false
+      },
+      {
+        "metric": "security_rating",
+        "value": "5.0",
+        "bestValue": false
+      },
+      {
+        "metric": "ncloc",
+        "value": "1853"
+      },
+      {
+        "metric": "vulnerabilities",
+        "value": "9",
+        "bestValue": false
+      },
+      {
+        "metric": "sqale_index",
+        "value": "2213",
+        "bestValue": false
+      },
+      {
+        "metric": "sqale_rating",
+        "value": "1.0",
+        "bestValue": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "pullRequests": [
+    {
+      "key": "42",
+      "title": "Fix sustainability issues",
+      "branch": "feature/green",
+      "base": "main",
+      "status": {"qualityGateStatus": "OK"}
+    },
+    {
+      "key": "43",
+      "title": "Add ecocode rules",
+      "branch": "feature/eco",
+      "base": "main",
+      "status": {"qualityGateStatus": "ERROR"}
+    }
+  ]
+}

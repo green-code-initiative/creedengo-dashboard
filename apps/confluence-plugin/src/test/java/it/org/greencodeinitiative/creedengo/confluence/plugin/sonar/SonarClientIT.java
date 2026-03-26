@@ -43,7 +43,7 @@ public class SonarClientIT {
 
         assertNotNull("Response should not be null", response);
         assertTrue("Response should contain 'issues'", response.has("issues"));
-        assertEquals(2, response.getJSONArray("issues").length());
+        assertEquals(3, response.getJSONArray("issues").length());
     }
 
     @Test

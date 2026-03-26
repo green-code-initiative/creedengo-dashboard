@@ -5,18 +5,22 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Lightweight embedded HTTP server that mocks SonarQube Web API responses.
  *
  * <p>Uses {@code com.sun.net.httpserver.HttpServer} (JDK built-in) so no
- * external dependency is required. Each API route is pre-configured with
- * realistic JSON responses matching the real SonarQube API contract.</p>
+ * external dependency is required. Responses are loaded from JSON fixture files
+ * under {@code src/test/resources/fixtures/sonar/}, which were captured from a
+ * real SonarQube instance running the
+ * {@code org.green-code-initiative:creedengo-java-plugin-test-project} project.</p>
  *
  * <p>Usage:</p>
  * <pre>{@code
@@ -29,149 +33,38 @@ import java.util.Map;
  */
 public class MockSonarServer {
 
+    private static final String FIXTURES_BASE = "/fixtures/sonar/";
+
     private HttpServer server;
     private int port;
 
-    // ---- Realistic mock JSON responses ----
+    // ---- Fixture loading ----
 
-    public static final String ISSUES_SEARCH_RESPONSE = "{"
-            + "\"total\": 2,"
-            + "\"p\": 1,"
-            + "\"ps\": 100,"
-            + "\"paging\": {\"pageIndex\": 1, \"pageSize\": 100, \"total\": 2},"
-            + "\"issues\": ["
-            + "  {"
-            + "    \"key\": \"AYz1234\","
-            + "    \"rule\": \"java:S1234\","
-            + "    \"severity\": \"MAJOR\","
-            + "    \"component\": \"my-project:src/main/java/App.java\","
-            + "    \"project\": \"my-project\","
-            + "    \"line\": 42,"
-            + "    \"status\": \"OPEN\","
-            + "    \"message\": \"Avoid this pattern for sustainability\","
-            + "    \"tags\": [\"creedengo\", \"sustainability\"],"
-            + "    \"type\": \"CODE_SMELL\""
-            + "  },"
-            + "  {"
-            + "    \"key\": \"AYz5678\","
-            + "    \"rule\": \"java:S5678\","
-            + "    \"severity\": \"MINOR\","
-            + "    \"component\": \"my-project:src/main/java/Util.java\","
-            + "    \"project\": \"my-project\","
-            + "    \"line\": 10,"
-            + "    \"status\": \"CONFIRMED\","
-            + "    \"message\": \"Use energy-efficient alternative\","
-            + "    \"tags\": [\"ecocode\"],"
-            + "    \"type\": \"CODE_SMELL\""
-            + "  }"
-            + "],"
-            + "\"components\": [],"
-            + "\"facets\": ["
-            + "  {"
-            + "    \"property\": \"severities\","
-            + "    \"values\": ["
-            + "      {\"val\": \"MAJOR\", \"count\": 5},"
-            + "      {\"val\": \"MINOR\", \"count\": 3},"
-            + "      {\"val\": \"CRITICAL\", \"count\": 1}"
-            + "    ]"
-            + "  },"
-            + "  {"
-            + "    \"property\": \"types\","
-            + "    \"values\": ["
-            + "      {\"val\": \"CODE_SMELL\", \"count\": 7},"
-            + "      {\"val\": \"BUG\", \"count\": 2}"
-            + "    ]"
-            + "  }"
-            + "]"
-            + "}";
+    /**
+     * Load a JSON fixture file from the classpath.
+     *
+     * @param name file name relative to {@code /fixtures/sonar/} (e.g. {@code "issues-search.json"})
+     * @return the file contents as a UTF-8 string
+     * @throws IllegalStateException if the fixture is not found
+     */
+    public static String loadFixture(String name) {
+        String path = FIXTURES_BASE + name;
+        try (InputStream is = MockSonarServer.class.getResourceAsStream(path)) {
+            Objects.requireNonNull(is, "Fixture not found on classpath: " + path);
+            return new String(is.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new IllegalStateException("Failed to load fixture: " + path, e);
+        }
+    }
 
-    public static final String MEASURES_COMPONENT_RESPONSE = "{"
-            + "\"component\": {"
-            + "  \"key\": \"my-project\","
-            + "  \"name\": \"My Project\","
-            + "  \"qualifier\": \"TRK\","
-            + "  \"measures\": ["
-            + "    {"
-            + "      \"metric\": \"ncloc\","
-            + "      \"value\": \"12345\""
-            + "    }"
-            + "  ]"
-            + "}"
-            + "}";
+    // ---- Cached fixture responses ----
 
-    public static final String RULES_SEARCH_RESPONSE = "{"
-            + "\"total\": 2,"
-            + "\"p\": 1,"
-            + "\"ps\": 100,"
-            + "\"rules\": ["
-            + "  {"
-            + "    \"key\": \"java:S1234\","
-            + "    \"name\": \"Avoid energy-consuming pattern\","
-            + "    \"severity\": \"MAJOR\","
-            + "    \"lang\": \"java\","
-            + "    \"tags\": [\"creedengo\", \"sustainability\"],"
-            + "    \"type\": \"CODE_SMELL\""
-            + "  },"
-            + "  {"
-            + "    \"key\": \"java:S5678\","
-            + "    \"name\": \"Prefer efficient data structure\","
-            + "    \"severity\": \"MINOR\","
-            + "    \"lang\": \"java\","
-            + "    \"tags\": [\"ecocode\"],"
-            + "    \"type\": \"CODE_SMELL\""
-            + "  }"
-            + "]"
-            + "}";
-
-    public static final String RULES_SHOW_RESPONSE = "{"
-            + "\"rule\": {"
-            + "  \"key\": \"java:S1234\","
-            + "  \"name\": \"Avoid energy-consuming pattern\","
-            + "  \"severity\": \"MAJOR\","
-            + "  \"lang\": \"java\","
-            + "  \"langName\": \"Java\","
-            + "  \"tags\": [\"creedengo\", \"sustainability\"],"
-            + "  \"type\": \"CODE_SMELL\","
-            + "  \"htmlDesc\": \"<p>This rule detects patterns that consume excessive energy.</p>\","
-            + "  \"mdDesc\": \"This rule detects patterns that consume excessive energy.\""
-            + "}"
-            + "}";
-
-    public static final String PROJECT_BRANCHES_RESPONSE = "{"
-            + "\"branches\": ["
-            + "  {"
-            + "    \"name\": \"main\","
-            + "    \"isMain\": true,"
-            + "    \"type\": \"LONG\","
-            + "    \"status\": {\"qualityGateStatus\": \"OK\"}"
-            + "  },"
-            + "  {"
-            + "    \"name\": \"develop\","
-            + "    \"isMain\": false,"
-            + "    \"type\": \"LONG\","
-            + "    \"status\": {\"qualityGateStatus\": \"OK\"}"
-            + "  }"
-            + "]"
-            + "}";
-
-    public static final String PROJECT_PULL_REQUESTS_RESPONSE = "{"
-            + "\"pullRequests\": ["
-            + "  {"
-            + "    \"key\": \"42\","
-            + "    \"title\": \"Fix sustainability issues\","
-            + "    \"branch\": \"feature/green\","
-            + "    \"base\": \"main\","
-            + "    \"status\": {\"qualityGateStatus\": \"OK\"}"
-            + "  },"
-            + "  {"
-            + "    \"key\": \"43\","
-            + "    \"title\": \"Add ecocode rules\","
-            + "    \"branch\": \"feature/eco\","
-            + "    \"base\": \"main\","
-            + "    \"status\": {\"qualityGateStatus\": \"ERROR\"}"
-            + "  }"
-            + "]"
-            + "}";
+    public static final String ISSUES_SEARCH_RESPONSE       = loadFixture("issues-search.json");
+    public static final String MEASURES_COMPONENT_RESPONSE  = loadFixture("measures-component.json");
+    public static final String PROJECT_BRANCHES_RESPONSE    = loadFixture("project-branches.json");
+    public static final String PROJECT_PULL_REQUESTS_RESPONSE = loadFixture("project-pull-requests.json");
+    public static final String RULES_SEARCH_RESPONSE        = loadFixture("rules-search.json");
+    public static final String RULES_SHOW_RESPONSE          = loadFixture("rules-show.json");
 
     public static final String ERROR_401_RESPONSE = "{\"errors\":[{\"msg\":\"Not authorized. Analyzing this project requires authentication.\"}]}";
 
