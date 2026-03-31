@@ -7,6 +7,7 @@
     "nodeVersion": "22.17.1"
   },
   "scripts": {
+    "build": "mvn package",
     "build:web": "vite build",
     "verify": "mvn -e -B verify -Dlicense.skip=true "
   },
