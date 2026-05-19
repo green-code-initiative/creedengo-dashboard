@@ -36,7 +36,7 @@ onMounted(async () => {
 
 <template>
   <header>
-    <h1>Creedengo Dashboard</h1>
+    <h1>Creedengo Dashboard </h1>
   </header>
   <main>
     <div class="wrapper">

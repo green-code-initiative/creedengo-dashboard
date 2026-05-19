@@ -82,6 +82,9 @@ importers:
       '@creedengo/sonar-services':
         specifier: workspace:*
         version: link:../../shared/sonar-services
+      '@creedengo/vue-dashboard_page':
+        specifier: 'workspace: *'
+        version: link:../../shared/vue-dashboard_page
       '@creedengo/vue-ui':
         specifier: 'workspace: *'
         version: link:../../shared/vue-ui
@@ -271,6 +274,24 @@ importers:
       '@creedengo/vitest-config':
         specifier: workspace:*
         version: link:../../configs/vitest-config
+
+  shared/vue-dashboard_page:
+    dependencies:
+      '@creedengo/core-services':
+        specifier: 'workspace: *'
+        version: link:../core-services
+      '@creedengo/sonar-services':
+        specifier: 'workspace: *'
+        version: link:../sonar-services
+      '@creedengo/vue-ui':
+        specifier: 'workspace: *'
+        version: link:../vue-ui
+      msw:
+        specifier: ^2.12.11
+        version: 2.12.11(@types/node@25.5.0)(typescript@5.9.3)
+      vue:
+        specifier: ^3.5.30
+        version: 3.5.30(typescript@5.9.3)
 
   shared/vue-ui:
     dependencies:
@@ -2193,6 +2214,7 @@ packages:
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
+    deprecated: Potential CWE-502 - Update to 1.3.1 or higher
 
   '@unrs/resolver-binding-android-arm-eabi@1.11.1':
     resolution: {integrity: sha512-ppLRUgHVaGRWUx0R0Ut06Mjo9gBaBkg3v/8AxusGLhsIotbBLuRk51rAzqLC8gq6NyyAojEXglNjzf6R948DNw==}
@@ -5678,6 +5700,7 @@ packages:
 
   uuid@8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    deprecated: uuid@10 and below is no longer supported.  For ESM codebases, update to uuid@latest.  For CommonJS codebases, use uuid@11 (but be aware this version will likely be deprecated in 2028).
     hasBin: true
 
   v8-to-istanbul@9.3.0:
@@ -5931,8 +5954,8 @@ packages:
   vue-component-type-helpers@2.2.12:
     resolution: {integrity: sha512-YbGqHZ5/eW4SnkPNR44mKVc6ZKQoRs/Rux1sxC6rdwXb4qpbOSYfDr9DsTHolOTGmIKgM9j141mZbBeg05R1pw==}
 
-  vue-component-type-helpers@3.2.5:
-    resolution: {integrity: sha512-tkvNr+bU8+xD/onAThIe7CHFvOJ/BO6XCOrxMzeytJq40nTfpGDJuVjyCM8ccGZKfAbGk2YfuZyDMXM56qheZQ==}
+  vue-component-type-helpers@3.3.0:
+    resolution: {integrity: sha512-vwR8DDsBysI9NWXa0okPFpCcW+BUC3sPTuLBNo1faMzw4QWMFd+3/lFYFu29ZN0q+8UReXWJHEYesC9dcXYCLg==}
 
   vue-docgen-api@4.79.2:
     resolution: {integrity: sha512-n9ENAcs+40awPZMsas7STqjkZiVlIjxIKgiJr5rSohDP0/JCrD9VtlzNojafsA1MChm/hz2h3PDtUedx3lbgfA==}
@@ -7857,7 +7880,7 @@ snapshots:
       storybook: 10.2.19(@testing-library/dom@10.4.0)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       type-fest: 2.19.0
       vue: 3.5.30(typescript@5.9.3)
-      vue-component-type-helpers: 3.2.5
+      vue-component-type-helpers: 3.3.0
 
   '@testing-library/dom@10.4.0':
     dependencies:
@@ -12331,7 +12354,7 @@ snapshots:
 
   vue-component-type-helpers@2.2.12: {}
 
-  vue-component-type-helpers@3.2.5: {}
+  vue-component-type-helpers@3.3.0: {}
 
   vue-docgen-api@4.79.2(vue@3.5.30(typescript@5.9.3)):
     dependencies:

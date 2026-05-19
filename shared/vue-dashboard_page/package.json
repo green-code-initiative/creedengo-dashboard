@@ -1,0 +1,29 @@
+{
+  "name": "@creedengo/vue-dashboard_page",
+  "version": "1.0.0",
+  "description": "Dashboard_page",
+  "files": [
+    "dist",
+    "lib"
+  ],
+  "main": "./lib/main.js",
+  "module": "./lib/main.js",
+  "exports": {
+    ".": {
+      "import": "./lib/main.js",
+      "require": "./lib/main.js"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "msw": "^2.12.11",
+    "vue": "^3.5.30",
+    "@creedengo/vue-ui": "workspace: *",
+    "@creedengo/sonar-services": "workspace: *",
+    "@creedengo/core-services": "workspace: *"
+  }
+}
