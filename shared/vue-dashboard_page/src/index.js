@@ -1,3 +1,3 @@
-import Dashboard from './Dashboard.vue'
+import DashboardPage from './DashboardPage/DashboardPage.vue';
 
-export { Dashboard }
+export { DashboardPage }
