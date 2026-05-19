@@ -1,0 +1,53 @@
+{
+  "name": "vue-ecoscore",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test:e2e": "playwright test",
+    "lint:oxlint": "oxlint . --fix -D correctness --ignore-path .gitignore",
+    "lint:eslint": "eslint . --fix --cache",
+    "lint": "run-s lint:*",
+    "format": "prettier --write --experimental-cli src/",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build -o docs"
+  },
+  "dependencies": {
+    "@creedengo/core-services": "workspace: *",
+    "@creedengo/sonar-services": "workspace:*",
+    "@creedengo/vue-ui": "workspace: *",
+    "vue": "^3.5.25"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.57.0",
+    "@prettier/plugin-oxc": "^0.0.5",
+    "@storybook/addon-a11y": "^10.1.9",
+    "@storybook/addon-docs": "^10.1.9",
+    "@storybook/addon-links": "^10.1.9",
+    "@storybook/builder-vite": "^10.1.9",
+    "@storybook/vue3": "^10.1.9",
+    "@storybook/vue3-vite": "^10.1.9",
+    "@vitejs/plugin-vue": "^6.0.2",
+    "@vue/eslint-config-prettier": "^10.2.0",
+    "eslint": "^9.39.1",
+    "eslint-plugin-oxlint": "~1.29.0",
+    "eslint-plugin-playwright": "^2.3.0",
+    "eslint-plugin-vue": "~10.5.1",
+    "globals": "^16.5.0",
+    "msw": "^2.12.4",
+    "msw-storybook-addon": "^2.0.6",
+    "npm-run-all2": "^8.0.4",
+    "oxlint": "~1.29.0",
+    "prettier": "3.6.2",
+    "storybook": "^10.1.9",
+    "vite": "npm:rolldown-vite@latest",
+    "vite-plugin-vue-devtools": "^8.0.5"
+  }
+}

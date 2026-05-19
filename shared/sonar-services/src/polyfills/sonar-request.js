@@ -331,7 +331,7 @@ function parseText(response) {
 /**
  * Parse error response of failed request
  *
- * @param {Reponse} response
+ * @param {Response} response
  * @returns Promise<string>
  */
 async function parseError(response) {
@@ -351,11 +351,10 @@ async function parseError(response) {
  */
 function parseErrorResponse(json) {
   const DEFAULT_MESSAGE = t('default_error_message')
-  let data
   if (!json) {
     return DEFAULT_MESSAGE
   }
-  data = 'data' in json ? json.data : json
+  const data = 'data' in json ? json.data : json
   const { message, errors } = data
   return message ?? errors?.map((error) => error.msg).join('. ') ?? DEFAULT_MESSAGE
 }

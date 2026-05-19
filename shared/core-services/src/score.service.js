@@ -41,27 +41,40 @@ const scoreTexts = {
  * @returns {Promise<string>} Score between A and E.
  */
 export async function calculateProjectScore(config) {
+    const { value } = await calculateProjectDetailedScore(config)
+    return value;
+}
 
+/**
+ * Calculate an ABCDE score from the sustainability issues related to the project size.
+ * @param {Object} config
+ * @param {string} config.project Project Key
+ * @param {string} config.branch Git Branch Name.
+ * @returns {Promise<Object>} Score between A and E.
+ */
+export async function calculateProjectDetailedScore(config) {
     const severityFacets = await api.services.getIssuesFacet('severities', config);
     const { info = 0, minor = 0, major = 0, critical = 0, blocker = 0 } = severityFacets;
     const consolidatedMinors = info + minor;
+    const stats = { minor: consolidatedMinors, major, critical, blocker };
+    const detailedScore = value => ({ value, stats });
 
     const numberOfLines = await api.services.getNumberOfLineOfCode(config);
     const minorRatio = consolidatedMinors / numberOfLines;
 
     if (blocker >= 1) {
-        return 'E';
+        return detailedScore('E');
     } 
     if (minorRatio >= 0.08 || major >= 10 || critical >= 1) {
-        return 'D';
+        return detailedScore('D');
     }
     if (consolidatedMinors >= 10 || major >= 1) {
-        return 'C';
+        return detailedScore('C');
     } 
     if (consolidatedMinors >= 1) {
-        return 'B';
+        return detailedScore('B');
     }
-    return 'A';
+    return detailedScore('A');
 }
 
 /**
@@ -71,4 +84,31 @@ export async function calculateProjectScore(config) {
  */
 export function getScoreTexts(score) {
   return scoreTexts[score]
+}
+
+export async function fetchScoreBlockData(props) { 
+  const data = {
+    value: '', 
+    error: null,
+    label: '', 
+    description: '', 
+    tips: '',
+    minorSeverities: NaN,
+    majorSeverities: NaN,
+    criticalSeverities: NaN,
+  }
+  try {
+    const { value, stats } = await calculateProjectDetailedScore({ ...props });
+    const { label, description, tips } = getScoreTexts(value);
+    Object.assign(data, { 
+        minorSeverities: stats.minor,
+        majorSeverities: stats.major,
+        criticalSeverities: stats.critical + stats.blocker,
+        value, label, description, tips 
+    });
+  } catch (error) {
+    const { type, message } = error;
+    Object.assign(data, { error: { type, message } })
+  }
+  return data;
 }
