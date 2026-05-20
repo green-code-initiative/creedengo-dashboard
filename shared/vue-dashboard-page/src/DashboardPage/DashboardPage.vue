@@ -26,7 +26,7 @@ onMounted(async () => {
     const value = await calculateProjectScore({ ...props });
     const { label, description, tips } = getScoreTexts(value);
     state.score = { value, label, description, tips };
-    const footprintValue = await getFootprintEstimation({props.project, props.branch });
+    const footprintValue = await getFootprintEstimation({project: props.project, branch: props.branch });
     state.footPrint = { score: footprintValue };
   } catch (error) {
     state.score = 'N/A';
