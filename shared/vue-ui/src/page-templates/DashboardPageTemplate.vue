@@ -1,7 +1,7 @@
 <script setup>
 import TagCard from '../organisms/TagCard/TagCard.vue';
 import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
-import FootPrintBlock from '../organisms/FootPrintBlock/FootPrintBlock.vue';
+import FootprintBlock from '../organisms/FootprintBlock/FootprintBlock.vue';
 
 const props = defineProps({
   score: {
@@ -98,9 +98,8 @@ const props = defineProps({
         v-if="footPrint" 
         class="footprint-block"
       >
-      <p><strong>Footprint</strong></p>
-        <FootPrintBlock 
-          :listeLabels="footPrint.listeLabels"
+        <p><strong>Footprint</strong></p>
+        <FootprintBlock 
           :label-bold="footPrint.labelLong"
           :score="footPrint.score"
           :label-long="footPrint.labelLong"
