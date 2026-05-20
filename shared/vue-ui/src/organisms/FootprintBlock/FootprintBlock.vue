@@ -20,8 +20,8 @@ const listLabels = ["nGd: Number of 'Green Deficiencies' detected",
   <div class="tooltip-calc">
     how my score is calculated ?
     <tooltip-box>
-      <p>
-        <strong>{{ formula }} </strong><br>
+      <div>
+        <p><strong>{{ formula }} </strong></p>
         <ul>
           <li
             v-for="(value, index) in listLabels"
@@ -30,7 +30,7 @@ const listLabels = ["nGd: Number of 'Green Deficiencies' detected",
             {{ value }}
           </li>
         </ul>
-      </p>
+      </div>
     </tooltip-box>
   </div>
 </template>
