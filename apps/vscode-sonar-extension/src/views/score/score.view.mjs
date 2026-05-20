@@ -33,6 +33,7 @@ export class CreedengoScoreViewProvider {
 	async resolveWebviewView(webviewView) {
         const messageHandlers = {
             updateBranches: () => this.updateScore(),
+            updatePriorityRule: () => this.updatePriorityRule(),
             updateScore: () => this.updateScore(),
             selectBranch: data => {
                 this.#currentBranch = data.message;
@@ -49,7 +50,7 @@ export class CreedengoScoreViewProvider {
         
         await this.#updateBranches();
 
-        // await this.getPriorityRule();
+        await this.updatePriorityRule();
 
         webviewView.onDidChangeVisibility(async () => {
             if (!webviewView.visible) {
@@ -60,21 +61,23 @@ export class CreedengoScoreViewProvider {
         })
 	}
 
-    async getPriorityRule() {
+    async updatePriorityRule() {
         if (!this.#service) {
             return;
         }
+        let priorityRule;
         try {
             const { ready, project } = await sync();
             if (!ready || !project) {
                 return false
             }
             const branch = this.#currentBranch
-            await getPriorityRule({ project, branch });
+            priorityRule = await getPriorityRule({ project, branch });
         } catch(error) {
             window.showErrorMessage(error.message)
         }
-        this.#service.show(true); 
+        this.#service.show(true);
+        this.#service.postMessage({ type: 'updatePriorityRule', value: priorityRule });
     }
 
     /**

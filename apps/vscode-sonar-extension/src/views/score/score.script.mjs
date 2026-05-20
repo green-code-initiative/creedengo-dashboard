@@ -11,16 +11,19 @@ import { addMessageHandler } from '../../services/message.service.mjs'
     let errorCount = 0;
 
     const scoreOutput = document.querySelector('.score');
+    const priorityRuleNameElem = document.querySelector('.priority-rule-name');
+    const priorityRuleContentElem = document.querySelector('.priority-rule-content');
     const branchFields = document.forms['branch-selection'].elements;
     const branchesSelect = branchFields['branch'];
 
     try {
-        const oldState = vscode.getState() || { score: '', branch: '' };
-        let { score, branch } = oldState;
+        const oldState = vscode.getState() || { score: '', priorityRule: '', branch: '' };
+        let { score, priorityRule, branch } = oldState;
 
         const messageHandler = addMessageHandler({
             updateScore: data => updateScore(data.value),
             updateBranches: data => updateBranches(data.value),
+            updatePriorityRule: data => updatePriorityRule(data.value),
             clearScore: () => updateScore(''),
         }, logError)
 
@@ -33,7 +36,18 @@ import { addMessageHandler } from '../../services/message.service.mjs'
         function updateScore(newScore) {
             score = newScore;
             scoreOutput.textContent = `Score: ${score || 'Cleared'}`;
-            vscode.setState({ score, branch });
+            vscode.setState({ score, priorityRule, branch });
+        }
+
+        /**
+         * @param {any} priorityRuleData
+         */
+        function updatePriorityRule(priorityRuleData) {
+            priorityRule = priorityRuleData;
+            console.log('Updating priority rule', priorityRule);
+            priorityRuleNameElem.textContent = priorityRule ? priorityRule.name : 'None';
+            priorityRuleContentElem.innerHTML = priorityRule ? priorityRule.descriptionSections[0].content : 'None';
+            vscode.setState({ score, priorityRule, branch });
         }
 
         /**
@@ -53,7 +67,7 @@ import { addMessageHandler } from '../../services/message.service.mjs'
             branches.forEach(branchData => {
                 const { name, isMain } = branchData;
                 const option = new Option(name, name);
-                Object.assign(option.dataset, branch);
+                Object.assign(option.dataset, branchData);
                 options.add(option);
                 if ((isMain && !newSelected) || (name === previousSelected)) {
                     newSelected = option;
@@ -63,7 +77,7 @@ import { addMessageHandler } from '../../services/message.service.mjs'
                 newSelected.selected = true;
             }
             branch = newSelected.dataset.name;
-            vscode.setState({ score, branch });
+            vscode.setState({ score, priorityRule, branch });
             vscode.postMessage({ type: 'selectBranch', message: branch });
         }
         
