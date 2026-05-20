@@ -52,7 +52,7 @@ export async function getIssuesFacet(facetName, { project, branch, severity }) {
     branch,
     severity,
     facets: facetName,
-    ps: 0, // no issues parsing, we only want the facets
+    ps: 1, // no issues parsing, we only want the facets
   }
   const { facets } = await sonarRequestAPI.getJSON(routeUrl, searchParams);
 

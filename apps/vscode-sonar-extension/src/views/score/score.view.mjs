@@ -7,7 +7,7 @@ import core from '@creedengo/core-services';
 
 const { window, Uri } = vscode
 const { getProjectBranches } = SonarAPI
-const { api, calculateProjectScore } = core
+const { api, calculateProjectScore, getPriorityRule } = core
 
 api.init(SonarAPI)
 
@@ -48,7 +48,34 @@ export class CreedengoScoreViewProvider {
         })
         
         await this.#updateBranches();
+
+        // await this.getPriorityRule();
+
+        webviewView.onDidChangeVisibility(async () => {
+            if (!webviewView.visible) {
+                return;
+            }
+            await this.#updateBranches();
+            await this.updateScore();
+        })
 	}
+
+    async getPriorityRule() {
+        if (!this.#service) {
+            return;
+        }
+        try {
+            const { ready, project } = await sync();
+            if (!ready || !project) {
+                return false
+            }
+            const branch = this.#currentBranch
+            await getPriorityRule({ project, branch });
+        } catch(error) {
+            window.showErrorMessage(error.message)
+        }
+        this.#service.show(true); 
+    }
 
     /**
      * Request data from the Sonar Server to recalculate the sustainability score
