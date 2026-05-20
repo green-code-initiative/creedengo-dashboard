@@ -34,7 +34,7 @@
   "dependencies": {
     "@creedengo/sonar-services": "workspace:*",
     "@creedengo/vue-ui": "workspace: *",
-    "@creedengo/vue-dashboard_page": "workspace: *",
+    "@creedengo/vue-dashboard-page": "workspace: *",
     "vue": "^3.5.30"
   },
   "devDependencies": {

@@ -14,8 +14,8 @@ export default defineConfig({
     target: 'esnext',
     lib: {
       entry: resolve(rootFolder, 'index.js'),
-      name: 'vue-dashboard_page',
-      fileName: 'vue-dashboard_page'
+      name: 'vue-dashboard-page',
+      fileName: 'vue-dashboard-page'
     }
   }
 })

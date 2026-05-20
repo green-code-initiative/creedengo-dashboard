@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest'
 
 import * as ui from './index.js'
 
-describe('vue-dashboard_page export', () => {
+describe('vue-dashboard-page export', () => {
   
   it('export expected icons', () => {
     expect(ui).toHaveProperty('IconBug')
