@@ -52,8 +52,6 @@ const props = defineProps({
     required: true,
     validator: (obj) =>
       obj &&
-      typeof obj.listeLabels === 'array' &&
-      typeof obj.labelLong === 'string' &&
       typeof obj.score === 'number'
   }
 });
@@ -82,8 +80,7 @@ const props = defineProps({
       <div 
         v-if="score && priorityRule" 
         class="divider-block"
-      >
-      </div>
+      />
       <div 
         v-if="priorityRule"
         class="priority-block"
@@ -100,12 +97,10 @@ const props = defineProps({
       >
         <p><strong>Footprint</strong></p>
         <FootprintBlock 
-          :label-bold="footPrint.labelLong"
           :score="footPrint.score"
-          :label-long="footPrint.labelLong"
         />
       </div>
-      </div>
+    </div>
     <div
       v-if="metricTags"
       class="tag-card-container"
