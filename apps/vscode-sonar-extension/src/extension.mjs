@@ -21,6 +21,12 @@ export function activate(context) {
 	  commands.registerCommand('creedengo.updateScore', () => provider.updateScore())
   );
   subscriptions.push(
+    commands.registerCommand('creedengo.updatePriorityRule', () => provider.updatePriorityRule())
+  );
+  subscriptions.push(
+    commands.registerCommand('creedengo.updateFootPrint', () => provider.updateFootPrint())
+  );
+  subscriptions.push(
 	  commands.registerCommand('creedengo.refresh', () => provider.refresh())
   );
 

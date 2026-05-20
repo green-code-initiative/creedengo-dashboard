@@ -104,7 +104,7 @@ function readCreedengoVsCodeConfiguration() {
 /**
  * @returns {Promise<CreedengoAuthSettings>}
  */
-async function getSonarConfiguration() {
+export async function getSonarConfiguration() {
     const configuration = readCreedengoVsCodeConfiguration()
     const properties = await readSonarProjectProperties()
     Object.assign(configuration, properties)
