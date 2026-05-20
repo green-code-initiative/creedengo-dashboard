@@ -1,7 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import SettingsPage from './components/pages/SettingsPage.vue';
-import DashboardPage from './components/pages/DashboardPage.vue';
+import { DashboardPage } from '@creedengo/vue-dashboard-page';
 import NotFoundPage from './components/pages/NotFoundPage.vue';
 
 const routes = {
