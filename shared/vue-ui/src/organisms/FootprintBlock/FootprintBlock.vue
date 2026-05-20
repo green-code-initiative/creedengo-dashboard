@@ -16,7 +16,7 @@ const listLabels = ["nGd: Number of 'Green Deficiencies' detected",
 </script>
 
 <template>
-  <h2>Your footprint score is : {{ score }} <span class="score">kgCO2 eq potential emission reductions per year</span></h2>
+  <h2>Your footprint score is : {{ score }} <span class="score"> kgCO<sub>2</sub> eq potential emission reductions per year</span></h2>
   <div class="tooltip-calc">
     how my score is calculated ?
     <tooltip-box>
