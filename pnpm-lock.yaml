@@ -82,9 +82,9 @@ importers:
       '@creedengo/sonar-services':
         specifier: workspace:*
         version: link:../../shared/sonar-services
-      '@creedengo/vue-dashboard_page':
+      '@creedengo/vue-dashboard-page':
         specifier: 'workspace: *'
-        version: link:../../shared/vue-dashboard_page
+        version: link:../../shared/vue-dashboard-page
       '@creedengo/vue-ui':
         specifier: 'workspace: *'
         version: link:../../shared/vue-ui
@@ -275,7 +275,7 @@ importers:
         specifier: workspace:*
         version: link:../../configs/vitest-config
 
-  shared/vue-dashboard_page:
+  shared/vue-dashboard-page:
     dependencies:
       vue:
         specifier: ^3.5.30
