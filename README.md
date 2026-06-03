@@ -7,7 +7,7 @@
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=coverage)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=green-code-initiative_creedengo-dashboard&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=green-code-initiative_creedengo-dashboard)
 
-This project is meant to provide Sustainable Code Dashboards to
+This project is meant to provide Sustainable Code Dashboard to
 
 - show potential impact on sustainability of unffollowed recommendations
 - help decisions regarding code enhancement priorisation
