@@ -58,3 +58,5 @@ It allows:
 ## Project Build and Start
 
 Read the [CONTRIBUTING.md](./CONTRIBUTING.md) file to look how to start the project at its current state
+
+// DELETE THIS LINE
