@@ -4,15 +4,17 @@ import { getFootprintEstimation } from './footprint.service'
 import { describe } from 'vitest';
 
 
-vi.mock('./adapter', async () => ({ default: { 
-  getIssueCount: vi.fn(),
-  getNumberOfLineOfCode: vi.fn()
+vi.mock('./adapter', async () => ({ default: {
+    services: {
+        getIssueCount: vi.fn(),
+        getNumberOfLineOfCode: vi.fn()
+    }
 }}))
 
 beforeAll(() => {
   // Mock the API calls
-  api.getIssueCount.mockResolvedValue(5);
-  api.getNumberOfLineOfCode.mockResolvedValue(100);
+  api.services.getIssueCount.mockResolvedValue(5);
+  api.services.getNumberOfLineOfCode.mockResolvedValue(100);
 });
 
 afterAll(() => {
