@@ -1,0 +1,138 @@
+{
+  "total": 10,
+  "p": 1,
+  "ps": 10,
+  "rules": [
+    {
+      "key": "java:S6923",
+      "repo": "java",
+      "name": "Motion Sensor should not use gyroscope",
+      "severity": "MAJOR",
+      "status": "READY",
+      "tags": [],
+      "sysTags": [
+        "android",
+        "sustainability"
+      ],
+      "lang": "java",
+      "langName": "Java",
+      "type": "CODE_SMELL",
+      "defaultRemFnBaseEffort": "5min",
+      "remFnBaseEffort": "5min",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "CONVENTIONAL",
+      "cleanCodeAttributeCategory": "CONSISTENT",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "key": "java:S6926",
+      "repo": "java",
+      "name": "Bluetooth should be configured to use low power",
+      "severity": "MAJOR",
+      "status": "READY",
+      "tags": [],
+      "sysTags": [
+        "android",
+        "sustainability"
+      ],
+      "lang": "java",
+      "langName": "Java",
+      "type": "CODE_SMELL",
+      "defaultRemFnBaseEffort": "5min",
+      "remFnBaseEffort": "5min",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "key": "java:S6904",
+      "repo": "java",
+      "name": "Avoid using \"FetchType.EAGER\"",
+      "severity": "MAJOR",
+      "status": "READY",
+      "tags": [],
+      "sysTags": [
+        "jpa",
+        "sustainability",
+        "sql"
+      ],
+      "lang": "java",
+      "langName": "Java",
+      "type": "CODE_SMELL",
+      "defaultRemFnBaseEffort": "10min",
+      "remFnBaseEffort": "10min",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "key": "java:S6905",
+      "repo": "java",
+      "name": "SQL queries should retrieve only necessary fields",
+      "severity": "MAJOR",
+      "status": "READY",
+      "tags": [],
+      "sysTags": [
+        "sustainability",
+        "sql"
+      ],
+      "lang": "java",
+      "langName": "Java",
+      "type": "CODE_SMELL",
+      "defaultRemFnBaseEffort": "5min",
+      "remFnBaseEffort": "5min",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "key": "java:S6909",
+      "repo": "java",
+      "name": "Constant parameters in a \"PreparedStatement\" should not be set more than once",
+      "severity": "MAJOR",
+      "status": "READY",
+      "tags": [],
+      "sysTags": [
+        "sustainability",
+        "sql"
+      ],
+      "lang": "java",
+      "langName": "Java",
+      "type": "CODE_SMELL",
+      "defaultRemFnBaseEffort": "5min",
+      "remFnBaseEffort": "5min",
+      "scope": "MAIN",
+      "cleanCodeAttribute": "EFFICIENT",
+      "cleanCodeAttributeCategory": "INTENTIONAL",
+      "impacts": [
+        {
+          "softwareQuality": "MAINTAINABILITY",
+          "severity": "MEDIUM"
+        }
+      ]
+    }
+  ]
+}

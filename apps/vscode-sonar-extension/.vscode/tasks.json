@@ -1,17 +1,53 @@
 {
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  // these commands will appear in Task > Run Tasks menu.
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "watch",
-      "type": "npm",
-      "script": "watch",
-      "presentation": {
-        "reveal": "never"
-      },
+      "label": "verify",
+      "type": "shell",
+      "command": "mvn -B verify",
+      "group": "build"
+    },
+    {
+      "label": "mvn:test",
+      "type": "shell",
+      "command": "mvn -B test",
+      "group": "test"
+    },
+    {
+      "label": "atlas-debug",
+      "type": "shell",
+      "command": "atlas-debug",
+      "group": "build"
+    },
+    {
+      "label": "atlas-run",
+      "type": "shell",
+      "command": "atlas-run",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      /*
+      * this requires an already-running instance, via atlas-run or atlas-debug
+      * once run, this will repackage the plugin artifact and will be detected.
+      */
+      "label": "quick-reload",
+      "type": "shell",
+      "command": "atlas-mvn package",
       "group": {
         "kind": "build",
         "isDefault": true
-      }
+      },
+      "problemMatcher": []
     },
+    {
+      "label": "atlas test",
+      "type": "shell",
+      "command": "atlas-mvn test",
+      "group": "test"
+    }
   ]
 }

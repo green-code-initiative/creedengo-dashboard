@@ -1,0 +1,131 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/creedengoPluginIcon.png</param>
+        <param name="plugin-logo">images/creedengoPluginLogo.png</param>
+        <param name="screenshot-1">images/dashboard-widgets_920x450.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="creedengo-confluence-plugin"/>
+    <resource key="icons" name="icons/" type="download" location="myplugin/images/icons"/>  
+    
+    <!-- add our web resources -->
+    <web-resource key="creedengo-confluence-plugin-resources" name="creedengo-confluence-plugin Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        <resource type="download" name="creedengo-confluence-plugin.css" location="/css/creedengo-confluence-plugin.css"/>
+        <resource type="download" name="creedengo-confluence-plugin.js" location="/js/creedengo-confluence-plugin.js"/>
+        <!-- Contexte pour s'assurer que les ressources sont chargées dans Confluence  -->
+        <context>${atlassian.plugin.key}</context>
+    </web-resource>
+
+
+    <xhtml-macro name="creedengo-dashboard" class="org.greencodeinitiative.creedengo.confluence.plugin.macro.Dashboard" 
+    key='creedengo-dashboard' icon="/download/resources/${atlassian.plugin.key}/icons/MyMacroIcon.png">
+        <label key="dashboard.label"/>
+        <description key="dashboard.desc"/>
+        <category name="external-content"/>
+        <parameters>     
+            <parameter name="sonarqube_url" type="string" required="true">
+                <label key="dashboard.param.sonarqube_url.label"/>
+                <description key="dashboard.param.sonarqube_url.desc"/>
+            </parameter>
+            <parameter name="sonarqube_token" type="string" required="true">
+                <label key="dashboard.param.sonarqube_token.label"/>
+                <description key="dashboard.param.sonarqube_token.desc"/>
+            </parameter>
+            <parameter name="project_key" type="string" required="true">
+                <label key="dashboard.param.project_key.label"/>
+                <description key="dashboard.param.project_key.desc"/>
+            </parameter>
+            <parameter name="branch" type="string" required="false" default="main">
+                <label key="dashboard.param.branch.label"/>
+                <description key="dashboard.param.branch.desc"/>
+            </parameter>
+        </parameters>
+    </xhtml-macro>
+
+    <xhtml-macro name="creedengo-ecoscore" class="org.greencodeinitiative.creedengo.confluence.plugin.macro.EcoScore" 
+    key='creedengo-ecoscore' icon="/download/resources/${atlassian.plugin.key}/icons/creedengo-ecoscore-icon.png">
+        <label key="creedengo-ecoscore.label"/>
+        <description key="creedengo-ecoscore.desc"/>
+        <category name="external-content"/>
+        <parameters>     
+            <parameter name="sonarqube_url" type="string" required="true">
+                <label key="creedengo-ecoscore.param.sonarqube_url.label"/>
+                <description key="creedengo-ecoscore.param.sonarqube_url.desc"/>
+            </parameter>
+            <parameter name="sonarqube_token" type="string" required="true">
+                <label key="creedengo-ecoscore.param.sonarqube_token.label"/>
+                <description key="creedengo-ecoscore.param.sonarqube_token.desc"/>
+            </parameter>
+            <parameter name="project_key" type="string" required="true">
+                <label key="creedengo-ecoscore.param.project_key.label"/>
+                <description key="creedengo-ecoscore.param.project_key.desc"/>
+            </parameter>
+            <parameter name="branch" type="string" required="false" default="main">
+                <label key="creedengo-ecoscore.param.branch.label"/>
+                <description key="creedengo-ecoscore.param.branch.desc"/>
+            </parameter>
+        </parameters>
+    </xhtml-macro>
+
+    <xhtml-macro name="creedengo-priority-rules" class="org.greencodeinitiative.creedengo.confluence.plugin.macro.PriorityRulesMacro"
+    key='creedengo-priority-rules' icon="/download/resources/${atlassian.plugin.key}/icons/MyMacroIcon.png">
+        <label key="priorityrules.label"/>
+        <description key="priorityrules.desc"/>
+        <category name="external-content"/>
+        <parameters>     
+            <parameter name="sonarqube_url" type="string" required="true">
+                <label key="priorityrules.param.sonarqube_url.label"/>
+                <description key="priorityrules.param.sonarqube_url.desc"/>
+            </parameter>
+            <parameter name="sonarqube_token" type="string" required="true">
+                <label key="priorityrules.param.sonarqube_token.label"/>
+                <description key="priorityrules.param.sonarqube_token.desc"/>
+            </parameter>
+            <parameter name="project_key" type="string" required="true">
+                <label key="priorityrules.param.project_key.label"/>
+                <description key="priorityrules.param.project_key.desc"/>
+            </parameter>
+            <parameter name="branch" type="string" required="false" default="main">
+                <label key="priorityrules.param.branch.label"/>
+                <description key="priorityrules.param.branch.desc"/>
+            </parameter>
+        </parameters>
+    </xhtml-macro>
+
+    <xhtml-macro name="creedengo-piechart" class="org.greencodeinitiative.creedengo.confluence.plugin.macro.PieChartMacro"
+    key='creedengo-piechart' icon="/download/resources/${atlassian.plugin.key}/icons/MyMacroIcon.png">
+        <label key="piechart.label"/>
+        <description key="piechart.desc"/>
+        <category name="external-content"/>
+        <parameters>
+            <parameter name="sonarqube_url" type="string" required="true">
+                <label key="piechart.param.sonarqube_url.label"/>
+                <description key="piechart.param.sonarqube_url.desc"/>
+            </parameter>
+            <parameter name="sonarqube_token" type="string" required="true">
+                <label key="piechart.param.sonarqube_token.label"/>
+                <description key="piechart.param.sonarqube_token.desc"/>
+            </parameter>
+            <parameter name="project_key" type="string" required="true">
+                <label key="piechart.param.project_key.label"/>
+                <description key="piechart.param.project_key.desc"/>
+            </parameter>
+            <parameter name="branch" type="string" required="false" default="main">
+                <label key="piechart.param.branch.label"/>
+                <description key="piechart.param.branch.desc"/>
+            </parameter>
+            <parameter name="metric_tag" type="enum" required="false" default="cpu">
+                <label key="piechart.param.metric_tag.label"/>
+                <description key="piechart.param.metric_tag.desc"/>
+                <value name="cpu"/>
+                <value name="ram"/>
+            </parameter>
+        </parameters>
+    </xhtml-macro>
+
+</atlassian-plugin>

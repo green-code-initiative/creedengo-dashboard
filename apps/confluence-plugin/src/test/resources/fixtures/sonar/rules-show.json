@@ -1,0 +1,47 @@
+{
+  "rule": {
+    "key": "java:S6923",
+    "repo": "java",
+    "name": "Motion Sensor should not use gyroscope",
+    "severity": "MAJOR",
+    "status": "READY",
+    "tags": [],
+    "sysTags": [
+      "android",
+      "sustainability"
+    ],
+    "lang": "java",
+    "langName": "Java",
+    "type": "CODE_SMELL",
+    "defaultRemFnBaseEffort": "5min",
+    "remFnBaseEffort": "5min",
+    "scope": "MAIN",
+    "cleanCodeAttribute": "CONVENTIONAL",
+    "cleanCodeAttributeCategory": "CONSISTENT",
+    "impacts": [
+      {
+        "softwareQuality": "MAINTAINABILITY",
+        "severity": "MEDIUM"
+      }
+    ],
+    "descriptionSections": [
+      {
+        "key": "resources",
+        "content": "<h3>Documentation</h3>\n<ul>\n  <li> <a href=\"https://source.android.com/docs/core/interaction/sensors/power-use\">Android - Low Power Sensors</a> </li>\n  <li> <a href=\"https://developer.android.com/develop/sensors-and-location/sensors/sensors_motion\">Android - Motion Sensors</a> </li>\n</ul>"
+      },
+      {
+        "key": "how_to_fix",
+        "content": "<p>Replace <code>TYPE_ROTATION_VECTOR</code> with <code>TYPE_GEOMAGNETIC_ROTATION_VECTOR</code> when retrieving the Motion Sensor.</p>\n\n<h4>Noncompliant code example</h4>\n<pre data-diff-id=\"1\" data-diff-type=\"noncompliant\">\npublic class BackGroundActivity extends Activity {\n\n    private Sensor motionSensor;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);\n        motionSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ROTATION_VECTOR); // Noncompliant\n        // ..\n    }\n    //..\n}\n</pre>\n<h4>Compliant solution</h4>\n<pre data-diff-id=\"1\" data-diff-type=\"compliant\">\npublic class BackGroundActivity extends Activity {\n\n    private Sensor motionSensor;\n\n    @Override\n    protected void onCreate(Bundle savedInstanceState) {\n        SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);\n        motionSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GEOMAGNETIC_ROTATION_VECTOR); // Compliant\n        // ..\n    }\n    //..\n}\n</pre>"
+      },
+      {
+        "key": "root_cause",
+        "content": "<p>The battery life is a major concern for mobile devices and choosing the right Sensor is very important to reduce the power usage and extend the\nbattery life.</p>\n<p>It is recommended, for reducing the power usage, to use <code>TYPE_GEOMAGNETIC_ROTATION_VECTOR</code> for <em>background tasks</em>,\n<em>long-running tasks</em> and other tasks not requiring accurate motion detection.</p>\n<p>The rule reports an issue when <code>android.hardware.SensorManager#getDefaultSensor</code> uses <code>TYPE_ROTATION_VECTOR</code> instead of\n<code>TYPE_GEOMAGNETIC_ROTATION_VECTOR</code>.</p>"
+      },
+      {
+        "key": "introduction",
+        "content": "<p>The <code>android.hardware.SensorManager#getDefaultSensor</code> offers two types of Motion Sensors:</p>\n<ul>\n  <li> <code>TYPE_ROTATION_VECTOR:</code> a combination of the gyroscope, accelerometer, and magnetometer. </li>\n  <li> <code>TYPE_GEOMAGNETIC_ROTATION_VECTOR:</code> a combination of the accelerometer and magnetometer. </li>\n</ul>"
+      }
+    ],
+    "htmlDesc": "<p>The battery life is a major concern for mobile devices and choosing the right Sensor is very important to reduce the power usage and extend the\nbattery life.</p>\n<p>It is recommended, for reducing the power usage, to use <code>TYPE_GEOMAGNETIC_ROTATION_VECTOR</code> for <em>background tasks</em>,\n<em>long-running tasks</em> and other tasks not requiring accurate motion detection.</p>\n<p>The rule reports an issue when <code>android.hardware.SensorManager#getDefaultSensor</code> uses <code>TYPE_ROTATION_VECTOR</code> instead of\n<code>TYPE_GEOMAGNETIC_ROTATION_VECTOR</code>.</p>"
+  }
+}
