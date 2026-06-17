@@ -45,7 +45,7 @@ This example plugin uses [Webpack](https://webpack.js.org/) for building the fin
 * The name of each entry file must correspond to the `page_id` of the registered page (see `src/main/java/org/sonarsource/plugins/example/web/MyPluginPageDefinition.java` and compare with the entry points in `conf/webpack/webpack.config.js`).
 * Each entry file must be located in the resulting JAR's `static/` folder.
 
-The building process should be included in your full packaging process. In this example plugin, `mvn package` will call `npm run build` prior to finalizing the JAR package.
+The building process should be included in your full packaging process. In this example plugin, `mvn package` will call `pnpm build` prior to finalizing the JAR package.
 
 ### Testing
 

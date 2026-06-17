@@ -25,25 +25,25 @@ pnpm install
 #### Compile and Hot-Reload Design System for Development
 
 ```sh
-turbo storybook
+pnpm storybook
 ```
 
 #### Compile and Hot-Reload the application for Development
 
 ```sh
-turbo dev
+pnpm dev
 ```
 
 #### Compile and Minify for Production
 
 ```sh
-turbo build
+pnpm build
 ```
 
 #### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-turbo test
+pnpm test
 ```
 
 #### Run End-to-End Tests with [Playwright](https://playwright.dev)
@@ -57,22 +57,22 @@ sudo apt-get install libgbm1 # for chrome
 sudo apt-get install libgtk-3-0 # for firefox
 
 # When testing on CI, must build the project first
-turbo build
+pnpm build
 
 # Runs the end-to-end tests
-turbo e2e
+pnpm test:e2e
 # Runs the tests only on Chromium
-turbo e2e -- --project=chromium
+pnpm test:e2e -- --project=chromium
 # Runs the tests of a specific file
-turbo e2e -- tests/example.spec.ts
+pnpm test:e2e -- tests/example.spec.ts
 # Runs the tests in debug mode
-turbo e2e -- --debug
+pnpm test:e2e -- --debug
 ```
 
 #### Lint with [ESLint](https://eslint.org/)
 
 ```sh
-turbo lint
+pnpm lint
 ```
 
 #### Customize Build Configuration
