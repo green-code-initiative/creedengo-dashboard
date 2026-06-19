@@ -1,6 +1,7 @@
 <script setup>
 import TagCard from '../organisms/TagCard/TagCard.vue';
 import ScoreBlock from '../organisms/ScoreBlock/ScoreBlock.vue';
+import FootprintBlock from '../organisms/FootprintBlock/FootprintBlock.vue';
 
 const props = defineProps({
   score: {
@@ -45,6 +46,13 @@ const props = defineProps({
       typeof metricTag.projectKey === 'string' &&
       typeof metricTag.branch === 'string'
     )
+  },
+  footPrint: {
+    type: Object,
+    required: true,
+    validator: (obj) =>
+      obj &&
+      typeof obj.score === 'number'
   }
 });
 
@@ -72,8 +80,7 @@ const props = defineProps({
       <div 
         v-if="score && priorityRule" 
         class="divider-block"
-      >
-      </div>
+      />
       <div 
         v-if="priorityRule"
         class="priority-block"
@@ -81,6 +88,17 @@ const props = defineProps({
         <h2>Priority Rule</h2>
         <strong>{{ priorityRule.ruleName }}</strong>
         <p>{{ priorityRule.ruleHtmlDesc }}</p>
+      </div>
+    </div>
+    <div class="top-card-container">
+      <div
+        v-if="footPrint" 
+        class="footprint-block"
+      >
+        <p><strong>Footprint</strong></p>
+        <FootprintBlock 
+          :score="footPrint.score"
+        />
       </div>
     </div>
     <div
@@ -148,6 +166,12 @@ const props = defineProps({
   height: 320px;
 }
 
+.footprint-block {
+  margin: 0 2.625rem 0 3rem;
+  background-color: none;
+  flex: 1;
+  height: 320px;
+}
 /* TAG CARDS */
 .tag-card-container {
   display: flex;
@@ -177,13 +201,15 @@ const props = defineProps({
   }
   .score-block,
   .priority-block,
+  .footprint-block,
   .tag-card {
     min-width: unset;
     flex: none;
     height: auto;
   }
   .score-block,
-  .priority-block {
+  .priority-block,
+  .footprint-block {
     margin: 0 1.125rem;
   }
   .divider-block {
@@ -208,13 +234,15 @@ const props = defineProps({
   }
   .score-block,
   .priority-block,
+  .footprint-block,
   .tag-card {
     min-width: unset;
     flex: none;
     height: auto;
   }
   .score-block,
-  .priority-block {
+  .priority-block,
+  .footprint-block {
     margin: 0 3rem;
   }
   .divider-block {

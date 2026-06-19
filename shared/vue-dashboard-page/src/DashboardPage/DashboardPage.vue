@@ -5,7 +5,7 @@ import SonarAPI from '@creedengo/sonar-services'
 import core from '@creedengo/core-services';
 import { DashboardPageTemplate } from '@creedengo/vue-ui';
 
-const { api, calculateProjectScore, getScoreTexts } = core;
+const { api, calculateProjectScore, getScoreTexts, getFootprintEstimation } = core;
 
 api.init(SonarAPI)
 const props = defineProps({
@@ -19,13 +19,15 @@ const props = defineProps({
   }
 })
 
-const state = reactive({ score: '', error: null });
+const state = reactive({ score: '', error: null, footPrint: null });
 
 onMounted(async () => {
   try {
     const value = await calculateProjectScore({ ...props });
     const { label, description, tips } = getScoreTexts(value);
     state.score = { value, label, description, tips };
+    const footprintValue = await getFootprintEstimation({project: props.project, branch: props.branch });
+    state.footPrint = { score: footprintValue };
   } catch (error) {
     state.score = 'N/A';
     globalThis.console.error('Error fetching score:', error);
@@ -47,7 +49,7 @@ onMounted(async () => {
         <i class="fa fa-exclamation-triangle" /> Score not available - {{ state.error }}
       </span>
       <span v-else>
-        <DashboardPageTemplate :score="state.score" />
+        <DashboardPageTemplate :score="state.score" :footPrint="state.footPrint" />
       </span>
     </div>
   </main>
