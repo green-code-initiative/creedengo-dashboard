@@ -2,8 +2,8 @@ import api from './adapter.js'
 
 async function getCastEstimation(config) {
     const { project, branch } = config
-    const nGd = api.getIssueCount()
-    const mLoc = api.getNumberOfLineOfCode({ project, branch })
+    const nGd = api.services.getIssueCount(config)
+    const mLoc = api.services.getNumberOfLineOfCode({ project, branch })
     const f = 0.004 / 100
     const { nServer = 3 } = config
     const { timeSharing = 1 } = config

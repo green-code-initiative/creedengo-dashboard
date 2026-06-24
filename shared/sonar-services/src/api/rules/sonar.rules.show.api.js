@@ -11,7 +11,9 @@ const routeUrl = `${API}/show`
  * @returns Promise<Object>>
  */
 export async function getRuleDetails(ruleKey) {
-  const searchParams = { 'rule_key': ruleKey }
+  const [prefix, rest] = ruleKey.split(':')
+  const keyParam = prefix.concat(':', rest.toUpperCase())
+  const searchParams = { 'key': keyParam }
   const { rule } = await sonarRequestAPI.getJSON(routeUrl, searchParams)
   return rule
 }

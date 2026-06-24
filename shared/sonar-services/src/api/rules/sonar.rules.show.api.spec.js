@@ -19,7 +19,7 @@ afterEach(() => server.resetHandlers())
 
 describe('getRuleDetails', () => {
   test('getRuleDetails retrieve 1 rule', async () => {
-    const issues = await getRuleDetails({ project: 'foo', branch: 'master' })
+    const issues = await getRuleDetails('project: foo', 'branch: master')
     expect(issues).toStrictEqual(mockRuleDetails.rule)
   })
 })

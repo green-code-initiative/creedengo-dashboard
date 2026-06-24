@@ -62,6 +62,14 @@
       {
         "command": "creedengo.updateScore",
         "title": "Update Creedengo Sustainability Score"
+      },
+      {
+        "command": "creedengo.updatePriorityRule",
+        "title": "Update Creedengo Priority Rule"
+      },
+      {
+        "command": "creedengo.updateFootPrint",
+        "title": "Update Creedengo Footprint"
       }
     ],
     "views": {

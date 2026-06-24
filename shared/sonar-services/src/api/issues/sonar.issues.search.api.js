@@ -30,6 +30,17 @@ export async function findIssues({ project, branch }) {
   return issues
 }
 
+export async function getIssueCount({ project, branch }) {
+  const searchParams = {
+    ...sustainabilitySearchParams,
+    componentKeys: project,
+    branch,
+    ps: 1, // no issues parsing, we only want the total count
+  }
+  const page = await sonarRequestAPI.getJSON(routeUrl, searchParams)
+  return page.paging.total
+}
+
 function facetFormater(result, severity) {
   const { val, count } = severity;
   result[val.toLowerCase()] = count;
@@ -52,7 +63,7 @@ export async function getIssuesFacet(facetName, { project, branch, severity }) {
     branch,
     severity,
     facets: facetName,
-    ps: 0, // no issues parsing, we only want the facets
+    ps: 1, // no issues parsing, we only want the facets
   }
   const { facets } = await sonarRequestAPI.getJSON(routeUrl, searchParams);
 
