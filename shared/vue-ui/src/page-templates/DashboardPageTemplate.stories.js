@@ -23,6 +23,12 @@ export default {
        type: 'array'
      },
      required: true
+   },
+   footPrint: {
+     control: {
+       type: 'object'
+     },
+     required: true
    }
   }
 };
@@ -52,6 +58,12 @@ const priorityRule = {
   `,
   ruleImpact: "High",
   ruleMetricTags: ["Maintenance"]
+}
+
+const footPrint = {
+  score: 75,
+  labelLong: "Your app is nearly optimized.",
+  listeLabels: ["75 % optimized, well done!"]
 }
 
 const cpuTag = {
@@ -107,7 +119,8 @@ export const CompleteDashboard = {
       ramTag,
       networkTag,
       diskTag
-    ]
+    ],
+    footPrint
   }
 };
 
@@ -118,7 +131,8 @@ export const WithoutNetworkAndDiskTags = {
     metricTags: [
       cpuTag,
       ramTag
-    ]
+    ],
+    footPrint
   }
 };
 
@@ -130,7 +144,8 @@ export const WithoutScore = {
       ramTag,
       networkTag,
       diskTag
-    ]
+    ],
+    footPrint
   }
 };
 
@@ -142,7 +157,8 @@ export const WithoutPriorityRule = {
       ramTag,
       networkTag,
       diskTag
-    ]
+    ],
+    footPrint
   }
 };
 
@@ -150,6 +166,20 @@ export const WithoutMetricTags = {
   args: {
     score,
     priorityRule,
-    metricTags: []
+    metricTags: [],
+    footPrint
   }
+};
+
+  export const WithoutFootPrint = {
+    args: {
+      score,
+      priorityRule,
+      metricTags: [
+        cpuTag,
+        ramTag,
+        networkTag,
+        diskTag
+      ],
+    }
 };
