@@ -1,0 +1,26 @@
+{
+  "branches": [
+    {
+      "name": "main",
+      "isMain": true,
+      "type": "BRANCH",
+      "status": {
+        "qualityGateStatus": "OK"
+      },
+      "analysisDate": "2025-12-02T21:25:26+0100",
+      "excludedFromPurge": true,
+      "branchId": "c92d890b-79cc-42a8-9048-fe3b15e99c5b"
+    },
+    {
+      "name": "develop",
+      "isMain": false,
+      "type": "BRANCH",
+      "status": {
+        "qualityGateStatus": "OK"
+      },
+      "analysisDate": "2025-12-01T10:00:00+0100",
+      "excludedFromPurge": false,
+      "branchId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+    }
+  ]
+}

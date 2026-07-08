@@ -1,5 +1,13 @@
 packages:
-- 'apps/*'
-- 'configs/*'
-- 'shared/*'
+  - apps/*
+  - configs/*
+  - shared/*
+
+onlyBuiltDependencies:
+  - '@vscode/vsce-sign'
+  - esbuild
+  - keytar
+  - msw
+  - unrs-resolver
+
 useNodeVersion: 22.17.1
